@@ -5,8 +5,16 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(color: Colors.pink),
+    return
+        SafeArea(child: Column(
+          children: [
+            Row(
+              children: [
+                Image.asset("name"),
+              ],
+            ),
+          ],
+        )
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'Home/bottom_nav_bar.dart';
 import 'Home/home_main.dart';
 import 'OnBoarding/onboarding_main.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: showHome ?'/home':'/',
       routes: {
         '/': (context) => OnBoardingMain(),
-        '/home': (context) => Home()
+        '/home': (context) => BottomNavBar()
       },
     );
   }
