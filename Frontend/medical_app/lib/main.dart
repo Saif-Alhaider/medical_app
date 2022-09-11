@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/splash_screen/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'Home/bottom_nav_bar.dart';
-import 'Home/home_main.dart';
 import 'OnBoarding/onboarding_main.dart';
 
 void main() async {
@@ -24,8 +22,8 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute: showHome ?'/home':'/',
       routes: {
-        '/': (context) => OnBoardingMain(),
-        '/home': (context) => BottomNavBar()
+        '/': (context) =>OnBoardingMain(),
+        '/home': (context) => SplashScreen()
       },
     );
   }

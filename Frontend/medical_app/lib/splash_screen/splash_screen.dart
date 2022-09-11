@@ -1,8 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../OnBoarding/onboarding_main.dart';
-
+import '../Home/bottom_nav_bar.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -22,14 +20,13 @@ class _SplashScreenState extends State<SplashScreen> {
         const Duration(seconds: 3),
             () => Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => OnBoardingMain()),
+          MaterialPageRoute(builder: (context) => BottomNavBar()),
         ));
   }
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-
       body: Center(
         child: Text("طبيبي",style: TextStyle(color: Color(0xff2196F3),fontSize: 32),),
       ),
