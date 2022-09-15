@@ -260,6 +260,9 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
+
+    version: "2.1.3"
+
     version: "2.1.2"
   petitparser:
     dependency: transitive
@@ -268,6 +271,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.0"
+
   platform:
     dependency: transitive
     description:
@@ -426,7 +430,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.7.0"
+    version: "3.0.0"
   xdg_directories:
     dependency: transitive
     description:
