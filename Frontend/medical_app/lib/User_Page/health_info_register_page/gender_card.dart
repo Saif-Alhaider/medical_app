@@ -53,7 +53,8 @@ class GenderCard extends StatelessWidget {
                           border: Border.all(color: Colors.white, width: 3)),
                     ),
             ],
-          )
+          ),
+          
         ],
       ),
     );

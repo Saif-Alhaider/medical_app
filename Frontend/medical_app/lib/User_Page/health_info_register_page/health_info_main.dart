@@ -5,19 +5,30 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:medical_app/Home/constants.dart';
+import 'package:medical_app/User_Page/health_info_register_page/drop_down_blood_type.dart';
+import 'package:medical_app/reuseable_widgets/next_skip_buttons.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:get/get.dart';
+import '../../OnBoarding/indicators_button.dart';
+import 'description_info.dart';
 import 'gender_card.dart';
+import 'info_card.dart';
 
 class HealthInfoRegister extends StatelessWidget {
-  TextEditingController hegihtController = TextEditingController(text: "63");
+  final TextEditingController hegihtController =
+      TextEditingController(text: "63");
+  final TextEditingController weightController =
+      TextEditingController(text: "60");
+  final TextEditingController ageController = TextEditingController(text: "18");
+  final TextEditingController descriptionController = TextEditingController();
+  Rx<String> bloodType = Rx<String>("");
   HealthInfoRegister({super.key});
 
-  final Rx<bool> maleSelection = Rx<bool>(false);
-  final Rx<bool> femaleSelection = Rx<bool>(false);
+  static final Rx<bool> maleSelection = Rx<bool>(false);
+  static final Rx<bool> femaleSelection = Rx<bool>(false);
   @override
   Widget build(BuildContext context) {
-    Timer? timer;
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -42,9 +53,7 @@ class HealthInfoRegister extends StatelessWidget {
                         ),
                       )),
                 ),
-                const SizedBox(
-                  width: 5,
-                ),
+                ConstantValues.cardsGap,
                 Expanded(
                   child: Obx(() => GestureDetector(
                         onTap: () {
@@ -63,115 +72,54 @@ class HealthInfoRegister extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(height: 10),
+            ConstantValues.cardsGap,
             Row(
               children: [
-                Container(
-                  width: 185,
-                  height: 180,
-                  decoration: BoxDecoration(
+                Expanded(
+                    child: InfoCard(
+                  controller: weightController,
+                  title: "الوزن",
+                  unit: "kg",
+                )),
+                ConstantValues.cardsGap,
+                Expanded(
+                    child: InfoCard(
+                  controller: hegihtController,
+                  title: "الطول",
+                  unit: "cm",
+                ))
+              ],
+            ),
+            ConstantValues.cardsGap,
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
-                      boxShadow: const [
-                        BoxShadow(
-                            blurRadius: 40,
-                            color: Color.fromARGB(40, 0, 0, 0),
-                            offset: Offset(0, 2))
-                      ]),
-                  child: Column(
-                    children: [
-                      const SubText(
-                        text: "الطول",
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                      SizedBox(
-                        width: 90,
-                        child: TextField(
-                          textAlign: TextAlign.center,
-                          controller: hegihtController,
-                          keyboardType: TextInputType.number,
-                          maxLength: 3,
-                          style: GoogleFonts.vazirmatn(fontSize: 28),
-                          decoration: const InputDecoration(
-                            counterText: "",
-                            suffix: SubText(
-                              text: "cm",
-                              color: Colors.black,
-                            ),
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 5,
-                                      color: Color.fromARGB(59, 0, 0, 0),
-                                      offset: Offset(0, 8))
-                                ]),
-                            child: IconButton(
-                                onPressed: () {
-                                  hegihtController.text =
-                                      (int.parse(hegihtController.text) - 1)
-                                          .toString();
-                                },
-                                icon: Icon(FontAwesome5.minus)),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 5,
-                                      color: Color.fromARGB(59, 0, 0, 0),
-                                      offset: Offset(0, 8))
-                                ]),
-                            child: GestureDetector(
-                                onTapDown: (TapDownDetails tapDownDetails) {
-                                  timer = Timer.periodic(
-                                    Duration(milliseconds: 200),
-                                    (timer) {
-                                      hegihtController.text =
-                                          (int.parse(hegihtController.text) + 1)
-                                              .toString();
-                                    },
-                                  );
-                                },
-                                onTapUp: (details) {
-                                  timer !=null ? timer!.cancel():null;
-                                },
-                                onTapCancel: (){
-                                  timer !=null ? timer!.cancel():null;
-                                },
-                                // onTap: () {
-                                //   hegihtController.text =
-                                //       (int.parse(hegihtController.text) + 1)
-                                //           .toString();
-                                // },
-                                child: Icon(FontAwesome5.plus)),
-                          )
-                        ],
-                      )
-                    ],
+                    ),
+                    height: 60,
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: DropDownBloodType(bloodType: bloodType),
+                    ),
                   ),
-                )
+                ),
+                ConstantValues.cardsGap,
+                Expanded(
+                    child: InfoCard(
+                        controller: ageController, title: "العمر", unit: "")),
               ],
-            )
+            ),
+            ConstantValues.cardsGap,
+            DescriptionInfo(controller: descriptionController),
+            ConstantValues.cardsGap,
+            NextSkipButtons(nextFunction: (){
+              print("hello next");
+            },skipFunction: (){print("hello next");}),
+            
           ],
         ),
       ),

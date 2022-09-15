@@ -47,8 +47,8 @@ class _MainViewState extends State<MainView> {
         },
         itemCount: 3,
         itemBuilder: (context, index) {
-          // return pages[index];
-          return HealthInfoRegister();
+          return pages[index];
+          // return HealthInfoRegister();
         },
       ),
       bottomNavigationBar: BottomSalamonNavigationBar(currentIndex: currentIndex,pageController: pageController,),

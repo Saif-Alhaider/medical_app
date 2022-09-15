@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/Home/constants.dart';
 
 import 'package:medical_app/Home/home_content/specialities.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
@@ -20,56 +21,32 @@ class HomeContent extends StatelessWidget {
         children: [
           const Specialities(),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const HeadLineText(text: 'اشهر الاطباء'),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: SizedBox(
-                  width: double.maxFinite,
-                  height: 600,
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemCount: doctorsImages.length,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Container(
+                    
+                decoration: BoxDecoration(boxShadow: ConstantValues.cardShadow,),
+                height: 350,
+                child: ListView.builder(scrollDirection: Axis.horizontal,itemCount: 10,itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.all( 10),
+                    width: 250,
+                    decoration: BoxDecoration(
+                    color: Color(0xffFDFDFD),
+                      borderRadius: BorderRadius.circular(12)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            height: 500,
-                            child: Stack(
-                              children: [
-                                Container(
-                                  margin:
-                                      const EdgeInsets.only(left: 35, top: 10),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blue,
-                                      borderRadius: BorderRadius.circular(12)),
-                                  width: 350,
-                                  height: 500,
-                                ),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Transform.scale(
-                                    scale: 1,
-                                    child: Container(
-                                        width: 350,
-                                        child: Image.asset(
-                                            'Assets/images/${doctorsImages[index]}')),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SubText(text: 'hello')
+                          Image.asset("Assets/images/doctor01.jpeg",fit: BoxFit.cover,),
+                          Text("د.محمد الاراكي")
                         ],
-                      );
-                    },
-                  ),
-                ),
-              ),
+                      ),
+                    ),
+                  );
+                },),
+              )
             ],
           )
         ],
