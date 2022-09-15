@@ -13,24 +13,23 @@ import '../User_Page/loged_user_page/user_page.dart';
 import 'bottom_navigation_bar.dart';
 
 class MainView extends StatefulWidget {
-
   @override
   State<MainView> createState() => _MainViewState();
 }
 
 class _MainViewState extends State<MainView> {
-   final List pages = [Home(),ScheduleTab()];
+  final List pages = [Home(), ScheduleTab()];
   Future<Null> getUserData() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.getString('userEmail')==null?pages.insert(2, RegisterEmail()):pages.insert(2, UserPage());
+
+    prefs.getString('userEmail') == null
+        ? pages.insert(2, RegisterEmail())
+        : pages.insert(2, UserPage());
+
+    if (pages[2] == UserPage() && prefs.getString('userEmail') == null) {
+      pages[2] = RegisterEmail();
+    }
   }
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getUserData();
-  }
- 
 
   Rx<int> currentIndex = Rx<int>(0);
 
@@ -38,12 +37,17 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
+      getUserData();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: PageView.builder(
+        
         controller: pageController,
         onPageChanged: (index) {
           currentIndex.value = index;
+          setState(() {
+            
+          });
         },
         itemCount: 3,
         itemBuilder: (context, index) {
@@ -51,7 +55,10 @@ class _MainViewState extends State<MainView> {
           // return Notifications();
         },
       ),
-      bottomNavigationBar: BottomSalamonNavigationBar(currentIndex: currentIndex,pageController: pageController,),
+      bottomNavigationBar: BottomSalamonNavigationBar(
+        currentIndex: currentIndex,
+        pageController: pageController,
+      ),
     );
   }
 }

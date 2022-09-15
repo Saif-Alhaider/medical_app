@@ -6,6 +6,7 @@ import 'package:medical_app/Home/home_content/specialities.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:medical_app/models/doctors_images.dart';
+
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
 
@@ -21,20 +22,22 @@ class HomeContent extends StatelessWidget {
               ConstantValues.cardsGap,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  HeadLineText(text: "الاطباء",lineHeight: 1,),
+                children: const [
+                  HeadLineText(
+                    text: "الاطباء",
+                    lineHeight: 1,
+                  ),
                   SubText(text: "المزيد")
                 ],
               ),
               ConstantValues.cardsGap,
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      blurRadius: 60,
-                      spreadRadius: 0.5,
-                      color: Color.fromARGB(23, 0, 0, 0)
-                    )
+                        blurRadius: 60,
+                        spreadRadius: 0.5,
+                        color: Color.fromARGB(23, 0, 0, 0))
                   ],
                 ),
                 height: 350,
@@ -43,10 +46,10 @@ class HomeContent extends StatelessWidget {
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       width: 250,
                       decoration: BoxDecoration(
-                          color: Color(0xffFDFDFD),
+                          color: const Color(0xffFDFDFD),
                           borderRadius: BorderRadius.circular(12)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -59,11 +62,11 @@ class HomeContent extends StatelessWidget {
                                   doctorsImages[index],
                                   fit: BoxFit.cover,
                                 )),
-                            SubText(
+                            const SubText(
                               text: "د.محمد الاراكي",
                               color: Colors.black,
                             ),
-                            SubText(
+                            const SubText(
                               text: "اخصائي جراحة قلب",
                               size: 15,
                             )
