@@ -6,6 +6,7 @@ import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
 import '../../../main_colors.dart';
+import '../../Notifications/notifications.dart';
 import '../user settings/user_account_info.dart';
 
 class ProfileDetails extends StatelessWidget {
@@ -28,11 +29,16 @@ class ProfileDetails extends StatelessWidget {
           ]),
       child: Column(
         children:  [
-          const SinglDetail(
-            backgroundIconColor: MainColors.backgroundYellow,
-            icon: Icons.notifications_active_outlined,
-            iconColor: MainColors.foreignYellow,
-            title: "الاشعارات",
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications(),));
+            },
+            child: const SinglDetail(
+              backgroundIconColor: MainColors.backgroundYellow,
+              icon: Icons.notifications_active_outlined,
+              iconColor: MainColors.foreignYellow,
+              title: "الاشعارات",
+            ),
           ),
           GestureDetector(
             onTap: (){

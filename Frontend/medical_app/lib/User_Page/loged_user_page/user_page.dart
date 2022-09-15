@@ -45,7 +45,9 @@ class _UserPageState extends State<UserPage> {
                 const CircleAvatar(
                   radius: 75,
                   backgroundImage: NetworkImage(
-                      'https://api.lorem.space/image/face?w=150&h=150'),
+                    // 'https://api.lorem.space/image/face?w=150&h=150',
+                    "https://i.pinimg.com/originals/97/e4/2a/97e42a82fc7911961d3ca55f54d1372c.jpg"
+                  ),
                 ),
                 const SizedBox(height: 18),
                 HeadLineText(
