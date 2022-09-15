@@ -1,5 +1,10 @@
+
+
+
 import 'package:flutter/material.dart';
+
 import 'package:medical_app/OnBoarding/start_button.dart';
+
 
 import '../models/onboarding_models/onboarding_details.dart';
 import '../reuseable_widgets/texts_types/headline_text.dart';
@@ -8,7 +13,9 @@ import 'circle_indicators.dart';
 import 'indicator_section.dart';
 
 class OnBoardingMain extends StatefulWidget {
-  const OnBoardingMain({Key? key}) : super(key: key);
+
+ const OnBoardingMain({Key? key}) : super(key: key);
+
 
   @override
   State<OnBoardingMain> createState() => _OnBoardingMainState();
