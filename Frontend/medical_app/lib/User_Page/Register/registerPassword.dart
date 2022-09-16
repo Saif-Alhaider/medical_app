@@ -124,11 +124,14 @@ class RegisterPassword extends StatelessWidget {
                               animationDirectory:
                                   'Assets/Lottie json/done.json',
                               whenItEnds: () {
-                                Navigator.pushReplacement(
+                                Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => MainView(),
-                                    ));
+                                      
+                                    ),
+                                    (route) => false,
+                                    );
                               },
                             ),
                           ),
