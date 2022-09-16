@@ -4,7 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:medical_app/Home/constants.dart';
+import 'package:medical_app/User_Page/health_info_register_page/health_info_main.dart';
 import 'package:medical_app/auth/auth_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Main_View/main_view.dart';
 import '../../models/user_model/account_model.dart';
@@ -14,9 +17,11 @@ import '../../reuseable_widgets/texts_types/headline_text.dart';
 import '../hold_on_animation.dart';
 import '../textfield/registerTextField.dart';
 import 'validationDetatils.dart';
+import 'package:get/get.dart';
 
 class RegisterPassword extends StatelessWidget {
   final TextEditingController firstName, lastName, email;
+
   const RegisterPassword({
     Key? key,
     required this.firstName,
@@ -30,6 +35,7 @@ class RegisterPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Rx<bool> waitingRegister = Rx<bool>(false);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -88,57 +94,68 @@ class RegisterPassword extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 10),
+
+                ConstantValues.cardsGap,
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: MainButton(
-                    buttonTitle: 'انشاء حساب جديد',
-                    onPressed: () async {
-                      if (!_formKey.currentState!.validate()) {
-                        return;
-                      }
-                      User().addUser(UserAccount(
-                        firstName: firstName.text,
-                        lastName: lastName.text,
-                        email: email.text,
-                        password: password.text,
-                      ));
-                      await AuthServic.register(
-                              firstName: firstName.text,
-                              lastName: lastName.text,
-                              email: email.text,
-                              password: password.text)
-                          .then((res) {
-                            final String token = res['token']['access'];
-                        firstName.clear();
-                        lastName.clear();
-                        email.clear();
-                        password.clear();
-                        confirmPassword.clear();
+                  child: Obx(() => MainButton(
+                        buttonTitle: waitingRegister.value
+                            ? "...انتظر"
+                            : 'انشاء حساب جديد',
+                        onPressed: () async {
+                          if (!_formKey.currentState!.validate()) {
+                            return;
+                          }
+                          waitingRegister.value = true;
+                          User().addUser(UserAccount(
+                            firstName: firstName.text,
+                            lastName: lastName.text,
+                            email: email.text,
+                            password: password.text,
+                          ));
+                          await AuthServic.register(
+                                  firstName: firstName.text,
+                                  lastName: lastName.text,
+                                  email: email.text,
+                                  password: password.text)
+                              .then(
+                            (res) async{
+                              
+                              final String token = res['token']['access'];
+                              print(token);
+                              var prefs =  await SharedPreferences.getInstance();
+                              prefs.setString('token', token);
+                              
+                              firstName.clear();
+                              lastName.clear();
+                              email.clear();
+                              password.clear();
+                              confirmPassword.clear();
 
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HoldOnAnimation(
-                              animationDirectory:
-                                  'Assets/Lottie json/done.json',
-                              whenItEnds: () {
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MainView(),
-                                      
-                                    ),
-                                    (route) => false,
-                                    );
-                              },
-                            ),
-                          ),
-                        );
-                      });
-                    },
-                  ),
+                              // ignore: use_build_context_synchronously
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HoldOnAnimation(
+                                    animationDirectory:
+                                        'Assets/Lottie json/done.json',
+                                    whenItEnds: () {
+                                      Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => HealthInfoRegister(),
+                                        ),
+                                        (route) => false,
+                                      );
+                                    },
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      )),
                 )
               ],
             ),

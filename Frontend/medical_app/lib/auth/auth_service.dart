@@ -20,12 +20,6 @@ class AuthServic {
         "password": password,
       }),
     );
-    if (response.statusCode == 201) {
-        var recivedData = jsonDecode(response.body);
-        return recivedData;
-      } else if (response.statusCode == 401) {
-        var recivedData = jsonDecode(response.body);
-        return recivedData;
-      }
+    return jsonDecode(response.body);
   }
 }

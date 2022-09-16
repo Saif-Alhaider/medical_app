@@ -29,98 +29,102 @@ class HealthInfoRegister extends StatelessWidget {
   static final Rx<bool> femaleSelection = Rx<bool>(false);
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          children: [
-            LottieBuilder.asset("Assets/Lottie json/health-checkup.json"),
-            Row(
-              children: [
-                Expanded(
-                  child: Obx(() => GestureDetector(
-                        onTap: () {
-                          femaleSelection.value = !femaleSelection.value;
-                          femaleSelection.value
-                              ? maleSelection.value = false
-                              : maleSelection.value = true;
-                        },
-                        child: GenderCard(
-                          flag: femaleSelection.value,
-                          svgPictur: SvgPicture.asset("Assets/svg/female.svg"),
-                          color: const Color(0xffEF4FD5),
-                          title: "انثى",
-                        ),
-                      )),
-                ),
-                ConstantValues.cardsGap,
-                Expanded(
-                  child: Obx(() => GestureDetector(
-                        onTap: () {
-                          maleSelection.value = !maleSelection.value;
-                          maleSelection.value
-                              ? femaleSelection.value = false
-                              : femaleSelection.value = true;
-                        },
-                        child: GenderCard(
-                          flag: maleSelection.value,
-                          svgPictur: SvgPicture.asset("Assets/svg/male.svg"),
-                          color: const Color(0xff09B5FF),
-                          title: "ذكر",
-                        ),
-                      )),
-                )
-              ],
-            ),
-            ConstantValues.cardsGap,
-            Row(
-              children: [
-                Expanded(
-                    child: InfoCard(
-                  controller: weightController,
-                  title: "الوزن",
-                  unit: "kg",
-                )),
-                ConstantValues.cardsGap,
-                Expanded(
-                    child: InfoCard(
-                  controller: hegihtController,
-                  title: "الطول",
-                  unit: "cm",
-                ))
-              ],
-            ),
-            ConstantValues.cardsGap,
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    height: 60,
-                    child: Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: DropDownBloodType(bloodType: bloodType),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            children: [
+              LottieBuilder.asset("Assets/Lottie json/health-checkup.json"),
+              Row(
+                children: [
+                  Expanded(
+                    child: Obx(() => GestureDetector(
+                          onTap: () {
+                            femaleSelection.value = !femaleSelection.value;
+                            femaleSelection.value
+                                ? maleSelection.value = false
+                                : maleSelection.value = true;
+                          },
+                          child: GenderCard(
+                            flag: femaleSelection.value,
+                            svgPictur:
+                                SvgPicture.asset("Assets/svg/female.svg"),
+                            color: const Color(0xffEF4FD5),
+                            title: "انثى",
+                          ),
+                        )),
+                  ),
+                  ConstantValues.cardsGap,
+                  Expanded(
+                    child: Obx(() => GestureDetector(
+                          onTap: () {
+                            maleSelection.value = !maleSelection.value;
+                            maleSelection.value
+                                ? femaleSelection.value = false
+                                : femaleSelection.value = true;
+                          },
+                          child: GenderCard(
+                            flag: maleSelection.value,
+                            svgPictur: SvgPicture.asset("Assets/svg/male.svg"),
+                            color: const Color(0xff09B5FF),
+                            title: "ذكر",
+                          ),
+                        )),
+                  )
+                ],
+              ),
+              ConstantValues.cardsGap,
+              Row(
+                children: [
+                  Expanded(
+                      child: InfoCard(
+                    controller: weightController,
+                    title: "الوزن",
+                    unit: "kg",
+                  )),
+                  ConstantValues.cardsGap,
+                  Expanded(
+                      child: InfoCard(
+                    controller: hegihtController,
+                    title: "الطول",
+                    unit: "cm",
+                  ))
+                ],
+              ),
+              ConstantValues.cardsGap,
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      height: 60,
+                      child: Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: DropDownBloodType(bloodType: bloodType),
+                      ),
                     ),
                   ),
-                ),
-                ConstantValues.cardsGap,
-                Expanded(
-                    child: InfoCard(
-                        controller: ageController, title: "العمر", unit: "")),
-              ],
-            ),
-            ConstantValues.cardsGap,
-            DescriptionInfo(controller: descriptionController),
-            ConstantValues.cardsGap,
-            NextSkipButtons(nextFunction: (){
-              print("hello next");
-            },skipFunction: (){print("hello next");}),
-            
-          ],
+                  ConstantValues.cardsGap,
+                  Expanded(
+                      child: InfoCard(
+                          controller: ageController, title: "العمر", unit: "")),
+                ],
+              ),
+              ConstantValues.cardsGap,
+              DescriptionInfo(controller: descriptionController),
+              ConstantValues.cardsGap,
+              NextSkipButtons(nextFunction: () {
+                print("hello next");
+              }, skipFunction: () {
+                print("hello next");
+              }),
+            ],
+          ),
         ),
       ),
     );
