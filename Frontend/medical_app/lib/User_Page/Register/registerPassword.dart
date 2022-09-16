@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:medical_app/auth/auth_service.dart';
 
 import '../../Main_View/main_view.dart';
 import '../../models/user_model/account_model.dart';
@@ -91,7 +94,7 @@ class RegisterPassword extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: MainButton(
                     buttonTitle: 'انشاء حساب جديد',
-                    onPressed: () {
+                    onPressed: () async {
                       if (!_formKey.currentState!.validate()) {
                         return;
                       }
@@ -101,35 +104,36 @@ class RegisterPassword extends StatelessWidget {
                         email: email.text,
                         password: password.text,
                       ));
-                      firstName.clear();
-                      lastName.clear();
-                      email.clear();
-                      password.clear();
-                      confirmPassword.clear();
+                      await AuthServic.register(
+                              firstName: firstName.text,
+                              lastName: lastName.text,
+                              email: email.text,
+                              password: password.text)
+                          .then((res) {
+                            final String token = res['token']['access'];
+                        firstName.clear();
+                        lastName.clear();
+                        email.clear();
+                        password.clear();
+                        confirmPassword.clear();
 
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HoldOnAnimation(
-                            animationDirectory: 'Assets/Lottie json/done.json',
-                            whenItEnds: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MainView(),
-                                  ));
-                            },
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HoldOnAnimation(
+                              animationDirectory:
+                                  'Assets/Lottie json/done.json',
+                              whenItEnds: () {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MainView(),
+                                    ));
+                              },
+                            ),
                           ),
-                        ),
-                      );
-
-                      // NavigateToHome(
-                      //     firstName: firstName,
-                      //     lastName: lastName,
-                      //     email: email,
-                      //     context: context,
-                      //     password: password,
-                      //     confirmPassword: confirmPassword);
+                        );
+                      });
                     },
                   ),
                 )
@@ -141,4 +145,3 @@ class RegisterPassword extends StatelessWidget {
     );
   }
 }
-
