@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../models/home_page/card_doctor_model.dart';
 
@@ -23,7 +25,7 @@ class CardOfSpecialDoctor extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(left: 8),
         padding: EdgeInsets.all(8),
-        width: MediaQuery.of(context).size.width * 0.3,
+        width: Get.width * 0.3,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8), color: Colors.white),
         child: Column(

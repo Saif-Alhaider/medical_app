@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:medical_app/Home/search_screen.dart';
 import 'package:medical_app/Home/widgets/cards/card_of_clinc.dart';
 import 'package:medical_app/Home/widgets/catogaries.dart';
-import 'package:medical_app/Home/widgets/clincs.dart';
 import 'package:medical_app/Home/widgets/doctors.dart';
 import 'package:medical_app/Home/widgets/my_text-field.dart';
+import 'package:medical_app/Home/widgets/search_bar.dart';
 import 'package:medical_app/Home/widgets/special_doctors.dart';
-import 'package:medical_app/Home/widgets/star_rate.dart';
 import 'package:medical_app/Home/widgets/title_of_section.dart';
-
-import '../models/home_page/card_catogary_model.dart';
 import '../models/home_page/card_clinc_model.dart';
-import '../models/home_page/card_doctor_model.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -22,7 +21,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final Color primaryTextColor = Colors.black;
   final Color seconderyTextColor = Colors.grey;
-
+  final Rx<bool> searchPageDisplay = Rx<bool>(false);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -66,6 +65,7 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
+
               ],
             ),
           ),
@@ -73,10 +73,7 @@ class _HomeState extends State<Home> {
             height: MediaQuery.of(context).size.width * 1.571,
             child: ListView(
               children: [
-                MyTextField(
-                  maxLength: 15,
-                  hint: '...ابحث',
-                ),
+                SearchBar(searchPageDisplay: searchPageDisplay,),
                 Text(
                   "التخصصات",
                   textAlign: TextAlign.right,

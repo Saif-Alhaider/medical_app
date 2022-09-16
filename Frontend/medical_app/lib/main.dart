@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/splash_screen/splash_screen.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'OnBoarding/onboarding_main.dart';
+import 'Home/bottom_nav_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,13 +18,8 @@ class MyApp extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      initialRoute: showHome ?'/home':'/',
-      routes: {
-        '/': (context) =>OnBoardingMain(),
-        '/home': (context) => SplashScreen()
-      },
+    return const GetMaterialApp(
+      home: BottomNavBar(),
     );
   }
 }

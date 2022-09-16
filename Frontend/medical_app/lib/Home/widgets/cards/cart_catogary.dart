@@ -20,21 +20,23 @@ class Cart_Catogary extends StatelessWidget {
         height: 80,
         width: 80,
         decoration: BoxDecoration(
-            color: myCatogary.color,
+            color: myCatogary.Bgcolor,
             borderRadius: BorderRadius.circular(8)),
         child: InkWell(
           onTap: (){},
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(myCatogary.icon),
-              Text(
-                myCatogary.text,
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                  color: primaryTextColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
+              SvgPicture.asset(myCatogary.icon,color: myCatogary.IconsColor,height: myCatogary.IconSize,),
+              Flexible(
+                child: Text(
+                  myCatogary.text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: primaryTextColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ],
