@@ -82,5 +82,27 @@ def get_appointments(request):
 
     return {
         'user': user.fullName,
-        "data":data
+        "appointments": data
     }
+
+
+@router.get('/doctorAppointments', auth=AuthBearer())
+def doctor_appointments(request):
+    requested_user_email = request.auth["EMAIL"]
+    try:
+        doctor = Doctor.objects.get(email=requested_user_email)
+        doctorAppointments = list(doctor.doctor_assigned.all())
+        data = []
+        for appointment in doctorAppointments:
+            data.append({
+                'doctor': appointment.patient.fullName, 'date': appointment.date})
+        return {"doctor": str(doctor.fullName), "data": data}
+    except Doctor.DoesNotExist:
+        return {"details": "only docotors are authorized"}
+
+
+# doctor token
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFTUFJTCI6Im1vaGFtbWFkQWJkdWxsYWhAZ21haWwuY29tIn0.T6-slOu-euCkvBsOLn5S8-l6183KVhZ3hmyEgn5di60
+
+# user token
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFTUFJTCI6InNhaWZhbGhhaWRlckBnbWFpbC5jb20ifQ.D-JRVJKI8XOT8TFMdSAwcajxJEyK8rMAJLXGqa56mnw
