@@ -10,6 +10,7 @@ import '../User_Page/Login/login_main.dart';
 import '../User_Page/Register/registerEmail.dart';
 import '../User_Page/health_info_register_page/health_info_main.dart';
 import '../User_Page/loged_user_page/user_page.dart';
+import '../prescription/prescription_main.dart';
 import 'bottom_navigation_bar.dart';
 
 class MainView extends StatefulWidget {
@@ -52,7 +53,7 @@ class _MainViewState extends State<MainView> {
         itemCount: 3,
         itemBuilder: (context, index) {
           return pages[index];
-          // return Notifications();
+          // return PrescriptionMain();
         },
       ),
       bottomNavigationBar: BottomSalamonNavigationBar(
