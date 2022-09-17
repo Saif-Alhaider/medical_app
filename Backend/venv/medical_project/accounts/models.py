@@ -62,11 +62,11 @@ class CustomUser(AbstractUser):
             # Call the real save() method
             return super(CustomUser, self).save(*args, **kwargs)
 
-    def __str__(self):
-        return self.email
     @property
     def fullName(self):
         return f"{self.first_name} {self.last_name}"
+    def __str__(self):
+        return self.email
 
 
 class PatientManager(UserManager):

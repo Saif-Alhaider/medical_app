@@ -1,11 +1,11 @@
 import email
 from ninja import Router
 from .authSchema import AccountSchema, AuthOut, AccountError, UserHealthInfoSchema
-from .models import CustomUser,Doctor,Patient
+from .models import CustomUser, Doctor, Patient
 from django.contrib.auth import get_user_model
 from .authorization import create_jwt_token, AuthBearer
 from user_health_info.models import UserHealthInfo
-
+from appointments.models import Appointments
 # User = get_user_model()
 router = Router()
 
@@ -29,13 +29,13 @@ def getUser(request, user_health_info: UserHealthInfoSchema):
         user.health_info.save()
 
     return {"email": requested_user_email, "health info": {
-        "gender":user.health_info.gender,
-        "height":user.health_info.height,
-        "weight":user.health_info.weight,
-        "age":user.health_info.age,
-        "blood_type":user.health_info.blood_type,
-        "description":user.health_info.description,
-        
+        "gender": user.health_info.gender,
+        "height": user.health_info.height,
+        "weight": user.health_info.weight,
+        "age": user.health_info.age,
+        "blood_type": user.health_info.blood_type,
+        "description": user.health_info.description,
+
     }}
 
 
@@ -53,7 +53,6 @@ def create_user(request, user: AccountSchema):
         newUser = Patient.objects.create_user(
             email=user.email, first_name=user.first_name, last_name=user.last_name, password=user.password)
 
-
         newUser.set_password(newUser.password)
 
         token = create_jwt_token(newUser)
@@ -69,3 +68,19 @@ def get_doctors(request):
     doctors = Doctor.objects.all()
     listOfDoctors = [doctor.fullName for doctor in Doctor.objects.all()]
     return listOfDoctors
+
+
+@router.get('/appointments', auth=AuthBearer())
+def get_appointments(request):
+    requested_user_email = request.auth["EMAIL"]
+    user = CustomUser.objects.get(email=requested_user_email)
+    data = []
+    userAppointments = list(user.patient_appointments.all())
+    for appointment in userAppointments:
+        data.append({
+            'doctor': appointment.doctor.fullName, 'date': appointment.date})
+
+    return {
+        'user': user.fullName,
+        "data":data
+    }

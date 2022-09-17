@@ -19,13 +19,5 @@ def create_jwt_token(user):
         "access":token
     }
 
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFTUFJTCI6InNhaWZhbGhhaWRlckBnbWFpbC5jb20ifQ.D-JRVJKI8XOT8TFMdSAwcajxJEyK8rMAJLXGqa56mnw
 
-# {
-#   "gender": "F",
-#   "height": 200,
-#   "weight": 68,
-#   "age": 19,
-#   "blood_type": "A-",
-#   "description": "string"
-# }
+
