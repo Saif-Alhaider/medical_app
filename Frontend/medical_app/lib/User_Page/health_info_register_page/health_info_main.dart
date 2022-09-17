@@ -1,15 +1,19 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:medical_app/Home/constants.dart';
+import 'package:medical_app/Main_View/main_view.dart';
 import 'package:medical_app/User_Page/health_info_register_page/drop_down_blood_type.dart';
+import 'package:medical_app/auth/auth_service.dart';
 import 'package:medical_app/reuseable_widgets/next_skip_buttons.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../OnBoarding/indicators_button.dart';
 import 'description_info.dart';
 import 'gender_card.dart';
@@ -118,10 +122,37 @@ class HealthInfoRegister extends StatelessWidget {
               ConstantValues.cardsGap,
               DescriptionInfo(controller: descriptionController),
               ConstantValues.cardsGap,
-              NextSkipButtons(nextFunction: () {
-                print("hello next");
-              }, skipFunction: () {
-                print("hello next");
+              NextSkipButtons(nextFunction: () async {
+                var pref = await SharedPreferences.getInstance();
+                String? token = pref.getString('token');
+
+                AuthServic.sendHealthInfo(
+                        token: token!,
+                        gender: maleSelection.value ? "M" : "F",
+                        age: int.tryParse(ageController.text),
+                        height: int.parse(hegihtController.text),
+                        weight: int.parse(weightController.text),
+                        blood_type: bloodType.value,
+                        description: descriptionController.text)
+                    .then((value) {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainView(),
+                      ),
+                      (route) => false);
+                });
+              }, skipFunction: () async {
+                var pref = await SharedPreferences.getInstance();
+                String? token = pref.getString('token');
+                AuthServic.sendHealthInfo(token: token!).then((value) {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainView(),
+                      ),
+                      (route) => false);
+                });
               }),
             ],
           ),

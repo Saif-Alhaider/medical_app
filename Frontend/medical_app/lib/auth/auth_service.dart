@@ -22,4 +22,28 @@ class AuthServic {
     );
     return jsonDecode(response.body);
   }
+
+  static Future sendHealthInfo(
+      {String? gender,
+      int? height,
+      int? weight,
+      int? age,
+      String? blood_type,
+      String? description,
+      required String token}) async {
+    var response = await client.post(Uri.parse("$url/user/create_health_info"),
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode({
+          "gender": gender,
+          "height": height,
+          "weight": weight,
+          "age": age,
+          "blood_type": blood_type,
+          "description": description
+        }));
+    return jsonDecode(response.body);
+  }
 }

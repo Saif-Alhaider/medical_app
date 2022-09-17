@@ -82,7 +82,7 @@ class _UserPageState extends State<UserPage> {
                 child: GestureDetector(
                   onTap: () async {
                     final prefs = await SharedPreferences.getInstance();
-                    prefs.remove('userEmail');
+                    prefs.remove('token');
                     // ignore: use_build_context_synchronously
                     Navigator.pushReplacement(
                       context,

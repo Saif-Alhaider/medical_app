@@ -28,7 +28,7 @@ class UserHealthInfo(models.Model):
     age = models.PositiveIntegerField(blank=True, null=True, validators=[
         MinValueValidator(18), MaxValueValidator(110)])
     blood_type = models.CharField(
-        max_length=3, choices=BloodTypeChoices.choices)
+        max_length=3, choices=BloodTypeChoices.choices,blank=True, null=True)
     description = models.TextField(max_length=200,blank=True, null=True)
 
     def __str__(self):
