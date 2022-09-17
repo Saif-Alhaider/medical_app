@@ -35,8 +35,6 @@ class CustomUserManager(UserManager):
         user.save(using=self._db)
         return user
 
-    
-
 
 class CustomUser(AbstractUser):
     class Role(models.TextChoices):
@@ -57,18 +55,35 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
-    # def save(self, *args, **kwargs):
-    #     # if not self.pk:
-    #     #     self.role = self.base_role
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.role = self.base_role
 
-    #         # Call the real save() method
-    #         return super(CustomUser, self).save(*args, **kwargs)
+            # Call the real save() method
+            return super(CustomUser, self).save(*args, **kwargs)
 
-    # def __str__(self):
-    #     return self.email
+    def __str__(self):
+        return self.email
+    @property
+    def fullName(self):
+        return f"{self.first_name} {self.last_name}"
 
 
 class PatientManager(UserManager):
+    def create_user(self, email, first_name: str, last_name: str, password=None, health_info=None):
+        if not email:
+            raise ValueError('user must have an email to register')
+
+        user = self.model(
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name,
+            health_info=health_info
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
     def get_queryset(self):
         return super().get_queryset().filter(role=CustomUser.Role.PATIENT)
 
@@ -95,4 +110,3 @@ class Doctor(CustomUser):
 # CustomUser.objects.create_user(email="saifalhaider@gmail.com",first_name="saif",last_name="alhaider",password="123",health_info=UserHealthInfo(
 
 # ))
-

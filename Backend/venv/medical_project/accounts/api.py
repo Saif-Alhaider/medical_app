@@ -1,12 +1,12 @@
 import email
 from ninja import Router
 from .authSchema import AccountSchema, AuthOut, AccountError, UserHealthInfoSchema
-from .models import CustomUser
+from .models import CustomUser,Doctor,Patient
 from django.contrib.auth import get_user_model
 from .authorization import create_jwt_token, AuthBearer
 from user_health_info.models import UserHealthInfo
 
-User = get_user_model()
+# User = get_user_model()
 router = Router()
 
 
@@ -16,7 +16,6 @@ def getUser(request, user_health_info: UserHealthInfoSchema):
 
     user = CustomUser.objects.get(
         email=requested_user_email)
-    print(user.health_info)
     if user.health_info == None:
         user.health_info = UserHealthInfo.objects.create(
             **user_health_info.dict())
@@ -47,15 +46,13 @@ def getUser(request, user_health_info: UserHealthInfoSchema):
 def create_user(request, user: AccountSchema):
     try:
 
-        User.objects.get(
+        Patient.objects.get(
             email=user.email
         )
-    except User.DoesNotExist:
-        # newUser = User.objects.create_user(**user.dict())
-        newUser = User.objects.create_user(
+    except Patient.DoesNotExist:
+        newUser = Patient.objects.create_user(
             email=user.email, first_name=user.first_name, last_name=user.last_name, password=user.password)
 
-        print(newUser.first_name)
 
         newUser.set_password(newUser.password)
 
@@ -65,3 +62,10 @@ def create_user(request, user: AccountSchema):
             "accountOut": newUser
         }
     return 401, {"details": "already an account"}
+
+
+@router.get("/doctors")
+def get_doctors(request):
+    doctors = Doctor.objects.all()
+    listOfDoctors = [doctor.fullName for doctor in Doctor.objects.all()]
+    return listOfDoctors
