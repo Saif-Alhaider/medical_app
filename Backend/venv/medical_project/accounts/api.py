@@ -6,6 +6,8 @@ from django.contrib.auth import get_user_model
 from .authorization import create_jwt_token, AuthBearer
 from user_health_info.models import UserHealthInfo
 from appointments.models import Appointments
+from django.contrib.auth.hashers import check_password
+
 # User = get_user_model()
 router = Router()
 
@@ -63,6 +65,30 @@ def create_user(request, user: AccountSchema):
     return 401, {"details": "already an account"}
 
 
+@router.post('/login',response={
+    404:AccountError,
+    200:AuthOut
+}) 
+def login(request,email:str,password:str):
+    try:
+        queryUser = CustomUser.objects.get(email=email)
+        querypassword = check_password(password,queryUser.password)
+        
+        if not querypassword:
+            raise ValueError("the password is incorrect")
+        
+        token = create_jwt_token(queryUser)
+        
+        return 200,{"token":token,'accountOut':queryUser}
+    except:
+        return 404,{"details":"user was not found !"}
+    
+
+
+
+
+
+
 @router.get("/doctors")
 def get_doctors(request):
     doctors = Doctor.objects.all()
@@ -100,6 +126,16 @@ def doctor_appointments(request):
     except Doctor.DoesNotExist:
         return {"details": "only docotors are authorized"}
 
+
+
+
+
+
+@router.get("/userPass")
+def get_pass(request):
+    user = CustomUser.objects.get(email="saifalhaider@gmail.com").password
+    
+    return str(user) 
 
 # doctor token
 # eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFTUFJTCI6Im1vaGFtbWFkQWJkdWxsYWhAZ21haWwuY29tIn0.T6-slOu-euCkvBsOLn5S8-l6183KVhZ3hmyEgn5di60

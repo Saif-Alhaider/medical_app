@@ -56,8 +56,8 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
     def save(self, *args, **kwargs):
-        # if not self.pk:
-        #     self.role = self.base_role
+        if not self._state.adding:
+            self.role = self.base_role
 
             # Call the real save() method
             return super(CustomUser, self).save(*args, **kwargs)
