@@ -46,4 +46,16 @@ class AuthServic {
         }));
     return jsonDecode(response.body);
   }
+
+  static Future login({required String email, required String password}) async {
+    var response = await client.post(
+      Uri.parse("$url/user/login"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({
+        "email":email,
+        "password":password
+      })
+    );
+    return response;
+  }
 }

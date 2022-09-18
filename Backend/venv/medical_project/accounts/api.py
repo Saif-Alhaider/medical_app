@@ -1,6 +1,6 @@
 import email
 from ninja import Router
-from .authSchema import AccountSchema, AuthOut, AccountError, UserHealthInfoSchema
+from .authSchema import AccountSchema, AuthOut, AccountError, UserHealthInfoSchema,LoginSchema
 from .models import CustomUser, Doctor, Patient
 from django.contrib.auth import get_user_model
 from .authorization import create_jwt_token, AuthBearer
@@ -69,10 +69,10 @@ def create_user(request, user: AccountSchema):
     404:AccountError,
     200:AuthOut
 }) 
-def login(request,email:str,password:str):
+def login(request,user:LoginSchema):
     try:
-        queryUser = CustomUser.objects.get(email=email)
-        querypassword = check_password(password,queryUser.password)
+        queryUser = CustomUser.objects.get(email=user.email)
+        querypassword = check_password(user.password,queryUser.password)
         
         if not querypassword:
             raise ValueError("the password is incorrect")
@@ -128,14 +128,6 @@ def doctor_appointments(request):
 
 
 
-
-
-
-@router.get("/userPass")
-def get_pass(request):
-    user = CustomUser.objects.get(email="saifalhaider@gmail.com").password
-    
-    return str(user) 
 
 # doctor token
 # eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFTUFJTCI6Im1vaGFtbWFkQWJkdWxsYWhAZ21haWwuY29tIn0.T6-slOu-euCkvBsOLn5S8-l6183KVhZ3hmyEgn5di60

@@ -1,42 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/profile_details.dart';
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/single_detail.dart';
 import 'package:medical_app/models/user_model/account_model.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Main_View/main_view.dart';
 import '../hold_on_animation.dart';
 
 class UserPage extends StatefulWidget {
+  final String full_name;
+  const UserPage({
+    Key? key,
+    required this.full_name,
+  }) : super(key: key);
   @override
   State<UserPage> createState() => _UserPageState();
 }
 
 class _UserPageState extends State<UserPage> {
-  String? username;
-  Future<Null> getUserData() async {
-    final prefs = await SharedPreferences.getInstance();
+  // static String? full_name;
+  // Future<Null> getUserData() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   full_name = prefs.getString("fullName");
+  //   print(full_name);
+  // }
 
-    for (UserAccount user in User.users) {
-      if (user.email == prefs.getString('userEmail')) {
-        setState(() {
-          username = "${user.firstName} ${user.lastName}";
-        });
-      }
-    }
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getUserData();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
-    String? accountName = username ?? 'unknow';
+    
     return SafeArea(
       child: Directionality(
         textDirection: TextDirection.rtl,
@@ -53,7 +48,7 @@ class _UserPageState extends State<UserPage> {
                 ),
                 const SizedBox(height: 18),
                 HeadLineText(
-                  text: "$accountName",
+                  text: widget.full_name,
                   lineHeight: 1,
                   size: 28,
                 ),
@@ -83,6 +78,8 @@ class _UserPageState extends State<UserPage> {
                   onTap: () async {
                     final prefs = await SharedPreferences.getInstance();
                     prefs.remove('token');
+                    prefs.remove('fullName');
+
                     // ignore: use_build_context_synchronously
                     Navigator.pushReplacement(
                       context,

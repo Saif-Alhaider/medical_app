@@ -36,3 +36,7 @@ class UserHealthInfoSchema(ModelSchema):
 
 
 
+class LoginSchema(ModelSchema):
+    class Config:
+        model = CustomUser
+        model_fields = ['email', 'password']
