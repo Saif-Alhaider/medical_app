@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:get/get.dart';
 import 'Home/home_main.dart';
 import 'Main_View/main_view.dart';
 import 'OnBoarding/onboarding_main.dart';
+import 'package:flutter/material.dart';
 
+import 'clinic/clinic.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
       initialRoute: showHome ?'/main':'/',
       routes: {
         '/': (context) => OnBoardingMain(),
-        '/main': (context) => MainView()
+        '/main': (context) => DataClinic()
       },
     );
   }
