@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       initialRoute: showHome ?'/main':'/',
       routes: {
         '/': (context) => OnBoardingMain(),
-        '/main': (context) => DataClinic()
+        '/main': (context) => MainView()
       },
     );
   }

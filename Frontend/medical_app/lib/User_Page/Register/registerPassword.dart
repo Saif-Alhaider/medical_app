@@ -120,13 +120,13 @@ class RegisterPassword extends StatelessWidget {
                                   email: email.text,
                                   password: password.text)
                               .then(
-                            (res) async{
-                              
+                            (res) async {
+                              print(res);
                               final String token = res['token']['access'];
                               print(token);
-                              var prefs =  await SharedPreferences.getInstance();
+                              var prefs = await SharedPreferences.getInstance();
                               prefs.setString('token', token);
-                              
+
                               firstName.clear();
                               lastName.clear();
                               email.clear();
@@ -144,7 +144,8 @@ class RegisterPassword extends StatelessWidget {
                                       Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => HealthInfoRegister(),
+                                          builder: (context) =>
+                                              HealthInfoRegister(),
                                         ),
                                         (route) => false,
                                       );

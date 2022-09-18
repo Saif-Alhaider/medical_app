@@ -48,7 +48,7 @@ class _UserPageState extends State<UserPage> {
                 ),
                 const SizedBox(height: 18),
                 HeadLineText(
-                  text: widget.full_name!,
+                  text: widget.full_name??"",
                   lineHeight: 1,
                   size: 28,
                 ),
