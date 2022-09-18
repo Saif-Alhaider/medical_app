@@ -10,7 +10,7 @@ import '../../Main_View/main_view.dart';
 import '../hold_on_animation.dart';
 
 class UserPage extends StatefulWidget {
-  final String full_name;
+  final String? full_name;
   const UserPage({
     Key? key,
     required this.full_name,
@@ -48,7 +48,7 @@ class _UserPageState extends State<UserPage> {
                 ),
                 const SizedBox(height: 18),
                 HeadLineText(
-                  text: widget.full_name,
+                  text: widget.full_name!,
                   lineHeight: 1,
                   size: 28,
                 ),

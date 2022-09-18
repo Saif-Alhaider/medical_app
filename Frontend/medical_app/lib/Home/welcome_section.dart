@@ -27,20 +27,12 @@ class _WelcomeSectionState extends State<WelcomeSection> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FutureBuilder<String>(
-              future: get_fullName(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  String full_name = snapshot.data!;
-                }
-                return HeadLineText(
-                  text: full_name??"مرحبا",
-                  lineHeight: 1,
-                  size: 28,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w300,
-                );
-              },
+            HeadLineText(
+              text: "مرحبا",
+              lineHeight: 1,
+              size: 28,
+              color: Colors.black,
+              fontWeight: FontWeight.w300,
             ),
             HeadLineText(
               text: 'ابحث عن طبيب او عيادة',

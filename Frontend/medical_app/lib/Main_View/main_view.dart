@@ -27,7 +27,7 @@ class _MainViewState extends State<MainView> {
         ? pages.insert(2, RegisterEmail())
         : pages.insert(2, UserPage(full_name:full_name!));
 
-    if (pages[2] == UserPage(full_name:full_name!) && prefs.getString('token') == null) {
+    if (pages[2] == UserPage(full_name:full_name) && prefs.getString('token') == null) {
       pages[2] = RegisterEmail();
     }
   }
