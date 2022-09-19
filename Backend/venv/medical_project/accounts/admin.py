@@ -2,15 +2,15 @@ from django.contrib import admin
 from .models import Patient, CustomUser, Doctor
 
 
-class PatientAdmin(admin.ModelAdmin):
-    class Meta:
-        model = Patient
+# class PatientAdmin(admin.ModelAdmin):
+#     class Meta:
+#         model = Patient
 
 
-class DoctorAdmin(admin.ModelAdmin):
+# class DoctorAdmin(admin.ModelAdmin):
 
-    class Meta:
-        model = Doctor
+#     class Meta:
+#         model = Doctor
 
 
 class CustomUserAdmin(admin.ModelAdmin):
@@ -20,7 +20,7 @@ class CustomUserAdmin(admin.ModelAdmin):
         model = CustomUser
 
 
-admin.site.register(Patient, PatientAdmin)
-admin.site.register(Doctor, DoctorAdmin)
+# admin.site.register(Patient, PatientAdmin)
+# admin.site.register(Doctor, DoctorAdmin)
 
 admin.site.register(CustomUser, CustomUserAdmin)

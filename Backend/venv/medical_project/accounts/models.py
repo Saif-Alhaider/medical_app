@@ -3,6 +3,7 @@ from weakref import proxy
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from user_health_info.models import UserHealthInfo
+from speciality.models import Specialitiy
 # Create your models here.
 
 
@@ -37,6 +38,8 @@ class CustomUserManager(UserManager):
 
 
 class CustomUser(AbstractUser):
+
+
     class Role(models.TextChoices):
         ADMIN = "AD", "Admin"
         PATIENT = "PA", "Patient"
@@ -56,15 +59,16 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
     def save(self, *args, **kwargs):
-        if not self._state.adding:
-            self.role = self.base_role
+        # if not self.pk:
+        self.role = self.base_role
 
             # Call the real save() method
-            return super(CustomUser, self).save(*args, **kwargs)
+        return super(CustomUser, self).save(*args, **kwargs)
 
     @property
     def fullName(self):
         return f"{self.first_name} {self.last_name}"
+
     def __str__(self):
         return self.email
 
@@ -96,7 +100,49 @@ class Patient(CustomUser):
         proxy = True
 
 
+# Create your models here.
+
+
+# class TypesOfDoctorChoices(models.TextChoices):
+#     GENERAL = 'General', 'General'
+#     Allergist = 'ALLERGIST', 'Allergist'
+#     Anesthesiologist = 'ANESTHESIOLOGIST', 'Anesthesiologist'
+#     Cardiologist = 'CARDIOLOGIST', 'Cardiologist'
+#     Dermatologist = 'DERMATOLOGIST', 'Dermatologist'
+#     Endocrinologist = 'ENDOCRINOLOGIST', 'Endocrinologist'
+#     Gastroenterologist = 'GASTROENTEROLOGIST', 'Gastroenterologist'
+#     Hematologist = 'HEMATOLOGIST', 'Hematologist'
+#     Infectious_Disease_Specialist = 'INFECTIOUS DISEASE SPECIALIST', 'Infectious Disease Specialist'
+#     Nephrologist = 'NEPHROLOGIST', 'Nephrologist'
+#     Neurologist = 'NEUROLOGIST', 'Neurologist'
+#     Oncologist = 'ONCOLOGIST', 'Oncologist'
+#     Ophthalmologist = 'OPHTHALMOLOGIST', 'Ophthalmologist'
+#     Orthopedic_Surgeon = 'ORTHOPEDIC SURGEON', 'Orthopedic Surgeon'
+#     Otolaryngologist = 'OTOLARYNGOLOGIST', 'Otolaryngologist'
+#     Pathologist = 'PATHOLOGIST', 'Pathologist'
+#     Pediatrician = 'PEDIATRICIAN', 'Pediatrician'
+#     Psychiatrist = 'PSYCHIATRIST', 'Psychiatrist'
+#     Pulmonologist = 'PULMONOLOGIST', 'Pulmonologist'
+#     Radiologist = 'RADIOLOGIST', 'Radiologist'
+#     Rheumatologist = 'RHEUMATOLOGIST', 'Rheumatologist'
+#     Urologist = 'UROLOGIST', 'Urologist'
+
+
 class DoctorManager(UserManager):
+    def create_user(self, email, first_name: str, last_name: str, password=None, health_info=None):
+        if not email:
+            raise ValueError('user must have an email to register')
+
+        user = self.model(
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name,
+            health_info=health_info
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
     def get_queryset(self):
         return super().get_queryset().filter(role=CustomUser.Role.DOCTOR)
 
@@ -107,6 +153,7 @@ class Doctor(CustomUser):
 
     class Meta:
         proxy = True
-# CustomUser.objects.create_user(email="saifalhaider@gmail.com",first_name="saif",last_name="alhaider",password="123",health_info=UserHealthInfo(
 
-# ))
+
+
+# CustomUser.objects.create_user(email="saifalhaider@gmail.com",first_name="saif",last_name="alhaider",password="123",health_info=UserHealthInfo())

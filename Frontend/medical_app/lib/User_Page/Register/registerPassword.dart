@@ -126,6 +126,9 @@ class RegisterPassword extends StatelessWidget {
                               print(token);
                               var prefs = await SharedPreferences.getInstance();
                               prefs.setString('token', token);
+                              String? fullName =
+                                  "${res['accountOut']['first_name']} ${res['accountOut']['last_name']}";
+                              prefs.setString('fullName', fullName);
 
                               firstName.clear();
                               lastName.clear();

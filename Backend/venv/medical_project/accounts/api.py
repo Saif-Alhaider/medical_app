@@ -13,12 +13,13 @@ router = Router()
 
 
 @router.post("/create_health_info", auth=AuthBearer())
-def getUser(request, user_health_info: UserHealthInfoSchema):
+def user_health_info(request, user_health_info: UserHealthInfoSchema):
     requested_user_email = request.auth["EMAIL"]
-
     user = CustomUser.objects.get(
         email=requested_user_email)
+    
     if user.health_info == None:
+        print(user.health_info)
         user.health_info = UserHealthInfo.objects.create(
             **user_health_info.dict())
         user.save()
@@ -53,6 +54,29 @@ def create_user(request, user: AccountSchema):
         )
     except Patient.DoesNotExist:
         newUser = Patient.objects.create_user(
+            email=user.email, first_name=user.first_name, last_name=user.last_name, password=user.password)
+
+        newUser.set_password(newUser.password)
+
+        token = create_jwt_token(newUser)
+        return 201, {
+            "token": token,
+            "accountOut": newUser
+        }
+    return 401, {"details": "already an account"}
+
+@router.post("/create_user_doctor", response={
+    201: AuthOut,
+    401: AccountError
+})
+def create_user_doctor(request, user: AccountSchema):
+    try:
+
+        Doctor.objects.get(
+            email=user.email
+        )
+    except Doctor.DoesNotExist:
+        newUser = Doctor.objects.create_user(
             email=user.email, first_name=user.first_name, last_name=user.last_name, password=user.password)
 
         newUser.set_password(newUser.password)
@@ -125,7 +149,6 @@ def doctor_appointments(request):
         return {"doctor": str(doctor.fullName), "data": data}
     except Doctor.DoesNotExist:
         return {"details": "only docotors are authorized"}
-
 
 
 
