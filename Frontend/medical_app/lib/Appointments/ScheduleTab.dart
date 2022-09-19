@@ -5,6 +5,8 @@ import 'package:medical_app/doctor_page/doctor_page.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
+import 'appointments details/appointments_details_main.dart';
+
 class ScheduleTab extends StatefulWidget {
   const ScheduleTab({super.key});
   static const double pagePadding = 16;
@@ -50,12 +52,19 @@ class _ScheduleTabState extends State<ScheduleTab>
                     shrinkWrap: true,
                     itemCount: 4,
                     itemBuilder: (context, index) {
-                      return GestureDetector(onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorPage(),));
-                      },child: AppointmentCard());
+                      return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const AppointmentDetailsMain(),
+                                ));
+                          },
+                          child: const AppointmentCard());
                     },
                   ),
-                  Text("second")
+                  const Text("second")
                 ]),
               )
             ],

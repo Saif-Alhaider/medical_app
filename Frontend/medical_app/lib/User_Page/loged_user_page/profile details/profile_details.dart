@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/single_detail.dart';
-import 'package:medical_app/User_Page/loged_user_page/user%20settings/user_health_info.dart';
+import 'package:medical_app/User_Page/user%20settings/user_health_info.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
 import '../../../main_colors.dart';
 import '../../Notifications/notifications.dart';
-import '../user settings/user_account_info.dart';
+import '../../user settings/user_account_info.dart';
 
 class ProfileDetails extends StatelessWidget {
   const ProfileDetails({super.key});
