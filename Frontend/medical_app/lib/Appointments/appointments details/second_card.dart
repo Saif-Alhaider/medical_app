@@ -13,9 +13,10 @@ class SecondCard extends StatelessWidget {
       // height: 200,
       decoration: BoxDecoration(
           color: Colors.white,
-          border: Border.all(
-            color: Color(0xff9d9d9d),
-          ),
+          // border: Border.all(
+          //   color: Color(0xff9d9d9d),
+          // ),
+          boxShadow: ConstantValues.cardShadow,
           borderRadius: BorderRadius.circular(8)),
       child: Column(
         children: [
@@ -29,7 +30,13 @@ class SecondCard extends StatelessWidget {
               ],
             ),
           ),
-          const Breakline(color: Color(0xff9d9d9d),height: 1),
+          const Padding(
+            padding:  EdgeInsets.symmetric(horizontal: 15),
+            child:  Breakline(
+              color: Color(0xff9d9d9d),
+              height: 1,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Row(

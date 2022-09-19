@@ -19,12 +19,14 @@ from django.urls import path
 from accounts.api import router
 from doctor.api import router as doctor_router
 from speciality.api import router as speciality_router
+from active_dates.api import router as active_dates_router
 from ninja import NinjaAPI
 
 api = NinjaAPI()
-api.add_router('/user',router)
-api.add_router('/user',doctor_router)
-api.add_router('/user',speciality_router)
+api.add_router('user',router)
+api.add_router('doctor',doctor_router)
+api.add_router('speciality',speciality_router)
+api.add_router('active_dates',active_dates_router)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api.urls),

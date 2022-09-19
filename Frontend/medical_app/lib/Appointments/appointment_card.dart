@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../reuseable_widgets/texts_types/headline_text.dart';
+import 'appointments details/appointments_details_main.dart';
 
 class AppointmentCard extends StatelessWidget {
   const AppointmentCard({super.key});
@@ -129,7 +130,12 @@ class AppointmentCard extends StatelessWidget {
                 child: Container(
                   height: 45,
                   child: ElevatedButton(
-                      onPressed: () => null,
+                      onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const AppointmentDetailsMain(),
+                                )),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
                             const Color(0xff47CEFF)),

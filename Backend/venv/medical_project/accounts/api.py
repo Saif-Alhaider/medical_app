@@ -9,7 +9,7 @@ from appointments.models import Appointments
 from django.contrib.auth.hashers import check_password
 
 # User = get_user_model()
-router = Router()
+router = Router(tags=['account'])
 
 
 @router.post("/create_health_info", auth=AuthBearer())
@@ -65,28 +65,6 @@ def create_user(request, user: AccountSchema):
         }
     return 401, {"details": "already an account"}
 
-@router.post("/create_user_doctor", response={
-    201: AuthOut,
-    401: AccountError
-})
-def create_user_doctor(request, user: AccountSchema):
-    try:
-
-        Doctor.objects.get(
-            email=user.email
-        )
-    except Doctor.DoesNotExist:
-        newUser = Doctor.objects.create_user(
-            email=user.email, first_name=user.first_name, last_name=user.last_name, password=user.password)
-
-        newUser.set_password(newUser.password)
-
-        token = create_jwt_token(newUser)
-        return 201, {
-            "token": token,
-            "accountOut": newUser
-        }
-    return 401, {"details": "already an account"}
 
 
 @router.post('/login',response={
@@ -113,11 +91,7 @@ def login(request,user:LoginSchema):
 
 
 
-@router.get("/doctors")
-def get_doctors(request):
-    doctors = Doctor.objects.all()
-    listOfDoctors = [doctor.fullName for doctor in Doctor.objects.all()]
-    return listOfDoctors
+
 
 
 @router.get('/appointments', auth=AuthBearer())
@@ -136,19 +110,7 @@ def get_appointments(request):
     }
 
 
-@router.get('/doctorAppointments', auth=AuthBearer())
-def doctor_appointments(request):
-    requested_user_email = request.auth["EMAIL"]
-    try:
-        doctor = Doctor.objects.get(email=requested_user_email)
-        doctorAppointments = list(doctor.doctor_assigned.all())
-        data = []
-        for appointment in doctorAppointments:
-            data.append({
-                'doctor': appointment.patient.fullName, 'date': appointment.date})
-        return {"doctor": str(doctor.fullName), "data": data}
-    except Doctor.DoesNotExist:
-        return {"details": "only docotors are authorized"}
+
 
 
 

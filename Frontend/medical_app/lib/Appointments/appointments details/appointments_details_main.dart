@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medical_app/Appointments/appointments%20details/first_card.dart';
+import 'package:medical_app/Appointments/appointments%20details/receipt_section.dart';
 import 'package:medical_app/Appointments/appointments%20details/second_card.dart';
 import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
@@ -25,12 +26,12 @@ class AppointmentDetailsMain extends StatelessWidget {
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: Column(
-            children: const [
-              FirstCard(),
-              ConstantValues.cardsGap,
-              ConstantValues.cardsGap,
-              ConstantValues.cardsGap,
-              SecondCard(),
+            children:  [
+              const FirstCard(),
+              for(var i=0;i<3;i++) ConstantValues.cardsGap,
+              const SecondCard(),
+              for(var i=0;i<3;i++) ConstantValues.cardsGap,
+              const ReceiptSection()
             ],
           ),
         ),

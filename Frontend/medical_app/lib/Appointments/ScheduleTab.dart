@@ -52,16 +52,7 @@ class _ScheduleTabState extends State<ScheduleTab>
                     shrinkWrap: true,
                     itemCount: 4,
                     itemBuilder: (context, index) {
-                      return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const AppointmentDetailsMain(),
-                                ));
-                          },
-                          child: const AppointmentCard());
+                      return const AppointmentCard();
                     },
                   ),
                   const Text("second")
