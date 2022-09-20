@@ -254,6 +254,18 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "qr",
+      "rootUri": "file:///C:/programin%20languages/flutter/.pub-cache/hosted/pub.dartlang.org/qr-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "qr_flutter",
+      "rootUri": "file:///C:/programin%20languages/flutter/.pub-cache/hosted/pub.dartlang.org/qr_flutter-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "salomon_bottom_bar",
       "rootUri": "file:///C:/programin%20languages/flutter/.pub-cache/hosted/pub.dartlang.org/salomon_bottom_bar-3.3.1",
       "packageUri": "lib/",
@@ -392,7 +404,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-09-18T02:17:36.482522Z",
+  "generated": "2022-09-20T21:06:41.389846Z",
   "generator": "pub",
   "generatorVersion": "2.18.1"
 }

@@ -118,7 +118,8 @@ class RegisterPassword extends StatelessWidget {
                                   firstName: firstName.text,
                                   lastName: lastName.text,
                                   email: email.text,
-                                  password: password.text)
+                                  password: password.text,
+                                  )
                               .then(
                             (res) async {
                               print(res);

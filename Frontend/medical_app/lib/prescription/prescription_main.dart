@@ -10,74 +10,12 @@ import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
 import '../User_Page/health_info_register_page/description_info.dart';
+import '../models/medicine_info.dart';
 import '../reuseable_widgets/timeLine.dart';
+import 'doctor_clinic_info.dart';
+import 'medicines_info.dart';
 
 class PrescriptionMain extends StatefulWidget {
-  static final List<ExpansionItem> _items = <ExpansionItem>[
-    ExpansionItem(
-        header: "اموكسوسلين",
-        body: SizedBox(
-          width: double.maxFinite,
-          height: 200,
-          child: TimeLine(
-            numOfTimes: 3,
-            circleSize: 27,
-            ballsGap: 35,
-            infoList: [
-              TimeLineInfo(
-                  info: "بعد الغداء",
-                  timeOfDay: const TimeOfDay(hour: 12, minute: 20)),
-              TimeLineInfo(
-                  info: "بعد العشاء",
-                  timeOfDay: const TimeOfDay(hour: 20, minute: 20)),
-              TimeLineInfo(
-                  info: "", timeOfDay: const TimeOfDay(hour: 23, minute: 0)),
-            ],
-          ),
-        )),
-    ExpansionItem(
-        header: "فلو اوت",
-        body: SizedBox(
-          width: double.maxFinite,
-          height: 200,
-          child: TimeLine(
-            numOfTimes: 3,
-            circleSize: 30,
-            ballsGap: 35,
-            infoList: [
-              TimeLineInfo(
-                  info: "بعد الغداء",
-                  timeOfDay: const TimeOfDay(hour: 12, minute: 20)),
-              TimeLineInfo(
-                  info: "بعد العشاء",
-                  timeOfDay: const TimeOfDay(hour: 20, minute: 20)),
-              TimeLineInfo(
-                  info: "", timeOfDay: const TimeOfDay(hour: 23, minute: 0)),
-            ],
-          ),
-        )),
-    ExpansionItem(
-        header: "براسيتول",
-        body: SizedBox(
-          width: double.maxFinite,
-          height: 200,
-          child: TimeLine(
-            numOfTimes: 3,
-            circleSize: 30,
-            ballsGap: 35,
-            infoList: [
-              TimeLineInfo(
-                  info: "بعد الغداء",
-                  timeOfDay: const TimeOfDay(hour: 12, minute: 20)),
-              TimeLineInfo(
-                  info: "بعد العشاء",
-                  timeOfDay: const TimeOfDay(hour: 20, minute: 20)),
-              TimeLineInfo(
-                  info: "", timeOfDay: const TimeOfDay(hour: 23, minute: 0)),
-            ],
-          ),
-        )),
-  ];
   const PrescriptionMain({super.key});
 
   @override
@@ -85,6 +23,39 @@ class PrescriptionMain extends StatefulWidget {
 }
 
 class _PrescriptionMainState extends State<PrescriptionMain> {
+  List<MedicineDetails> medicines = [
+    MedicineDetails(
+      name: "اموكسوسلين",
+      frequency: 3,
+      takingTimes: [
+        TakingTimes(
+          timeOfDay: TimeOfDay(hour: 12, minute: 20),
+          additionalInfo: "بعد الغداء",
+        ),
+        TakingTimes(
+          timeOfDay: TimeOfDay(hour: 8, minute: 20),
+          additionalInfo: "بعد العشاء",
+        ),
+        TakingTimes(
+          timeOfDay: TimeOfDay(hour: 22, minute: 20),
+        )
+      ],
+    ),
+    MedicineDetails(
+      name: "فلو اوت",
+      frequency: 2,
+      takingTimes: [
+        TakingTimes(
+          timeOfDay: TimeOfDay(hour: 12, minute: 20),
+          additionalInfo: "بعد الغداء",
+        ),
+        TakingTimes(
+          timeOfDay: TimeOfDay(hour: 8, minute: 20),
+          additionalInfo: "بعد العشاء",
+        ),
+      ],
+    )
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,67 +118,13 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                         ),
                         ConstantValues.cardsGap,
                         ConstantValues.cardsGap,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                SubText(text: "العيادة"),
-                                SubText(
-                                  text: " ماء الحياة",
-                                  color: Colors.black,
-                                )
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                SubText(text: "الدكتور"),
-                                SubText(
-                                  text: "محمد الموسوي",
-                                  color: Colors.black,
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
+                        DoctorClinicInfo(),
                         ConstantValues.cardsGap,
                         ConstantValues.cardsGap,
                         const HeadLineText(
                           text: "الادوية",
                         ),
-                        ExpansionPanelList(
-                          elevation: 0,
-                          dividerColor: Colors.transparent,
-                          expansionCallback: (panelIndex, isExpanded) {
-                            PrescriptionMain._items[panelIndex].isExpanded =
-                                !PrescriptionMain._items[panelIndex].isExpanded;
-                            setState(() {});
-                          },
-                          children:
-                              PrescriptionMain._items.map((ExpansionItem item) {
-                            return ExpansionPanel(
-                                backgroundColor: Colors.transparent,
-                                body: item.body!,
-                                headerBuilder: (context, isExpanded) {
-                                  return Row(
-                                    children: [
-                                      const SubText(
-                                        text: "3x",
-                                        color: Colors.black,
-                                      ),
-                                      ConstantValues.cardsGap,
-                                      SubText(
-                                        text: item.header!,
-                                        color: Colors.black,
-                                      ),
-                                    ],
-                                  );
-                                },
-                                isExpanded: item.isExpanded);
-                          }).toList(),
-                        ),
+                        MedicinesInfo(medicineInfo: medicines),
                         DashedLine(),
                         const HeadLineText(text: "ملاحظات"),
                         DescriptionInfo(
@@ -247,7 +164,9 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                               ),
                             ),
                             Expanded(
-                              child: Lottie.asset('Assets/Lottie json/qr-code-scanner.json',height: 200),
+                              child: Lottie.asset(
+                                  'Assets/Lottie json/qr-code-scanner.json',
+                                  height: 200),
                             )
                           ],
                         )
@@ -264,15 +183,4 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
       ),
     );
   }
-}
-
-class ExpansionItem {
-  bool isExpanded;
-  String? header;
-  Widget? body;
-  ExpansionItem({
-    this.isExpanded = false,
-    this.header,
-    this.body,
-  });
 }
