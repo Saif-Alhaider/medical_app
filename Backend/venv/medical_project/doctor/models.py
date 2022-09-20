@@ -10,11 +10,12 @@ from django_countries.fields import CountryField
 @receiver(post_save,sender=Doctor)
 def create_user_profile(sender,instance,created,*args, **kwargs):
     if created and instance.role == "DO":
-        DoctorProfile.objects.create(user=instance,doctor_id=instance.id)
+        newDoc = DoctorProfile.objects.create(user=instance,doctor_id=instance.id)
+        newDoc.save()
 
 
 class DoctorProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name="doctor_account")
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name="doctor_account",db_constraint=False)
     doctor_id = models.IntegerField(blank=True, null=True)
     speciality =models.ForeignKey(Specialitiy, related_name='doc_special', on_delete=models.DO_NOTHING,blank=True, null=True)
     country = CountryField(blank=True, null=True)

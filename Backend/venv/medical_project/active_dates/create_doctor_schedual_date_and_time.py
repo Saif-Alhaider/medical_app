@@ -67,7 +67,6 @@ def create_doctor_schedual_date_and_time(sunday: list[time], monday: list[time],
             calendarTime.append({date1: weekdaystimes[daytime]})
         final.append({dayName: calendarTime})
 
-    print(final)
     return final
 
 

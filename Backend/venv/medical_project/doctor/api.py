@@ -89,5 +89,6 @@ def create_user_doctor(request, user: AccountSchema):
 def create_specialities(request):
     spes = ['General',' Allergist','Anesthesiologist','Cardiologist','Dermatologist','Endocrinologist','Gastroenterologist','Hematologist','Infectious Disease Specialist','Nephrologist','Neurologist','Oncologist','Ophthalmologist','Orthopedic Surgeon','Otolaryngologist','Pathologist','Pediatrician','Psychiatrist','Pulmonologist','Radiologist','Rheumatologist','Urologist','Vascular Surgeon','Other']
     for spe in spes:
-        Specialitiy.objects.create(title=spe)
+        newspe = Specialitiy.objects.create(title=spe)
+        newspe.save()
     return str(Specialitiy.objects.all())
