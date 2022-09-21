@@ -47,8 +47,7 @@ dependencies:
   image_gallery_saver: ^1.7.1
   path_provider: any
   url_launcher: ^6.1.5
-  whatsapp: ^1.0.6
-  
+  sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:

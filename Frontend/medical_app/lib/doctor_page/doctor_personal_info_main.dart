@@ -6,7 +6,6 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 import 'package:medical_app/main_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:whatsapp/whatsapp.dart';
 
 import '../reuseable_widgets/star_rating.dart';
 import '../reuseable_widgets/texts_types/headline_text.dart';
@@ -70,7 +69,7 @@ class DoctorPersonalInfoMain extends StatelessWidget {
                 contactDoctor(context);
               },
               padding: EdgeInsets.zero,
-              icon: Icon(
+              icon: const Icon(
                 FontAwesome5.whatsapp,
                 size: 40,
               ),

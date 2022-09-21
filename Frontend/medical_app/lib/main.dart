@@ -6,7 +6,6 @@ import 'Main_View/main_view.dart';
 import 'OnBoarding/onboarding_main.dart';
 import 'package:flutter/material.dart';
 
-import 'clinic/clinic.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
