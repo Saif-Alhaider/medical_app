@@ -1,6 +1,8 @@
 -- Merging decision tree log ---
 application
-INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:3:4-34:19
+INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:16:4-47:19
+MERGED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-14:19
+MERGED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-14:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.core:core:1.6.0] C:\Users\HP\.gradle\caches\transforms-3\acbce933e4b464a5224ed377a62db1f5\transformed\core-1.6.0\AndroidManifest.xml:24:5-89
@@ -12,13 +14,14 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\HP
 	android:name
 		INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
-INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
-INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
-INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
-MERGED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
+ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-48:12
+INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-48:12
+INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-48:12
+INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-48:12
+MERGED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-48:12
 MERGED from [:shared_preferences_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:image_gallery_saver] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_gallery_saver\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-16:12
 MERGED from [:path_provider_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\246793f755122fe14a5802655438cb75\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
@@ -46,14 +49,28 @@ INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app
 		INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml
-		ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
+		ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-48:12
 		INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml
-		ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
+		ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:1-48:12
 		INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:1:11-69
+queries
+ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:4:5-15:15
+intent#action:name:android.intent.action.VIEW+data:scheme:sms
+ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:6:5-9:14
+action#android.intent.action.VIEW
+ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:7:9-61
+	android:name
+		ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:7:17-58
+data
+ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:8:9-38
+	android:scheme
+		ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:8:15-35
+intent#action:name:android.intent.action.VIEW+data:scheme:tel
+ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml:11:5-14:14
 uses-sdk
 INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\main\AndroidManifest.xml
@@ -62,6 +79,8 @@ MERGED from [:shared_preferences_android] D:\atom file\projects\medical_app\Fron
 MERGED from [:shared_preferences_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:image_gallery_saver] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_gallery_saver\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:image_gallery_saver] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_gallery_saver\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\246793f755122fe14a5802655438cb75\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
@@ -110,6 +129,14 @@ uses-permission#android.permission.INTERNET
 ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\debug\AndroidManifest.xml:7:5-66
 	android:name
 		ADDED from D:\atom file\projects\medical_app\Frontend\medical_app\android\app\src\debug\AndroidManifest.xml:7:22-64
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+	android:exported
+		ADDED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+	android:theme
+		ADDED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+	android:name
+		ADDED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 	android:required

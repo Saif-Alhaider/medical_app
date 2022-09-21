@@ -46,6 +46,8 @@ dependencies:
   qr_flutter: ^4.0.0
   image_gallery_saver: ^1.7.1
   path_provider: any
+  url_launcher: ^6.1.5
+  whatsapp: ^1.0.6
   
 
 dev_dependencies:

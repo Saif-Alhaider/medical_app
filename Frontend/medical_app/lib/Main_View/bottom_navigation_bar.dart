@@ -27,10 +27,10 @@ class BottomSalamonNavigationBar extends StatelessWidget {
               icon: const Icon(
                 Icons.home,
                 size: 35,
-                color: MainColors.foreignRed,
+                color: MainColors.foreignBlue,
               ),
               title: const Text("الرئيسية",style: TextStyle(fontSize: 16,)),
-              selectedColor: Colors.red,
+              selectedColor: Colors.blue,
             ),
 
             /// Likes
@@ -38,10 +38,10 @@ class BottomSalamonNavigationBar extends StatelessWidget {
               icon: const Icon(
                 Icons.calendar_today_rounded,
                 size: 35,
-                color: MainColors.foreignYellow,
+                color: MainColors.foreignBlue,
               ),
-              title: const Text("المواعيد",style: TextStyle(fontSize: 16,color: MainColors.foreignYellow)),
-              selectedColor: Colors.yellow,
+              title: const Text("المواعيد",style: TextStyle(fontSize: 16,color: MainColors.foreignBlue)),
+              selectedColor: Colors.blue,
             ),
 
             /// Search
