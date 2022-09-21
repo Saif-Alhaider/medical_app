@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Appointments/ScheduleTab.dart';
+import '../Clinic/clinic_main.dart';
 import '../Home/home_main.dart';
 import '../User_Page/Login/login_main.dart';
 import '../User_Page/Register/registerEmail.dart';
@@ -53,7 +54,7 @@ class _MainViewState extends State<MainView> {
         itemCount: 3,
         itemBuilder: (context, index) {
           return pages[index];
-          // return PrescriptionMain();
+          // return ClinicMain();
         },
       ),
       bottomNavigationBar: BottomSalamonNavigationBar(

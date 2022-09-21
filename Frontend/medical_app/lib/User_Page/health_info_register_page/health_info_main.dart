@@ -99,20 +99,20 @@ class HealthInfoRegister extends StatelessWidget {
               ConstantValues.cardsGap,
               Row(
                 children: [
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      height: 60,
-                      child: Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: DropDownBloodType(bloodType: bloodType),
-                      ),
-                    ),
-                  ),
+                  // Expanded(
+                  //   child: Container(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 5),
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.white,
+                  //       borderRadius: BorderRadius.circular(12),
+                  //     ),
+                  //     height: 60,
+                  //     child: Directionality(
+                  //       textDirection: TextDirection.rtl,
+                  //       child: DropDownBloodType(bloodType: bloodType),
+                  //     ),
+                  //   ),
+                  // ),
                   ConstantValues.cardsGap,
                   Expanded(
                       child: InfoCard(

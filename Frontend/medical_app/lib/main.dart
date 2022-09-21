@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/splash_screen/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
-import 'Home/home_main.dart';
-import 'Main_View/main_view.dart';
 import 'OnBoarding/onboarding_main.dart';
-import 'package:flutter/material.dart';
 
-import 'clinic/clinic.dart';
+bool IsDark=true;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
@@ -23,14 +21,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return MaterialApp(
+    return GetMaterialApp(
       
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       initialRoute: showHome ?'/main':'/',
       routes: {
         '/': (context) => OnBoardingMain(),
-        '/main': (context) => MainView()
+        '/main': (context) => SplashScreen(),
       },
     );
   }
