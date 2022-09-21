@@ -1,19 +1,25 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/User_Page/textfield/registerTextField.dart';
+import 'package:medical_app/prescription/save_gallery.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/dashedLine.dart';
 import 'package:medical_app/reuseable_widgets/main_button.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
-import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../User_Page/health_info_register_page/description_info.dart';
 import '../models/medicine_info.dart';
-import '../reuseable_widgets/timeLine.dart';
 import 'doctor_clinic_info.dart';
 import 'medicines_info.dart';
+import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 
 class PrescriptionMain extends StatefulWidget {
   const PrescriptionMain({super.key});
@@ -23,6 +29,12 @@ class PrescriptionMain extends StatefulWidget {
 }
 
 class _PrescriptionMainState extends State<PrescriptionMain> {
+  GlobalKey _qrKey = new GlobalKey();
+  Uint8List? imageInMemory;
+  String? imagePath;
+  File? capturedFile;
+  late File customFile;
+  Rx<bool> isQr = Rx<bool>(false);
   List<MedicineDetails> medicines = [
     MedicineDetails(
       name: "اموكسوسلين",
@@ -56,6 +68,7 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
       ],
     )
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +102,7 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -136,25 +149,28 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              width: 190,
+                            Expanded(
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   HeadLineText(text: "رمز ال QR"),
                                   SizedBox(
                                       width: double.maxFinite,
-                                      height: 50,
+                                      height: 60,
                                       child: MainButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          isQr.value = true;
+                                        },
                                         buttonTitle: "توليد رمز QR",
                                       )),
                                   ConstantValues.cardsGap,
                                   SizedBox(
                                       width: double.maxFinite,
-                                      height: 50,
+                                      height: 60,
                                       child: MainButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          capturePng(key: _qrKey,capturedFile: capturedFile,imagePath: imagePath);
+                                        },
                                         buttonTitle: "حفظ الرمز",
                                         buttonColor: Colors.transparent,
                                         titleColor: Color(0xff9d9d9d),
@@ -163,13 +179,26 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                                 ],
                               ),
                             ),
-                            Expanded(
-                              child: Lottie.asset(
-                                  'Assets/Lottie json/qr-code-scanner.json',
-                                  height: 200),
-                            )
                           ],
-                        )
+                        ),
+                        ConstantValues.cardsGap,
+                        Obx(() => Center(
+                              child: isQr.value
+                                  ? RepaintBoundary(
+                                      key: _qrKey,
+                                      child: Container(
+                                        color: Colors.white,
+                                        child: QrImage(
+                                          data: getMedicineInfo(medicines),
+                                          version: QrVersions.auto,
+                                          // size: 200.0,
+                                        ),
+                                      ),
+                                    )
+                                  : Lottie.asset(
+                                      'Assets/Lottie json/qr-code-scanner.json',
+                                      height: 200),
+                            ))
                       ],
                     ),
                   ),
@@ -183,4 +212,14 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
       ),
     );
   }
+}
+
+String getMedicineInfo(List<MedicineDetails> medicines) {
+  Map info = {};
+  for (MedicineDetails medicine in medicines) {
+    info['name'] = medicine.name;
+    info['frequency'] = medicine.frequency;
+    info['taking times'] = medicine.timesinfo;
+  }
+  return info.toString();
 }

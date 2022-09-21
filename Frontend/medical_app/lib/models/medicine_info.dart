@@ -9,9 +9,19 @@ class MedicineDetails {
     required this.frequency,
     required this.takingTimes,
   });
-
+  get timesinfo {
+    final medicineInfoTimes = [];
+    for (var i = 0; i < takingTimes.length; i++) {
+      medicineInfoTimes.add(
+        {
+          "date": takingTimes[i].timeOfDay,
+          "additional Info":takingTimes[i].additionalInfo,
+        },
+      );
+    }
+    return medicineInfoTimes;
+  }
 }
-
 
 class TakingTimes {
   final TimeOfDay timeOfDay;

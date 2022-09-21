@@ -10,71 +10,7 @@ class MedicinesInfo extends StatefulWidget {
   
 
   final List<MedicineDetails> medicineInfo;
-  final List<ExpansionItem> _items = <ExpansionItem>[
-    ExpansionItem(
-        header: "اموكسوسلين",
-        body: SizedBox(
-          width: double.maxFinite,
-          height: 200,
-          child: TimeLine(
-            numOfTimes: 3,
-            circleSize: 27,
-            ballsGap: 35,
-            infoList: [
-              TimeLineInfo(
-                  info: "بعد الغداء",
-                  timeOfDay: const TimeOfDay(hour: 12, minute: 20)),
-              TimeLineInfo(
-                  info: "بعد العشاء",
-                  timeOfDay: const TimeOfDay(hour: 20, minute: 20)),
-              TimeLineInfo(
-                  info: "", timeOfDay: const TimeOfDay(hour: 23, minute: 0)),
-            ],
-          ),
-        )),
-    ExpansionItem(
-        header: "فلو اوت",
-        body: SizedBox(
-          width: double.maxFinite,
-          height: 200,
-          child: TimeLine(
-            numOfTimes: 3,
-            circleSize: 30,
-            ballsGap: 35,
-            infoList: [
-              TimeLineInfo(
-                  info: "بعد الغداء",
-                  timeOfDay: const TimeOfDay(hour: 12, minute: 20)),
-              TimeLineInfo(
-                  info: "بعد العشاء",
-                  timeOfDay: const TimeOfDay(hour: 20, minute: 20)),
-              TimeLineInfo(
-                  info: "", timeOfDay: const TimeOfDay(hour: 23, minute: 0)),
-            ],
-          ),
-        )),
-    ExpansionItem(
-        header: "براسيتول",
-        body: SizedBox(
-          width: double.maxFinite,
-          height: 200,
-          child: TimeLine(
-            numOfTimes: 3,
-            circleSize: 30,
-            ballsGap: 35,
-            infoList: [
-              TimeLineInfo(
-                  info: "بعد الغداء",
-                  timeOfDay: const TimeOfDay(hour: 12, minute: 20)),
-              TimeLineInfo(
-                  info: "بعد العشاء",
-                  timeOfDay: const TimeOfDay(hour: 20, minute: 20)),
-              TimeLineInfo(
-                  info: "", timeOfDay: const TimeOfDay(hour: 23, minute: 0)),
-            ],
-          ),
-        )),
-  ];
+
   MedicinesInfo({
     Key? key,
     required this.medicineInfo,
