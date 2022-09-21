@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Map<DateTime, List<TimeOfDay>> timeSchedual = {
-    DateTime(2022, 9, 15): const [
+    DateTime(2022, 9, 30): const [
       TimeOfDay(hour: 9, minute: 0),
       TimeOfDay(hour: 11, minute: 0),
       TimeOfDay(hour: 12, minute: 0),
@@ -12,7 +12,7 @@ Map<DateTime, List<TimeOfDay>> timeSchedual = {
       TimeOfDay(hour: 21, minute: 0),
       TimeOfDay(hour: 22, minute: 0),
     ],
-    DateTime(2022, 9, 16): const [
+    DateTime(2022, 10, 1): const [
       TimeOfDay(hour: 9, minute: 0),
       TimeOfDay(hour: 11, minute: 0),
       TimeOfDay(hour: 12, minute: 0),
@@ -23,7 +23,7 @@ Map<DateTime, List<TimeOfDay>> timeSchedual = {
       TimeOfDay(hour: 21, minute: 0),
       TimeOfDay(hour: 22, minute: 0),
     ],
-    DateTime(2022, 9, 17): const [
+    DateTime(2022, 10, 2): const [
       TimeOfDay(hour: 9, minute: 0),
       TimeOfDay(hour: 11, minute: 0),
       TimeOfDay(hour: 12, minute: 0),
@@ -34,7 +34,7 @@ Map<DateTime, List<TimeOfDay>> timeSchedual = {
       TimeOfDay(hour: 21, minute: 0),
       TimeOfDay(hour: 22, minute: 0),
     ],
-    DateTime(2022, 9, 18): const [
+    DateTime(2022, 10, 6): const [
       TimeOfDay(hour: 9, minute: 0),
       TimeOfDay(hour: 11, minute: 0),
       TimeOfDay(hour: 12, minute: 0),

@@ -47,6 +47,7 @@ class _DoctorSchedualState extends State<DoctorSchedual> {
           onDateChange: (date) {
             setState(() {
               selectedDate = date;
+              // print(selectedDate);
             });
           },
         ),
@@ -63,14 +64,13 @@ class _DoctorSchedualState extends State<DoctorSchedual> {
                 childAspectRatio: (1 / .5),
                 crossAxisCount: 3,
               ),
-              itemCount: timeSchedual[selectedDate]!
-                  .length, //timeSchedual[selectedDate]!.length
+              itemCount: timeSchedual[selectedDate]!.length, //timeSchedual[selectedDate]!.length
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
                     time = timeSchedual[selectedDate]![index];
-                    // print(DateTime(selectedDate.year, selectedDate.month,
-                    //     selectedDate.day, time.hour, time.minute));
+                    print(DateTime(selectedDate.year, selectedDate.month,
+                        selectedDate.day, time!.hour, time!.minute));
                   },
                   child: Container(
                     margin: const EdgeInsets.all(4),
@@ -98,7 +98,7 @@ class _DoctorSchedualState extends State<DoctorSchedual> {
             onPressed: () {
               time == null
                   ? print("can't make appointment")
-                  : Navigator.pushReplacementNamed(context, '/main');
+                  : Navigator.pop(context);
             },
             buttonTitle: "احجز")
       ],

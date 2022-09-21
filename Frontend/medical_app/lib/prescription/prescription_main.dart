@@ -7,11 +7,13 @@ import 'package:lottie/lottie.dart';
 
 import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/User_Page/textfield/registerTextField.dart';
+import 'package:medical_app/main_colors.dart';
 import 'package:medical_app/prescription/save_gallery.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/dashedLine.dart';
 import 'package:medical_app/reuseable_widgets/main_button.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
+import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../User_Page/health_info_register_page/description_info.dart';
@@ -41,15 +43,15 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
       frequency: 3,
       takingTimes: [
         TakingTimes(
-          timeOfDay: TimeOfDay(hour: 12, minute: 20),
+          timeOfDay: const TimeOfDay(hour: 12, minute: 20),
           additionalInfo: "بعد الغداء",
         ),
         TakingTimes(
-          timeOfDay: TimeOfDay(hour: 8, minute: 20),
+          timeOfDay: const TimeOfDay(hour: 8, minute: 20),
           additionalInfo: "بعد العشاء",
         ),
         TakingTimes(
-          timeOfDay: TimeOfDay(hour: 22, minute: 20),
+          timeOfDay: const TimeOfDay(hour: 22, minute: 20),
         )
       ],
     ),
@@ -58,11 +60,11 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
       frequency: 2,
       takingTimes: [
         TakingTimes(
-          timeOfDay: TimeOfDay(hour: 12, minute: 20),
+          timeOfDay: const TimeOfDay(hour: 12, minute: 20),
           additionalInfo: "بعد الغداء",
         ),
         TakingTimes(
-          timeOfDay: TimeOfDay(hour: 8, minute: 20),
+          timeOfDay: const TimeOfDay(hour: 8, minute: 20),
           additionalInfo: "بعد العشاء",
         ),
       ],
@@ -73,9 +75,9 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xfff6f6f6),
+        backgroundColor: const Color(0xfff6f6f6),
         elevation: 0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),
       ),
@@ -85,7 +87,7 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
           child: Container(
             width: double.maxFinite,
             height: double.maxFinite,
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               boxShadow: ConstantValues.cardShadow,
             ),
@@ -102,7 +104,7 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,21 +133,21 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                         ),
                         ConstantValues.cardsGap,
                         ConstantValues.cardsGap,
-                        DoctorClinicInfo(),
+                        const DoctorClinicInfo(),
                         ConstantValues.cardsGap,
                         ConstantValues.cardsGap,
                         const HeadLineText(
                           text: "الادوية",
                         ),
                         MedicinesInfo(medicineInfo: medicines),
-                        DashedLine(),
+                        const DashedLine(),
                         const HeadLineText(text: "ملاحظات"),
                         DescriptionInfo(
                           controller: TextEditingController(),
                         ),
                         ConstantValues.cardsGap,
                         ConstantValues.cardsGap,
-                        DashedLine(),
+                        const DashedLine(),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -153,7 +155,7 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  HeadLineText(text: "رمز ال QR"),
+                                  const HeadLineText(text: "رمز ال QR"),
                                   SizedBox(
                                       width: double.maxFinite,
                                       height: 60,
@@ -169,11 +171,25 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                                       height: 60,
                                       child: MainButton(
                                         onPressed: () {
-                                          capturePng(key: _qrKey,capturedFile: capturedFile,imagePath: imagePath);
+                                          if (isQr.value) {
+                                            capturePng(
+                                                key: _qrKey,
+                                                capturedFile: capturedFile,
+                                                imagePath: imagePath);
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(const SnackBar(
+                                              content: SubText(
+                                                text: "تم حفظ الصورة بنجاح !",
+                                                color: Colors.white,
+                                              ),
+                                              backgroundColor:
+                                                  MainColors.foreignGreen,
+                                            ));
+                                          }
                                         },
                                         buttonTitle: "حفظ الرمز",
                                         buttonColor: Colors.transparent,
-                                        titleColor: Color(0xff9d9d9d),
+                                        titleColor: const Color(0xff9d9d9d),
                                         stroke: true,
                                       ))
                                 ],
