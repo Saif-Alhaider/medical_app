@@ -4,10 +4,10 @@ import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+
 import '../doctor_page/doctor_page.dart';
 import '../models/doctors_images.dart';
 import '../reuseable_widgets/doctors_cards.dart';
-import 'package:get/get.dart';
 
 class ClinicMain extends StatelessWidget {
   const ClinicMain({super.key});
@@ -107,7 +107,7 @@ class ClinicMain extends StatelessWidget {
                 ],
                 ),
                 height: 350,
-                child: DoctorsCards(info: doctorsInfo,whereToGo: DoctorPage(img: '', name: '', Speciality: '', rate: 0,)),
+                child: DoctorsCards(info: doctorsInfo,whereToGo: DoctorPage()),
               )
                 ],
                 ),
@@ -119,7 +119,7 @@ class ClinicMain extends StatelessWidget {
               child: Align(
                 alignment: Alignment.topLeft,
                 child:IconButton(onPressed: (){
-                  Get.back();
+                  Navigator.pop(context);
                 },icon:  Icon(Icons.arrow_forward_ios,color: Colors.white,)),
               ),
             )

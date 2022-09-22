@@ -6,8 +6,9 @@ import '../doctor_page/doctor_page.dart';
 import '../models/doctors_images.dart';
 
 class DoctorsCards extends StatelessWidget {
-  final List <Map> info;
+  final List<Map> info;
   final Widget whereToGo;
+
   const DoctorsCards({
     Key? key,
     required this.info,
@@ -40,7 +41,7 @@ class DoctorsCards extends StatelessWidget {
               margin: const EdgeInsets.all(10),
               width: 250,
               decoration: BoxDecoration(
-                  color:  Color(0xffFDFDFD),
+                  color: const Color(0xffFDFDFD),
                   borderRadius: BorderRadius.circular(12)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -53,11 +54,11 @@ class DoctorsCards extends StatelessWidget {
                           info[index]['image'],
                           fit: BoxFit.cover,
                         )),
-                     SubText(
+                    SubText(
                       text: info[index]['name'],
                       color: Colors.black,
                     ),
-                     SubText(
+                    SubText(
                       text: info[index]['details'],
                       size: 15,
                     )

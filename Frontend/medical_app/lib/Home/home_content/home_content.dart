@@ -5,12 +5,10 @@ import 'package:medical_app/Home/constants.dart';
 
 import 'package:medical_app/Home/home_content/specialities/specialities.dart';
 import 'package:medical_app/doctor_page/doctor_page.dart';
-import 'package:medical_app/reuseable_widgets/doctors_cards.dart';
+import 'package:medical_app/reuseable_widgets/doctors_cards/doctors_cards.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:medical_app/models/doctors_images.dart';
-
-import '../../reuseable_widgets/doctors_cards/doctors.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -39,7 +37,7 @@ class HomeContent extends StatelessWidget {
                 ],
               ),
               ConstantValues.cardsGap,
-              Doctors(),
+              DoctorsCards(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
@@ -50,7 +48,7 @@ class HomeContent extends StatelessWidget {
                   SubText(text: "المزيد")
                 ],
               ),
-              DoctorsCards(info: clinicsInfo,whereToGo: ClinicMain()),
+              DoctorsCards(),
             ],
           )
         ],
