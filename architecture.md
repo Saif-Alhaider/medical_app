@@ -51,7 +51,7 @@ light theme colors
 
 fonts
     - english : poppins
-    - arabic : ?
+    - arabic : vazirmatn
 
 
 backend

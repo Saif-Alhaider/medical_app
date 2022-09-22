@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+
+Map<DateTime, List<TimeOfDay>> timeSchedual = {
+    DateTime(2022, 9, 30): const [
+      TimeOfDay(hour: 9, minute: 0),
+      TimeOfDay(hour: 11, minute: 0),
+      TimeOfDay(hour: 12, minute: 0),
+      TimeOfDay(hour: 13, minute: 0),
+      TimeOfDay(hour: 14, minute: 0),
+      TimeOfDay(hour: 15, minute: 0),
+      TimeOfDay(hour: 20, minute: 0),
+      TimeOfDay(hour: 21, minute: 0),
+      TimeOfDay(hour: 22, minute: 0),
+    ],
+    DateTime(2022, 10, 1): const [
+      TimeOfDay(hour: 9, minute: 0),
+      TimeOfDay(hour: 11, minute: 0),
+      TimeOfDay(hour: 12, minute: 0),
+      TimeOfDay(hour: 13, minute: 0),
+      TimeOfDay(hour: 14, minute: 0),
+      TimeOfDay(hour: 15, minute: 0),
+      TimeOfDay(hour: 20, minute: 0),
+      TimeOfDay(hour: 21, minute: 0),
+      TimeOfDay(hour: 22, minute: 0),
+    ],
+    DateTime(2022, 10, 2): const [
+      TimeOfDay(hour: 9, minute: 0),
+      TimeOfDay(hour: 11, minute: 0),
+      TimeOfDay(hour: 12, minute: 0),
+      TimeOfDay(hour: 13, minute: 0),
+      TimeOfDay(hour: 14, minute: 0),
+      TimeOfDay(hour: 15, minute: 0),
+      TimeOfDay(hour: 20, minute: 0),
+      TimeOfDay(hour: 21, minute: 0),
+      TimeOfDay(hour: 22, minute: 0),
+    ],
+    DateTime(2022, 10, 6): const [
+      TimeOfDay(hour: 9, minute: 0),
+      TimeOfDay(hour: 11, minute: 0),
+      TimeOfDay(hour: 12, minute: 0),
+      TimeOfDay(hour: 13, minute: 0),
+      TimeOfDay(hour: 14, minute: 0),
+      TimeOfDay(hour: 15, minute: 0),
+      TimeOfDay(hour: 20, minute: 0),
+      TimeOfDay(hour: 21, minute: 0),
+      TimeOfDay(hour: 22, minute: 0),
+    ],
+  };
