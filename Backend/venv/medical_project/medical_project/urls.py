@@ -22,7 +22,8 @@ from speciality.api import router as speciality_router
 from active_dates.api import router as active_dates_router
 from appointments.api import router as appointment_router
 from ninja import NinjaAPI
-
+from django.conf.urls.static import static
+from django.conf import settings
 api = NinjaAPI()
 api.add_router('user',router)
 api.add_router('doctor',doctor_router)
@@ -33,3 +34,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api.urls),
 ]
+
+urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

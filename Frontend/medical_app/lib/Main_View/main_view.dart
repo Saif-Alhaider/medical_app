@@ -47,9 +47,6 @@ class _MainViewState extends State<MainView> {
         controller: pageController,
         onPageChanged: (index) {
           currentIndex.value = index;
-          setState(() {
-            
-          });
         },
         itemCount: 3,
         itemBuilder: (context, index) {

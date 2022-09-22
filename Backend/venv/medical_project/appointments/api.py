@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 import email
 from accounts.models import CustomUser
 from doctor.models import DoctorProfile
@@ -44,10 +44,14 @@ def create_appointment(request, appointment: appointmentSchema):
             stringifiedTime = time.strftime("%Y-%m-%d, %H:%M")
             givenDate = appointment.date.strftime("%Y-%m-%d, %H:%M")
             if stringifiedTime == givenDate:
+                
                 newAppointment = Appointments.objects.create(
                     date=time, user=user, doctor=doctor)
                 newAppointment.save()
+                ActiveDates.objects.get(doctor=doctor,datetime=time).delete()
+                
                 return {"date": stringifiedTime, "user": user.fullName, "doctor": doctor.user.fullName}
+            
 
         return {"details": "doctor is not active at this time"}
     except DoctorProfile.DoesNotExist:

@@ -50,8 +50,12 @@ def create_doctor_schedual(request, res: WeekDays):
                         requestedDate, '%Y-%m-%d, %H:%M:%S')
                     doc = DoctorProfile.objects.get(
                         user__email=requested_user_email)
-                    docdate = ActiveDates.objects.create(
+                    
+                    try:
+                        docdate = ActiveDates.objects.create(
                         datetime=assignedDate, doctor=doc)
+                    except:
+                        pass
                     print(str(doc))
 
         # print(schedual)

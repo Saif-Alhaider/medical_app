@@ -38,9 +38,9 @@ def get_doctors(request):
     for doctor in doctors:
         data.append({
             "full name": str(doctor.user.fullName),
-            "speciality": str(doctor.speciality.title)
+            "speciality": str(doctor.speciality.title),
+            "image":"images/"+str(doctor.image)
         })
-    # listOfDoctors = [doctor.fullName for doctor in Doctor.objects.all()]
     return data
 
 
@@ -48,13 +48,13 @@ def get_doctors(request):
 def doctor_appointments(request):
     requested_user_email = request.auth["EMAIL"]
     try:
-        doctor = Doctor.objects.get(email=requested_user_email)
+        doctor = DoctorProfile.objects.get(user__email=requested_user_email)
         doctorAppointments = list(doctor.doctor_assigned.all())
         data = []
         for appointment in doctorAppointments:
             data.append({
-                'doctor': appointment.patient.fullName, 'date': appointment.date})
-        return {"doctor": str(doctor.fullName), "data": data}
+                'patient': appointment.user.fullName, 'date': appointment.date})
+        return {"doctor": str(doctor.user.fullName), "appointments": data}
     except Doctor.DoesNotExist:
         return {"details": "only docotors are authorized"}
 
@@ -83,7 +83,7 @@ def create_user_doctor(request, user: AccountSchema):
     return 401, {"details": "already an account"}
 
 
-# doctor token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFTUFJTCI6InNhaWZhbGhhaWRlckBnbWFpbC5jb20ifQ.D-JRVJKI8XOT8TFMdSAwcajxJEyK8rMAJLXGqa56mnw
+# doctor token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFTUFJTCI6Im1vaGFtbWFkQWxpQGdtYWlsLmNvbSJ9.6HZyA7a6AQHkUK7zKS79Xk9QNACS2Zifz9FMKxs1KEY
 
 @router.get('create_specialities')
 def create_specialities(request):

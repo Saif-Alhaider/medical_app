@@ -8,7 +8,7 @@ from speciality.models import Specialitiy
 
 
 class CustomUserManager(UserManager):
-    def create_user(self, email, first_name: str, last_name: str, password=None, health_info=None):
+    def create_user(self, email, first_name: str, last_name: str, password=None, health_info=None,image=None):
         if not email:
             raise ValueError('user must have an email to register')
 
@@ -16,7 +16,8 @@ class CustomUserManager(UserManager):
             email=self.normalize_email(email),
             first_name=first_name,
             last_name=last_name,
-            health_info=health_info
+            health_info=health_info,
+            # image=image
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -51,7 +52,7 @@ class CustomUser(AbstractUser):
     last_name = models.CharField(max_length=150, blank=False, null=False)
     username = None
     email = models.EmailField(max_length=254, unique=True)
-
+    
     health_info = models.OneToOneField(
         UserHealthInfo, related_name='healtInfo', on_delete=models.SET_NULL, blank=True, null=True)
 
@@ -74,7 +75,7 @@ class CustomUser(AbstractUser):
 
 
 class PatientManager(UserManager):
-    def create_user(self, email, first_name: str, last_name: str, password=None, health_info=None):
+    def create_user(self, email, first_name: str, last_name: str, password=None, health_info=None,image=None):
         if not email:
             raise ValueError('user must have an email to register')
 
@@ -82,7 +83,8 @@ class PatientManager(UserManager):
             email=self.normalize_email(email),
             first_name=first_name,
             last_name=last_name,
-            health_info=health_info
+            health_info=health_info,
+            # image=image
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -104,7 +106,7 @@ class Patient(CustomUser):
 
 
 class DoctorManager(UserManager):
-    def create_user(self, email, first_name: str, last_name: str, password=None, health_info=None):
+    def create_user(self, email, first_name: str, last_name: str, password=None, health_info=None,image=None):
         if not email:
             raise ValueError('user must have an email to register')
 
@@ -112,7 +114,8 @@ class DoctorManager(UserManager):
             email=self.normalize_email(email),
             first_name=first_name,
             last_name=last_name,
-            health_info=health_info
+            health_info=health_info,
+            # image=image
         )
         user.set_password(password)
         user.save(using=self._db)

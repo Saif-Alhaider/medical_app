@@ -16,6 +16,7 @@ def create_user_profile(sender,instance,created,*args, **kwargs):
 
 class DoctorProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,related_name="doctor_account",db_constraint=False)
+    image = models.ImageField(blank=True, null=True)
     doctor_id = models.IntegerField(blank=True, null=True)
     speciality =models.ForeignKey(Specialitiy, related_name='doc_special', on_delete=models.DO_NOTHING,blank=True, null=True)
     country = CountryField(blank=True, null=True)
