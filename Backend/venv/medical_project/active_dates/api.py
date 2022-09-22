@@ -10,6 +10,7 @@ from accounts.authSchema import AccountError
 from .weekDaysSchema import SchedualSchema
 from genson import SchemaBuilder
 from datetime import time
+from appointments.models import Appointments
 # User = get_user_model()
 router = Router(tags=['active_dates'])
 
@@ -29,35 +30,28 @@ def doctor_active_dates(request):
 @router.post("create_doctor_schedual", auth=AuthBearer(),)
 def create_doctor_schedual(request, res: WeekDays):
     requested_user_email = request.auth["EMAIL"]
-    print("working")
     try:
-        DoctorProfile.objects.get(
+        doc = DoctorProfile.objects.get(
             user__email=requested_user_email
         )
         schedual = create_doctor_schedual_date_and_time(sunday=res.sunday, monday=res.modnay, tuesday=res.tuesday,
-        wednesday=res.wensday, thursday=res.thursday, friday=res.friday, saturday=res.saturday, howManyDays=30)
-        
+                                                        wednesday=res.wensday, thursday=res.thursday, friday=res.friday, saturday=res.saturday, howManyDays=30)
+
         for appit in schedual:
             for day in list(appit.values())[0]:
                 date = list(day.keys())[0]
                 for onetime in list(day.values())[0]:
 
-                    # print(f"calendar =>{day}\ndate => {date}\ntime=>{onetime}")
-
                     requestedDate = f"{date}, {onetime}"
                     # print()
                     assignedDate = datetime.strptime(
                         requestedDate, '%Y-%m-%d, %H:%M:%S')
-                    doc = DoctorProfile.objects.get(
-                        user__email=requested_user_email)
-                    
+
                     try:
                         docdate = ActiveDates.objects.create(
                         datetime=assignedDate, doctor=doc)
                     except:
                         pass
-                    print(str(doc))
-
         # print(schedual)
         return {"final": schedual}
     except DoctorProfile.DoesNotExist:
