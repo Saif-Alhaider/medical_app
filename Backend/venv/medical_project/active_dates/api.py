@@ -29,13 +29,14 @@ def doctor_active_dates(request):
 @router.post("create_doctor_schedual", auth=AuthBearer(),)
 def create_doctor_schedual(request, res: WeekDays):
     requested_user_email = request.auth["EMAIL"]
-
+    print("working")
     try:
         DoctorProfile.objects.get(
             user__email=requested_user_email
         )
         schedual = create_doctor_schedual_date_and_time(sunday=res.sunday, monday=res.modnay, tuesday=res.tuesday,
-                                                        wednesday=res.wensday, thursday=res.thursday, friday=res.friday, saturday=res.saturday, howManyDays=30)
+        wednesday=res.wensday, thursday=res.thursday, friday=res.friday, saturday=res.saturday, howManyDays=30)
+        
         for appit in schedual:
             for day in list(appit.values())[0]:
                 date = list(day.keys())[0]
@@ -47,11 +48,12 @@ def create_doctor_schedual(request, res: WeekDays):
                     # print()
                     assignedDate = datetime.strptime(
                         requestedDate, '%Y-%m-%d, %H:%M:%S')
-                    doc = DoctorProfile.objects.get(user__email=requested_user_email)
-                    docdate = ActiveDates.objects.create(datetime=assignedDate,doctor=doc)
+                    doc = DoctorProfile.objects.get(
+                        user__email=requested_user_email)
+                    docdate = ActiveDates.objects.create(
+                        datetime=assignedDate, doctor=doc)
                     print(str(doc))
 
-            print("----------")
         # print(schedual)
         return {"final": schedual}
     except DoctorProfile.DoesNotExist:

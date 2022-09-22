@@ -100,32 +100,7 @@ class Patient(CustomUser):
         proxy = True
 
 
-# Create your models here.
 
-
-# class TypesOfDoctorChoices(models.TextChoices):
-#     GENERAL = 'General', 'General'
-#     Allergist = 'ALLERGIST', 'Allergist'
-#     Anesthesiologist = 'ANESTHESIOLOGIST', 'Anesthesiologist'
-#     Cardiologist = 'CARDIOLOGIST', 'Cardiologist'
-#     Dermatologist = 'DERMATOLOGIST', 'Dermatologist'
-#     Endocrinologist = 'ENDOCRINOLOGIST', 'Endocrinologist'
-#     Gastroenterologist = 'GASTROENTEROLOGIST', 'Gastroenterologist'
-#     Hematologist = 'HEMATOLOGIST', 'Hematologist'
-#     Infectious_Disease_Specialist = 'INFECTIOUS DISEASE SPECIALIST', 'Infectious Disease Specialist'
-#     Nephrologist = 'NEPHROLOGIST', 'Nephrologist'
-#     Neurologist = 'NEUROLOGIST', 'Neurologist'
-#     Oncologist = 'ONCOLOGIST', 'Oncologist'
-#     Ophthalmologist = 'OPHTHALMOLOGIST', 'Ophthalmologist'
-#     Orthopedic_Surgeon = 'ORTHOPEDIC SURGEON', 'Orthopedic Surgeon'
-#     Otolaryngologist = 'OTOLARYNGOLOGIST', 'Otolaryngologist'
-#     Pathologist = 'PATHOLOGIST', 'Pathologist'
-#     Pediatrician = 'PEDIATRICIAN', 'Pediatrician'
-#     Psychiatrist = 'PSYCHIATRIST', 'Psychiatrist'
-#     Pulmonologist = 'PULMONOLOGIST', 'Pulmonologist'
-#     Radiologist = 'RADIOLOGIST', 'Radiologist'
-#     Rheumatologist = 'RHEUMATOLOGIST', 'Rheumatologist'
-#     Urologist = 'UROLOGIST', 'Urologist'
 
 
 class DoctorManager(UserManager):

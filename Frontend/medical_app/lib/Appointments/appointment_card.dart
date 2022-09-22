@@ -1,11 +1,20 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../reuseable_widgets/texts_types/headline_text.dart';
 import 'appointments details/appointments_details_main.dart';
 
 class AppointmentCard extends StatelessWidget {
-  const AppointmentCard({super.key});
+  final String doctorName;
+  final String doctorImage;
+  const AppointmentCard({
+    Key? key,
+    required this.doctorName,
+    required this.doctorImage,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,17 +38,17 @@ class AppointmentCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 40,
-                backgroundImage: AssetImage('Assets/images/doctor03.jpeg'),
+                backgroundImage: AssetImage(doctorImage),
               ),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children:  [
                   HeadLineText(
-                    text: 'د.محمد علي موسى',
+                    text: doctorName,
                     color: Colors.black,
                     lineHeight: 1,
                     size: 22,
@@ -131,11 +140,11 @@ class AppointmentCard extends StatelessWidget {
                   height: 45,
                   child: ElevatedButton(
                       onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const AppointmentDetailsMain(),
-                                )),
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const AppointmentDetailsMain(),
+                          )),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
                             const Color(0xff47CEFF)),

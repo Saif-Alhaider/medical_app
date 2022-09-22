@@ -94,20 +94,7 @@ def login(request,user:LoginSchema):
 
 
 
-@router.get('/appointments', auth=AuthBearer())
-def get_appointments(request):
-    requested_user_email = request.auth["EMAIL"]
-    user = CustomUser.objects.get(email=requested_user_email)
-    data = []
-    userAppointments = list(user.patient_appointments.all())
-    for appointment in userAppointments:
-        data.append({
-            'doctor': appointment.doctor.fullName, 'date': appointment.date})
 
-    return {
-        'user': user.fullName,
-        "appointments": data
-    }
 
 
 

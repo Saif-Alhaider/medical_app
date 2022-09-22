@@ -21,6 +21,7 @@ class DoctorProfile(models.Model):
     country = CountryField(blank=True, null=True)
     description = models.TextField(max_length=220 , blank=True, null=True)
     
+    
     def __str__(self):
         return self.user.fullName
 
