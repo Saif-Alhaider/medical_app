@@ -13,24 +13,20 @@ class DoctorCardMol {
 
 List<DoctorCardMol> DoctorsList = [
   DoctorCardMol(
-      img: 'Assets/clinic/Ellipse6.png',
+      img: 'Assets/images/doctors/doctor1.png',
       name: 'د.محمد الاراكي',
-      specialty: 'اخصائي جراحة قلب',
+      specialty: ' قلب',
       rate: 4),
   DoctorCardMol(
-      img: 'Assets/clinic/Ellipse141.png',
+      img: 'Assets/images/doctors/doctor2.png',
       name: 'د.نور البياتي',
-      specialty: 'اخصائية تجميل',
+      specialty: 'تجميل',
       rate: 3),
       
   DoctorCardMol(
-      img: 'Assets/clinic/image.png',
+      img: 'Assets/images/doctors/doctor3.png',
       name: 'د.زينب الموسوي',
-      specialty: 'اخصائيةباطنية',
+      specialty: 'باطنية',
       rate: 3),
-      DoctorCardMol(
-      img: 'Assets/clinic/Ellipse6.png',
-      name: 'د.زينب الموسوي',
-      specialty: 'اخصائيةباطنية',
-      rate: 3),
+
 ];

@@ -9,8 +9,8 @@ class HeadLineText extends StatelessWidget {
   final FontWeight fontWeight;
   const HeadLineText({
     Key? key,
-    this.size = 30.0,
-    this.color = const Color(0xff2196F3),
+    this.size = 24.0,
+    this.color = Colors.black,
     required this.text,
     this.lineHeight = 3,
      this.fontWeight = FontWeight.bold,

@@ -3,9 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medical_app/Clinic/clinic_main.dart';
 import 'package:medical_app/Home/constants.dart';
 
-import 'package:medical_app/Home/home_content/specialities.dart';
+import 'package:medical_app/Home/home_content/specialities/specialities.dart';
 import 'package:medical_app/doctor_page/doctor_page.dart';
-import 'package:medical_app/reuseable_widgets/doctors_cards.dart';
+import 'package:medical_app/reuseable_widgets/doctors_cards/doctors_cards.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:medical_app/models/doctors_images.dart';
@@ -30,11 +30,22 @@ class HomeContent extends StatelessWidget {
                     text: "الاطباء",
                     lineHeight: 1,
                   ),
-                  SubText(text: "المزيد")
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: SubText(text: "المزيد"),
+                  )
                 ],
               ),
               ConstantValues.cardsGap,
-              DoctorsCards(info: doctorsInfo,whereToGo: DoctorPage()),
+              DoctorsCards(
+                info: doctorsInfo,
+                whereToGo: DoctorPage(
+                  name: "احمد",
+                  Speciality: "باطنية",
+                  rate: 4,
+                  img: '',
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
@@ -45,7 +56,13 @@ class HomeContent extends StatelessWidget {
                   SubText(text: "المزيد")
                 ],
               ),
-              DoctorsCards(info: clinicsInfo,whereToGo: ClinicMain()),
+              DoctorsCards(info: doctorsInfo,
+                whereToGo: DoctorPage(
+                  name: "احمد",
+                  Speciality: "باطنية",
+                  rate: 4,
+                  img: '',
+                ),),
             ],
           )
         ],

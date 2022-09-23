@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
-import '../doctor_page/doctor_page.dart';
-import '../models/doctors_images.dart';
+
 
 class DoctorsCards extends StatelessWidget {
-  final List <Map> info;
+  final List<Map> info;
   final Widget whereToGo;
+
   const DoctorsCards({
     Key? key,
     required this.info,
@@ -53,11 +53,11 @@ class DoctorsCards extends StatelessWidget {
                           info[index]['image'],
                           fit: BoxFit.cover,
                         )),
-                     SubText(
+                    SubText(
                       text: info[index]['name'],
                       color: Colors.black,
                     ),
-                     SubText(
+                    SubText(
                       text: info[index]['details'],
                       size: 15,
                     )

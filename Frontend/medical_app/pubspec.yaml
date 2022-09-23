@@ -76,6 +76,8 @@ flutter:
     - Assets/Lottie json/
 
     - Assets/images/
+    - Assets/images/doctors/
+    - Assets/icons/
     - Assets/svg/
     - Assets/clinic/
 

@@ -2,17 +2,28 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+
 // ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
 import 'package:medical_app/main_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../reuseable_widgets/star_rate.dart';
 import '../reuseable_widgets/star_rating.dart';
 import '../reuseable_widgets/texts_types/headline_text.dart';
 import '../reuseable_widgets/texts_types/sub_text.dart';
 
 class DoctorPersonalInfoMain extends StatelessWidget {
-  const DoctorPersonalInfoMain({super.key});
+  String img;
+  String name;
+  int rate;
+
+  DoctorPersonalInfoMain({
+    required this.img,
+    required this.name,
+    required this.rate,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +37,9 @@ class DoctorPersonalInfoMain extends StatelessWidget {
             width: 105,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              image: const DecorationImage(
+              image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(
-                    'https://t3.ftcdn.net/jpg/02/60/04/08/360_F_260040863_fYxB1SnrzgJ9AOkcT0hoe7IEFtsPiHAD.jpg'),
+                image: Image.asset(img).image,
               ),
             ),
           ),
@@ -42,22 +52,19 @@ class DoctorPersonalInfoMain extends StatelessWidget {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children:  [
                   HeadLineText(
-                    text: 'د.محمد علي رضا',
+                    text: name,
                     color: Colors.black,
                     size: 25,
                     lineHeight: 1,
                   ),
-                  SubText(
+                  const SubText(
                     text: 'يعمل في عيادة الهدى',
                   ),
                 ],
               ),
-              StarRating(
-                rate: Rx<int>(4),
-                functional: false,
-              )
+              StartRate(rate: rate, size: 24,),
             ],
           ),
           SizedBox(
@@ -86,23 +93,16 @@ contactDoctor(BuildContext context) async {
   var android_url = 'https://wa.me/$contactNumber?text=مرحبا';
   var ios_url = 'https://wa.me/$contactNumber?text=${Uri.parse("مرحبا")}';
 
-    if(Platform.isIOS){
+  if (Platform.isIOS) {
     // for iOS phone only
-    if( await canLaunch(ios_url)){
+    if (await canLaunch(ios_url)) {
       await launch(ios_url, forceSafariVC: false);
-    }else{
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("whatsapp not installed")));
-
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("whatsapp not installed")));
     }
-
-  }else{
+  } else {
     // android , web
     await launch(android_url);
-    
-
-
   }
-
 }
-

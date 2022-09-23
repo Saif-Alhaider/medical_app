@@ -5,9 +5,16 @@ import 'doctor_location.dart';
 import 'doctor_personal_info_main.dart';
 import 'doctor_schedual.dart';
 import 'doctor_speciality.dart';
+import 'package:get/get.dart';
 
 class DoctorPage extends StatelessWidget {
-  const DoctorPage({super.key});
+  String img;
+  String name;
+  String Speciality;
+  int rate;
+
+  DoctorPage(
+      {required this.img, required this.name, required this.Speciality, required this.rate, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +32,26 @@ class DoctorPage extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: IconButton(icon: const Icon(Icons.arrow_forward_ios),onPressed: () {
-                        Navigator.pop(context);
-                      },),
+                      child: IconButton(
+                        icon: const Icon(Icons.arrow_forward_ios),
+                        onPressed: () {
+                          Get.back();
+                        },
+                      ),
                     ),
                   ),
-                  const DoctorPersonalInfoMain(),
+                  DoctorPersonalInfoMain(
+                    img: img, name: name, rate: rate,
+                  ),
                   const SizedBox(height: 35),
                   const DoctorDetails(
                       text:
                           'طبيب اختصاص في علم الامراض بالإضافة الى عدة شهادات دولية في علم النفس (الشفاء الداخلي) '),
                   const SizedBox(height: 20),
                   const DoctorLocation(),
-                  const DoctorSpeciality(),
+                   DoctorSpeciality(Speciality: Speciality,),
                   const DoctorSchedual(),
                   const SizedBox(height: 20),
-                  
                 ],
               ),
             ),

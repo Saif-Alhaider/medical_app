@@ -7,7 +7,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../doctor_page/doctor_page.dart';
 import '../models/doctors_images.dart';
-import '../reuseable_widgets/doctors_cards.dart';
+import '../reuseable_widgets/doctors_cards/doctors_cards.dart';
 
 class ClinicMain extends StatelessWidget {
   const ClinicMain({super.key});
@@ -107,7 +107,13 @@ class ClinicMain extends StatelessWidget {
                 ],
                 ),
                 height: 350,
-                child: DoctorsCards(info: doctorsInfo,whereToGo: DoctorPage()),
+                child: DoctorsCards(info: doctorsInfo,
+                whereToGo: DoctorPage(
+                  name: "احمد",
+                  Speciality: "باطنية",
+                  rate: 4,
+                  img: '',
+                ),),
               )
                 ],
                 ),
