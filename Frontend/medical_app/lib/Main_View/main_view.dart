@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Appointments/ScheduleTab.dart';
 import '../Clinic/clinic_main.dart';
 import '../Home/home_main.dart';
+import '../Medicines/medicines_main.dart';
 import '../User_Page/Login/login_main.dart';
 import '../User_Page/Register/registerEmail.dart';
 import '../User_Page/health_info_register_page/health_info_main.dart';
@@ -20,7 +21,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  final List pages = [Home(), ScheduleTab()];
+  final List pages = [Home(), Medicines()];
   Future<Null> getUserData() async {
     final prefs = await SharedPreferences.getInstance();
     final full_name = prefs.getString("fullName");

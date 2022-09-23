@@ -16,7 +16,7 @@ class Specialities extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin:EdgeInsets.only(top:Get.width*0.07),
-        height: 112,
+        height: 150,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount:listCatogary.length ,

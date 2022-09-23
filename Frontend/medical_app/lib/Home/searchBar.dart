@@ -13,12 +13,27 @@ class SearchBar extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       height: 50,
-      decoration: BoxDecoration(border: Border.all(color: Colors.blueAccent), color: Colors.white, borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(
+          // border: Border.all(color: Colors.blueAccent),
+          boxShadow: const [
+            BoxShadow(
+              color: Color.fromARGB(56, 0, 0, 0),
+              offset: Offset(2,4),
+               blurRadius: 8
+            ),
+            BoxShadow(
+              color: Color.fromARGB(255, 229, 228, 228),
+              offset: Offset(-2,-4),
+              blurRadius: 8
+            ),
+          ],
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15)),
       child: TextField(
         onTap: () => searchPageDisplay.value = true,
         style: const TextStyle(
-          height: 2.0,
-        ),
+            // height: 1.0,
+            ),
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.search),
           suffixIcon: IconButton(
@@ -27,7 +42,7 @@ class SearchBar extends StatelessWidget {
               },
               icon: const Icon(Icons.close)),
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.only(right: 10),
+          // contentPadding: const EdgeInsets.only(right: 10),
         ),
       ),
     );

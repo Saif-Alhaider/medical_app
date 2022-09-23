@@ -56,13 +56,8 @@ class HomeContent extends StatelessWidget {
                   SubText(text: "المزيد")
                 ],
               ),
-              DoctorsCards(info: doctorsInfo,
-                whereToGo: DoctorPage(
-                  name: "احمد",
-                  Speciality: "باطنية",
-                  rate: 4,
-                  img: '',
-                ),),
+              DoctorsCards(info: clinicsInfo,
+                whereToGo: ClinicMain(),),
             ],
           )
         ],

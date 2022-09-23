@@ -18,25 +18,26 @@ class StartButton extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          
           Padding(
-            padding: const EdgeInsets.only(left: 20,right: 20,bottom: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
             child: TextButton(
-                      style: TextButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        backgroundColor: Colors.blue,
-                        minimumSize: const Size.fromHeight(30)
-                        
-                      ),
-                    
-                      onPressed: () async{
-                        final prefs = await SharedPreferences.getInstance();
-                        prefs.setBool('showHome', true);
-                        Navigator.pushReplacementNamed(context, '/main');
-                      },
-                      child: Text("ابدء",style: GoogleFonts.vazirmatn(fontSize: 30,color: Colors.white),)),
+                style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    backgroundColor: Colors.blue,
+                    minimumSize: const Size.fromHeight(30)),
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  prefs.setBool('showHome', true);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/main', (route) => false);
+                },
+                child: Text(
+                  "ابدء",
+                  style:
+                      GoogleFonts.vazirmatn(fontSize: 30, color: Colors.white),
+                )),
           ),
         ],
       ),
