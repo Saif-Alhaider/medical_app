@@ -1,4 +1,3 @@
-from calendar import WEDNESDAY
 from datetime import datetime
 from ninja import Router
 from doctor.models import DoctorProfile

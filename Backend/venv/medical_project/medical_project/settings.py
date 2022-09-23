@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'clinic',
     'patient',
     'doctor',
-    'active_dates'
+    'active_dates',
+    'pharmacies',
+    'medicines'
 ]
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
