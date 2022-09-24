@@ -20,7 +20,7 @@ def get_appointments(request):
     for appointment in userAppointments:
         print(appointment)
         data.append({
-            'doctor': str(appointment.doctor.user.fullName), 'date': appointment.date, "doctor image": "https://api.lorem.space/image/face?w=150&h=150"})
+            'doctor': str(appointment.doctor.user.fullName), 'date': appointment.date, "doctor image": str(appointment.doctor.image), 'doctor_id': appointment.doctor.doctor_id, })
 
     return {
         'user': user.fullName,
@@ -44,14 +44,13 @@ def create_appointment(request, appointment: appointmentSchema):
             stringifiedTime = time.strftime("%Y-%m-%d, %H:%M")
             givenDate = appointment.date.strftime("%Y-%m-%d, %H:%M")
             if stringifiedTime == givenDate:
-                
+
                 newAppointment = Appointments.objects.create(
                     date=time, user=user, doctor=doctor)
                 newAppointment.save()
-                ActiveDates.objects.get(doctor=doctor,datetime=time).delete()
-                
+                ActiveDates.objects.get(doctor=doctor, datetime=time).delete()
+
                 return {"date": stringifiedTime, "user": user.fullName, "doctor": doctor.user.fullName}
-            
 
         return {"details": "doctor is not active at this time"}
     except DoctorProfile.DoesNotExist:
