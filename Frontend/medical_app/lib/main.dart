@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/splash_screen/splash_screen.dart';
+import 'package:medical_app/Main_View/main_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 import 'OnBoarding/onboarding_main.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       initialRoute: showHome ?'/main':'/',
       routes: {
         '/': (context) => OnBoardingMain(),
-        '/main': (context) => SplashScreen(),
+        '/main': (context) => MainView(),
       },
     );
   }

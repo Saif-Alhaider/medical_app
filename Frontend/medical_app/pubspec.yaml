@@ -49,11 +49,15 @@ dependencies:
   url_launcher: ^6.1.5
   sliding_up_panel: ^2.0.0+1
   shimmer: ^2.0.0
+  flutter_native_splash: ^2.2.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   get: any
+  
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -64,7 +68,15 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+flutter_native_splash:
+  color: "#3ea0ef"
+  image: Assets/images/tabibi.png
+  android_12:
+    color: "#3ea0ef"
+    image: Assets/images/tabibi.png
+  android: true
+  ios: true
+  web: true
 # The following section is specific to Flutter packages.
 flutter:
   # The following line ensures that the Material Icons font is
