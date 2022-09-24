@@ -124,7 +124,6 @@ Future<Map> getAppointments() async {
     },
   );
   final body = jsonDecode(response.body);
-  print(body);
   return body;
 }
 

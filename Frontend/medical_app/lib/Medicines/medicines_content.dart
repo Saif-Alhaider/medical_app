@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/Medicines/medicines.dart';
+import 'package:medical_app/Medicines/medicinesListView.dart';
 import 'package:medical_app/Medicines/medicines_main.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
-import '../models/medicine_categories.dart';
+import '../models/medicine/medicine_categories.dart';
+
 
 class MedicinesContent extends StatelessWidget {
   const MedicinesContent({super.key});
@@ -15,14 +16,14 @@ class MedicinesContent extends StatelessWidget {
       children: [
         
         GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, childAspectRatio: 0.85),
           itemCount: medicineCategories.length,
           itemBuilder: (BuildContext context, int index) {
             return Container(
-              margin: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
@@ -47,7 +48,7 @@ class MedicinesContent extends StatelessWidget {
                   ),
                   SubText(
                     text: medicineCategories[index]['title'],
-                    color: Color(0xff39E8BE),
+                    color: const Color(0xff39E8BE),
                     size: 36,
                   ),
                 ],
@@ -55,7 +56,7 @@ class MedicinesContent extends StatelessWidget {
             );
           },
         ),
-        MedicinesListView(),
+        const MedicinesListView(),
       ],
     ),
     );

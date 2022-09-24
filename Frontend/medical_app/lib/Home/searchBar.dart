@@ -36,11 +36,13 @@ class SearchBar extends StatelessWidget {
             ),
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.search),
-          suffixIcon: IconButton(
+          suffixIcon: Obx((){
+            return IconButton(
               onPressed: () {
                 searchPageDisplay.value = false;
               },
-              icon: const Icon(Icons.close)),
+              icon: Icon(Icons.close,color: searchPageDisplay.value? Colors.blue:Colors.black,));
+          }),
           border: InputBorder.none,
           // contentPadding: const EdgeInsets.only(right: 10),
         ),

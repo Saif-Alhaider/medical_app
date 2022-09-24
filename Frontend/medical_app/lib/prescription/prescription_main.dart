@@ -17,7 +17,7 @@ import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../User_Page/health_info_register_page/description_info.dart';
-import '../models/medicine_info.dart';
+import '../models/medicine/medicine_details.dart';
 import 'doctor_clinic_info.dart';
 import 'medicines_info.dart';
 import 'package:get/get.dart';

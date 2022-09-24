@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../Home/constants.dart';
-import '../models/medicine_info.dart';
+import '../models/medicine/medicine_details.dart';
 import '../reuseable_widgets/texts_types/sub_text.dart';
 import '../reuseable_widgets/timeLine.dart';
 
