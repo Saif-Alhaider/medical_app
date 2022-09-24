@@ -33,8 +33,7 @@ def create_doctor_schedual(request, res: WeekDays):
         doc = DoctorProfile.objects.get(
             user__email=requested_user_email
         )
-        schedual = create_doctor_schedual_date_and_time(sunday=res.sunday, monday=res.modnay, tuesday=res.tuesday,
-                                                        wednesday=res.wensday, thursday=res.thursday, friday=res.friday, saturday=res.saturday, howManyDays=30)
+        schedual = create_doctor_schedual_date_and_time(howManyDays=30,**res.dict())
 
         for appit in schedual:
             for day in list(appit.values())[0]:
@@ -49,6 +48,8 @@ def create_doctor_schedual(request, res: WeekDays):
                     try:
                         docdate = ActiveDates.objects.create(
                         datetime=assignedDate, doctor=doc)
+                        
+                        docdate.save()
                     except:
                         pass
         # print(schedual)

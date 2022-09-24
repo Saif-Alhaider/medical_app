@@ -82,7 +82,7 @@ def login(request,user:LoginSchema):
         token = create_jwt_token(queryUser)
         
         return 200,{"token":token,'accountOut':queryUser}
-    except:
+    except CustomUser.DoesNotExist:
         return 404,{"details":"user was not found !"}
     
 

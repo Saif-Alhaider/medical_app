@@ -7,9 +7,9 @@ from pydantic import FutureDate
 
 class WeekDays(Schema):
     sunday:list[time]
-    modnay:list[time]
+    monday:list[time]
     tuesday:list[time]
-    wensday:list[time]
+    wednesday:list[time]
     thursday:list[time]
     friday:list[time]
     saturday:list[time]
