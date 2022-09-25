@@ -111,8 +111,11 @@ class Login extends StatelessWidget {
                               final String token = res['token']['access'];
                               String? fullName =
                                   "${res['accountOut']['first_name']} ${res['accountOut']['last_name']}";
+                              final String role = res['base_role'];
                               prefs.setString('token', token);
                               prefs.setString('fullName', fullName);
+                              prefs.setString('role', role);
+                              
                               // ignore: use_build_context_synchronously
                               Navigator.pushAndRemoveUntil(
                                   context,

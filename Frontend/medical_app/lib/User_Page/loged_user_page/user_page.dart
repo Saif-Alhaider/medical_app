@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/Home/constants.dart';
+import 'package:medical_app/main_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/profile_details.dart';
@@ -11,9 +13,11 @@ import '../hold_on_animation.dart';
 
 class UserPage extends StatefulWidget {
   final String? full_name;
+  final String? role;
   const UserPage({
     Key? key,
     required this.full_name,
+    required this.role
   }) : super(key: key);
   @override
   State<UserPage> createState() => _UserPageState();
@@ -54,10 +58,13 @@ class _UserPageState extends State<UserPage> {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: ProfileDetails(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: ProfileDetails(role: widget.role),
             ),
+            // -------doctor section-------------
+            
+            // -----------logout section-----------
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Container(
@@ -106,7 +113,7 @@ class _UserPageState extends State<UserPage> {
                       break_line: false),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

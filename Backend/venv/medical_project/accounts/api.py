@@ -2,6 +2,8 @@ import email
 from ninja import Router
 from .authSchema import AccountSchema, AuthOut, AccountError, UserHealthInfoSchema,LoginSchema
 from .models import CustomUser, Doctor, Patient
+from patient.models import PatientProfile
+from doctor.models import DoctorProfile
 from django.contrib.auth import get_user_model
 from .authorization import create_jwt_token, AuthBearer
 from user_health_info.models import UserHealthInfo
@@ -73,17 +75,29 @@ def create_user(request, user: AccountSchema):
 }) 
 def login(request,user:LoginSchema):
     try:
-        queryUser = CustomUser.objects.get(email=user.email)
-        querypassword = check_password(user.password,queryUser.password)
+        queryUser = PatientProfile.objects.get(user__email=user.email)
+        querypassword = check_password(user.password,queryUser.user.password)
         
         if not querypassword:
             raise ValueError("the password is incorrect")
         
         token = create_jwt_token(queryUser)
         
-        return 200,{"token":token,'accountOut':queryUser}
-    except CustomUser.DoesNotExist:
-        return 404,{"details":"user was not found !"}
+        return 200,{"token":token,'accountOut':queryUser.user,'base_role':"PA"}
+            
+    except PatientProfile.DoesNotExist:
+        try:
+            queryUser = DoctorProfile.objects.get(user__email=user.email)
+            querypassword = check_password(user.password,queryUser.user.password)
+            
+            if not querypassword:
+                raise ValueError("the password is incorrect")
+            
+            token = create_jwt_token(queryUser.user)
+            
+            return 200,{"token":token,'accountOut':queryUser.user,'base_role':"DO"}
+        except DoctorProfile.DoesNotExist:
+            return 404,{"details":"user was not found !"}
     
 
 

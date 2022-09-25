@@ -54,7 +54,12 @@ class HomeContent extends StatelessWidget {
                     case ConnectionState.done:
                     default:
                       if (snapshot.hasError) {
-                        return Text("something went wrong");
+                        return Column(
+                          children: [
+                            Icon(Icons.error),
+                            Text("something went wrong please try again later")
+                          ],
+                        );
                       } else if (snapshot.hasData) {
                         return DoctorsCards(
                           info: snapshot.data,
@@ -90,7 +95,12 @@ class HomeContent extends StatelessWidget {
                     case ConnectionState.done:
                     default:
                       if (snapshot.hasError) {
-                        return Text("something went wrong");
+                        return Column(
+                          children: [
+                            Icon(Icons.error),
+                            Text("something went wrong please try again later")
+                          ],
+                        );
                       } else if (snapshot.hasData) {
                         return DoctorsCards(
                           info: snapshot.data,

@@ -23,7 +23,7 @@ class SinglDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
             width: double.maxFinite,
-            height: 75,
+            height: 70,
             child: Row(
               
               children: [

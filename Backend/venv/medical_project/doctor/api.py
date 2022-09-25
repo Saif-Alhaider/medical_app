@@ -81,7 +81,8 @@ def create_user_doctor(request, user: AccountSchema):
         token = create_jwt_token(newUser)
         return 201, {
             "token": token,
-            "accountOut": newUser
+            "accountOut": newUser,
+            "base_role":"DO"
         }
     return 401, {"details": "already an account"}
 

@@ -25,11 +25,12 @@ class _MainViewState extends State<MainView> {
   Future<Null> getUserData() async {
     final prefs = await SharedPreferences.getInstance();
     final full_name = prefs.getString("fullName");
+    final role = prefs.getString("role");
     prefs.getString('token') == null
         ? pages.insert(2, RegisterEmail())
-        : pages.insert(2, UserPage(full_name:full_name));
+        : pages.insert(2, UserPage(full_name:full_name,role: role,));
 
-    if (pages[2] == UserPage(full_name:full_name) && prefs.getString('token') == null) {
+    if (pages[2] == UserPage(full_name:full_name,role: role) && prefs.getString('token') == null) {
       pages[2] = RegisterEmail();
     }
   }

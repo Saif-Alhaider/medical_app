@@ -22,6 +22,7 @@ class AccountOut(Schema):
 class AuthOut(Schema):
     token: TokenOut
     accountOut: AccountOut
+    base_role:str
 
 
 class AccountError(Schema):

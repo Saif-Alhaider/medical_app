@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+
 import 'package:medical_app/Appointments/ScheduleTab.dart';
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/single_detail.dart';
 import 'package:medical_app/User_Page/user%20settings/user_health_info.dart';
@@ -11,7 +12,11 @@ import '../../Notifications/notifications.dart';
 import '../../user settings/user_account_info.dart';
 
 class ProfileDetails extends StatelessWidget {
-  const ProfileDetails({super.key});
+  final String? role;
+  const ProfileDetails({
+    Key? key,
+    this.role,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,13 +72,20 @@ class ProfileDetails extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ScheduleTab(),));
             },
             child: const SinglDetail(
-              break_line: false,
+              break_line: true,
               backgroundIconColor: MainColors.backgroundBlue,
               icon: FontAwesome5.calendar_alt,
               iconColor: MainColors.foreignBlue,
               title: "المواعيد",
             ),
           ),
+          role == "DO"?SinglDetail(
+                      backgroundIconColor: MainColors.backgroundRed,
+                      icon: Icons.people,
+                      iconColor: MainColors.foreignRed,
+                      title: "المراجعين",
+                      break_line: false):Container()
+          ,
         ],
       ),
     );
