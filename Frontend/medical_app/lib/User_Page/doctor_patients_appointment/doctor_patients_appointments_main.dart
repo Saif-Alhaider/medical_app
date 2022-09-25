@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart' hide TextDirection;
+import 'package:medical_app/User_Page/doctor_patients_appointment/patient_info/patient_info.dart';
 import 'package:medical_app/main_colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/reuseable_widgets/waiting.dart';
@@ -48,6 +49,9 @@ class DoctorPatientsAppointmentsMain extends StatelessWidget {
                             child: ListTileTheme(
                                 tileColor: MainColors.backgroundGreen,
                                 child: ListTile(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => PatientInfo(),));
+                                  },
                                   title: Text(
                                     snapshot.data[index]['patient name'],
                                     style: GoogleFonts.vazirmatn(fontSize: 30),
@@ -90,7 +94,7 @@ Future? getDoctorPatients() async {
       .map((e) => {
             'patient name': e['patient name'],
             'date': DateFormat('yyyy-MM-dd, EEEE, hh:mm')
-                .format(DateTime.parse(e['date']))
+                .format(DateTime.parse(e['date']).toLocal())
           })
       .toList();
   return result;

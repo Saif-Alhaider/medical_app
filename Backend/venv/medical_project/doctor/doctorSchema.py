@@ -1,7 +1,9 @@
+import email
+from msilib import schema
 from .models import DoctorProfile
 from speciality.models import Specialitiy
 from ninja import Schema,ModelSchema
-        
+from user_health_info.models import UserHealthInfo
 class DoctorInfoSchema(ModelSchema):
     speciality:str
     country:str
@@ -21,4 +23,15 @@ class GetDoctorInfoSchema(Schema):
     email:str
     country:str
     image:str
+    
+    
+class HealthInfoSchema(ModelSchema):
+    class Config:
+        model = UserHealthInfo
+        model_fields = "__all__"
+        
+class DoctorPatientInfo(Schema):
+    fullName:str
+    email:str
+    health_info:HealthInfoSchema
     

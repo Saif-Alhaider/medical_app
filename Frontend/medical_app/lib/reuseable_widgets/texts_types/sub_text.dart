@@ -11,7 +11,7 @@ class SubText extends StatelessWidget {
     this.size = 22.0,
     required this.text,
     this.color = const Color(0xff929BA1),
-     this.textAlign = TextAlign.center,
+    this.textAlign = TextAlign.center,
   }) : super(key: key);
 
   @override
@@ -21,6 +21,7 @@ class SubText extends StatelessWidget {
       textAlign: textAlign,
       style: GoogleFonts.vazirmatn(
           fontSize: size, fontWeight: FontWeight.w400, color: color),
+      overflow: TextOverflow.ellipsis,
     );
   }
 }

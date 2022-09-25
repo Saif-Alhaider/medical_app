@@ -5,7 +5,7 @@ from ninja import Router
 from accounts.authSchema import AccountSchema, AuthOut, AccountError
 from accounts.models import CustomUser, Doctor, Patient
 from accounts.authorization import create_jwt_token, AuthBearer
-from .doctorSchema import DoctorInfoSchema, DoctorInfoErr,GetDoctorInfoSchema
+from .doctorSchema import *
 from .models import DoctorProfile
 from speciality.models import Specialitiy
 from django_countries.fields import Country
@@ -42,7 +42,7 @@ def get_doctors(request):
         data.append({
             "full name": str(doctor.user.fullName),
             "speciality": str(doctor.speciality.title),
-            "image":"images/"+str(doctor.image)
+            "image": "images/"+str(doctor.image)
         })
     return data
 
@@ -82,7 +82,7 @@ def create_user_doctor(request, user: AccountSchema):
         return 201, {
             "token": token,
             "accountOut": newUser,
-            "base_role":"DO"
+            "base_role": "DO"
         }
     return 401, {"details": "already an account"}
 
@@ -91,33 +91,33 @@ def create_user_doctor(request, user: AccountSchema):
 
 @router.get('create_specialities')
 def create_specialities(request):
-    spes = ['General',' Allergist','Anesthesiologist','Cardiologist','Dermatologist','Endocrinologist','Gastroenterologist','Hematologist','Infectious Disease Specialist','Nephrologist','Neurologist','Oncologist','Ophthalmologist','Orthopedic Surgeon','Otolaryngologist','Pathologist','Pediatrician','Psychiatrist','Pulmonologist','Radiologist','Rheumatologist','Urologist','Vascular Surgeon','Other']
+    spes = ['General', ' Allergist', 'Anesthesiologist', 'Cardiologist', 'Dermatologist', 'Endocrinologist', 'Gastroenterologist', 'Hematologist', 'Infectious Disease Specialist', 'Nephrologist', 'Neurologist',
+            'Oncologist', 'Ophthalmologist', 'Orthopedic Surgeon', 'Otolaryngologist', 'Pathologist', 'Pediatrician', 'Psychiatrist', 'Pulmonologist', 'Radiologist', 'Rheumatologist', 'Urologist', 'Vascular Surgeon', 'Other']
     for spe in spes:
         newspe = Specialitiy.objects.create(title=spe)
         newspe.save()
     return str(Specialitiy.objects.all())
 
 
-
-@router.get('/doctor_info',response={
-    200:GetDoctorInfoSchema,
-    404:DoctorInfoErr
+@router.get('/doctor_info', response={
+    200: GetDoctorInfoSchema,
+    404: DoctorInfoErr
 })
-def doctor_info(request,doctor_id:int):
+def doctor_info(request, doctor_id: int):
     try:
         doctor = DoctorProfile.objects.get(doctor_id=doctor_id)
-        return 200,{
-            "fullName":doctor.user.fullName,
-            "description":doctor.description,
-            "email":doctor.user.email,
-            "country":doctor.country.name,
-            "image":str(doctor.image)
+        return 200, {
+            "fullName": doctor.user.fullName,
+            "description": doctor.description,
+            "email": doctor.user.email,
+            "country": doctor.country.name,
+            "image": str(doctor.image)
         }
     except DoctorProfile.DoesNotExist:
-        return 404,{"details":"doctor not found"}
+        return 404, {"details": "doctor not found"}
 
 
-@router.get('doctor_patients_appointments',auth=AuthBearer())
+@router.get('doctor_patients_appointments', auth=AuthBearer())
 def doctor_patients_appointments(request):
     requested_user_email = request.auth["EMAIL"]
     try:
@@ -125,9 +125,25 @@ def doctor_patients_appointments(request):
         data = []
         for appointment in Appointments.objects.filter(doctor=doctor):
             data.append({
-                "patient name":appointment.user.fullName,
-                "date":appointment.date
-            })    
+                "id": appointment.user.id,
+                "patient name": appointment.user.fullName,
+                "date": appointment.date,
+            })
         return data
     except DoctorProfile.DoesNotExist:
-        return {"details":"doctor not found"}
+        return {"details": "doctor not found"}
+
+
+@router.get("doctor_patient_info", auth=AuthBearer(), response={
+    200: DoctorPatientInfo,
+    404: DoctorInfoErr
+})
+def doctor_patient_info(request, user_id: int):
+    requested_user_email = request.auth["EMAIL"]
+    try:
+        doctor = DoctorProfile.objects.get(user__email=requested_user_email)
+        patient = Appointments.objects.get(
+            doctor=doctor, user__id=user_id).user
+        return 200, {"fullName": patient.fullName, "email": patient.email, "health_info": patient.health_info.__dict__}
+    except DoctorProfile.DoesNotExist:
+        return 404,{"details": "doctor not found", }
