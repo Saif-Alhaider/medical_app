@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../Home/constants.dart';
-import '../../reuseable_widgets/break_line.dart';
-import '../../reuseable_widgets/texts_types/headline_text.dart';
-import '../../reuseable_widgets/texts_types/sub_text.dart';
+import '../../../Home/constants.dart';
+import '../../../reuseable_widgets/break_line.dart';
+import '../../../reuseable_widgets/texts_types/headline_text.dart';
+import '../../../reuseable_widgets/texts_types/sub_text.dart';
 
 class FirstCard extends StatelessWidget {
   const FirstCard({super.key});

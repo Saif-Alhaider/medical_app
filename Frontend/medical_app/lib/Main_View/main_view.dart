@@ -4,7 +4,7 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Appointments/ScheduleTab.dart';
+import '../User_Page/Appointments/ScheduleTab.dart';
 import '../Clinic/clinic_main.dart';
 import '../Home/home_main.dart';
 import '../Medicines/medicines_main.dart';

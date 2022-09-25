@@ -3,9 +3,9 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:medical_app/main_colors.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 
-import '../../Home/constants.dart';
-import '../../prescription/prescription_main.dart';
-import '../../reuseable_widgets/texts_types/sub_text.dart';
+import '../../../Home/constants.dart';
+import '../../../prescription/prescription_main.dart';
+import '../../../reuseable_widgets/texts_types/sub_text.dart';
 
 class ReceiptSection extends StatelessWidget {
   const ReceiptSection({super.key});

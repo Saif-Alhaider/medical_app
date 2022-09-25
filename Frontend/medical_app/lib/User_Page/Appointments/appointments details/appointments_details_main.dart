@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medical_app/Appointments/appointments%20details/first_card.dart';
-import 'package:medical_app/Appointments/appointments%20details/receipt_section.dart';
-import 'package:medical_app/Appointments/appointments%20details/second_card.dart';
+import 'package:medical_app/User_Page/Appointments/appointments%20details/first_card.dart';
+import 'package:medical_app/User_Page/Appointments/appointments%20details/receipt_section.dart';
+import 'package:medical_app/User_Page/Appointments/appointments%20details/second_card.dart';
 import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';

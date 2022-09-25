@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../reuseable_widgets/texts_types/headline_text.dart';
+import '../../reuseable_widgets/texts_types/headline_text.dart';
 import 'appointments details/appointments_details_main.dart';
 
 class AppointmentCard extends StatelessWidget {

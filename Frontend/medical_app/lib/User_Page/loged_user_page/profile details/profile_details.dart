@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 
-import 'package:medical_app/Appointments/ScheduleTab.dart';
+import 'package:medical_app/User_Page/Appointments/ScheduleTab.dart';
+import 'package:medical_app/User_Page/doctor_patients_appointment/doctor_patients_appointments_main.dart';
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/single_detail.dart';
 import 'package:medical_app/User_Page/user%20settings/user_health_info.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
@@ -79,12 +80,15 @@ class ProfileDetails extends StatelessWidget {
               title: "المواعيد",
             ),
           ),
-          role == "DO"?SinglDetail(
-                      backgroundIconColor: MainColors.backgroundRed,
-                      icon: Icons.people,
-                      iconColor: MainColors.foreignRed,
-                      title: "المراجعين",
-                      break_line: false):Container()
+          if (role == "DO") GestureDetector(
+            onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorPatientsAppointmentsMain(),)),
+            child: const SinglDetail(
+                        backgroundIconColor: MainColors.backgroundRed,
+                        icon: Icons.people,
+                        iconColor: MainColors.foreignRed,
+                        title: "المراجعين",
+                        break_line: false),
+          ) else Container()
           ,
         ],
       ),

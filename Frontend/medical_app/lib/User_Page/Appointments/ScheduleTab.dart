@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medical_app/Appointments/appointment_card.dart';
+import 'package:medical_app/User_Page/Appointments/appointment_card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
-import '../reuseable_widgets/waiting.dart';
+import '../../reuseable_widgets/waiting.dart';
 
 class ScheduleTab extends StatefulWidget {
   const ScheduleTab({super.key});
