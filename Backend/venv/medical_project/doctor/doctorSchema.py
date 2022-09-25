@@ -15,3 +15,10 @@ class DoctorInfoSchema(ModelSchema):
 class DoctorInfoErr(Schema):
     details:str
 
+class GetDoctorInfoSchema(Schema):
+    fullName:str
+    description:str
+    email:str
+    country:str
+    image:str
+    

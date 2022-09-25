@@ -4,7 +4,7 @@ from ninja import Router
 from accounts.authSchema import AccountSchema, AuthOut, AccountError
 from accounts.models import CustomUser, Doctor, Patient
 from accounts.authorization import create_jwt_token, AuthBearer
-from .doctorSchema import DoctorInfoSchema, DoctorInfoErr
+from .doctorSchema import DoctorInfoSchema, DoctorInfoErr,GetDoctorInfoSchema
 from .models import DoctorProfile
 from speciality.models import Specialitiy
 from django_countries.fields import Country
@@ -92,3 +92,22 @@ def create_specialities(request):
         newspe = Specialitiy.objects.create(title=spe)
         newspe.save()
     return str(Specialitiy.objects.all())
+
+
+
+@router.get('/doctor_info',response={
+    200:GetDoctorInfoSchema,
+    404:DoctorInfoErr
+})
+def doctor_info(request,doctor_id:int):
+    try:
+        doctor = DoctorProfile.objects.get(doctor_id=doctor_id)
+        return 200,{
+            "fullName":doctor.user.fullName,
+            "description":doctor.description,
+            "email":doctor.user.email,
+            "country":doctor.country.name,
+            "image":str(doctor.image)
+        }
+    except DoctorProfile.DoesNotExist:
+        return 404,{"details":"doctor not found"}
