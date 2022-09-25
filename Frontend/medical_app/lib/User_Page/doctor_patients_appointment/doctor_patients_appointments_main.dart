@@ -29,45 +29,47 @@ class DoctorPatientsAppointmentsMain extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Directionality(
             textDirection: TextDirection.rtl,
-            child: FutureBuilder(future: getDoctorPatients(),builder: (context, snapshot) {
-              switch(snapshot.connectionState){
-                case ConnectionState.waiting:
-                  return Waiting();
-                case ConnectionState.done:
-                default:
-                  if(snapshot.hasError){
-                    return Text("something went wrong");
-
-                  }else if(snapshot.hasData){
-                    return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 5),
-                  child: ListTileTheme(
-                      tileColor: MainColors.backgroundGreen,
-                      child: ListTile(
-                        title: Text(
-                          snapshot.data[index]['patient name'],
-                          style: GoogleFonts.vazirmatn(fontSize: 30),
-                        ),
-                        subtitle: Text(
-                          snapshot.data[index]['date'],
-                          style: GoogleFonts.vazirmatn(fontSize: 25),
-                        ),
-                        trailing: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.arrow_forward_ios),
-                        ),
-                      )),
-                );
+            child: FutureBuilder(
+              future: getDoctorPatients(),
+              builder: (context, snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.waiting:
+                    return Waiting();
+                  case ConnectionState.done:
+                  default:
+                    if (snapshot.hasError) {
+                      return Text("something went wrong");
+                    } else if (snapshot.hasData) {
+                      return ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 5),
+                            child: ListTileTheme(
+                                tileColor: MainColors.backgroundGreen,
+                                child: ListTile(
+                                  title: Text(
+                                    snapshot.data[index]['patient name'],
+                                    style: GoogleFonts.vazirmatn(fontSize: 30),
+                                  ),
+                                  subtitle: Text(
+                                    snapshot.data[index]['date'],
+                                    style: GoogleFonts.vazirmatn(fontSize: 18),
+                                  ),
+                                  trailing: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.arrow_forward_ios),
+                                  ),
+                                )),
+                          );
+                        },
+                      );
+                    } else {
+                      return Text("there is no data");
+                    }
+                }
               },
-            );
-                  }else{
-                    return Text("there is no data");
-                  }
-              }
-            },)),
+            )),
       )),
     );
   }
@@ -78,11 +80,18 @@ Future? getDoctorPatients() async {
       "http://10.0.2.2:8000/api/doctor/doctor_patients_appointments";
   var prefs = await SharedPreferences.getInstance();
   String? token = prefs.getString('token');
-  
+
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
     'Authorization': 'Bearer $token',
   });
-  print(DateTime.parse(jsonDecode(response.body)[0]['date']));
-  return jsonDecode(response.body);
+  var result = jsonDecode(response.body);
+  result = result
+      .map((e) => {
+            'patient name': e['patient name'],
+            'date': DateFormat('yyyy-MM-dd, EEEE, hh:mm')
+                .format(DateTime.parse(e['date']))
+          })
+      .toList();
+  return result;
 }
