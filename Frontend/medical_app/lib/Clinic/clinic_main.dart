@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
@@ -6,8 +8,12 @@ import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../doctor_page/doctor_page.dart';
+import '../models/doctor/doctorModel.dart';
 import '../models/doctors_images.dart';
 import '../reuseable_widgets/doctors_cards/doctors_cards.dart';
+import 'package:http/http.dart' as http;
+
+import '../reuseable_widgets/waiting.dart';
 
 class ClinicMain extends StatelessWidget {
   const ClinicMain({super.key});
@@ -107,13 +113,32 @@ class ClinicMain extends StatelessWidget {
                 ],
                 ),
                 height: 350,
-                child: DoctorsCards(info: doctorsInfo,
-                whereToGo: DoctorPage(
-                  name: "احمد",
-                  Speciality: "باطنية",
-                  rate: 4,
-                  img: '',
-                ),),
+                child: FutureBuilder(
+                future: get_doctors(),
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.waiting:
+                      return Waiting();
+                    case ConnectionState.done:
+                    default:
+                      if (snapshot.hasError) {
+                        return Text("something went wrong");
+                      } else if (snapshot.hasData) {
+                        return DoctorsCards(
+                          info: snapshot.data,
+                          whereToGo: DoctorPage(
+                            name: "احمد",
+                            Speciality: "باطنية",
+                            rate: 4,
+                            img: '',
+                          ),
+                        );
+                      } else {
+                        return Text("there is no data");
+                      }
+                  }
+                },
+              ),
               )
                 ],
                 ),
@@ -134,4 +159,24 @@ class ClinicMain extends StatelessWidget {
       ),
     );
   }
+}
+
+
+Future<List<Doctor>> get_doctors() async {
+  const String url = 'http://10.0.2.2:8000/api/doctor/doctors';
+  var response = await http.get(Uri.parse(url), headers: {
+    "Content-Type": "application/json",
+  });
+  final body = jsonDecode(response.body) as List;
+
+  // ignore: unnecessary_cast
+  var recievedDoctors = body
+      .map(
+        (e) => Doctor(
+            full_name: e['full name'],
+            speciality: e['speciality'],
+            image: "http://10.0.2.2:8000/${e['image']}"),
+      )
+      .toList() as List<Doctor>;
+  return recievedDoctors;
 }

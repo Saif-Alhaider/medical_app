@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/models/doctor/doctorModel.dart';
 
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
 
 
 class DoctorsCards extends StatelessWidget {
-  final List<Map> info;
+  final List<Doctor>? info;
   final Widget whereToGo;
 
   const DoctorsCards({
@@ -28,7 +29,7 @@ class DoctorsCards extends StatelessWidget {
       height: 350,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: info.length,
+        itemCount: info!.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () => Navigator.push(
@@ -49,16 +50,16 @@ class DoctorsCards extends StatelessWidget {
                   children: [
                     SizedBox(
                         height: 200,
-                        child: Image.asset(
-                          info[index]['image'],
+                        child: Image.network(
+                          info![index].image,
                           fit: BoxFit.cover,
                         )),
                     SubText(
-                      text: info[index]['name'],
+                      text: info![index].full_name,
                       color: Colors.black,
                     ),
                     SubText(
-                      text: info[index]['details'],
+                      text: info![index].speciality,
                       size: 15,
                     )
                   ],
