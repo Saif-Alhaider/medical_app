@@ -31,6 +31,14 @@ class _ScheduleTabState extends State<ScheduleTab>
   Widget build(BuildContext context) {
     final TabController _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: Color(0xfff6f6f6),
+        elevation: 0,
+      ),
       backgroundColor: Colors.grey[60],
       body: Directionality(
         textDirection: TextDirection.rtl,

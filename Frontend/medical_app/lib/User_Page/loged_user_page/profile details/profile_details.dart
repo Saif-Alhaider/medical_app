@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:medical_app/Appointments/ScheduleTab.dart';
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/single_detail.dart';
 import 'package:medical_app/User_Page/user%20settings/user_health_info.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
@@ -61,12 +62,17 @@ class ProfileDetails extends StatelessWidget {
               title: "الحساب",
             ),
           ),
-          const SinglDetail(
-            break_line: false,
-            backgroundIconColor: MainColors.backgroundRed,
-            icon: FontAwesome5.heart,
-            iconColor: MainColors.foreignRed,
-            title: "المفضلة",
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ScheduleTab(),));
+            },
+            child: const SinglDetail(
+              break_line: false,
+              backgroundIconColor: MainColors.backgroundBlue,
+              icon: FontAwesome5.calendar_alt,
+              iconColor: MainColors.foreignBlue,
+              title: "المواعيد",
+            ),
           ),
         ],
       ),

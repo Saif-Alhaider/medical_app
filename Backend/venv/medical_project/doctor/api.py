@@ -1,3 +1,4 @@
+from datetime import date
 from turtle import title
 from unicodedata import name
 from ninja import Router
@@ -8,6 +9,8 @@ from .doctorSchema import DoctorInfoSchema, DoctorInfoErr,GetDoctorInfoSchema
 from .models import DoctorProfile
 from speciality.models import Specialitiy
 from django_countries.fields import Country
+from appointments.models import Appointments
+
 
 router = Router(tags=['doctor'])
 
@@ -111,3 +114,19 @@ def doctor_info(request,doctor_id:int):
         }
     except DoctorProfile.DoesNotExist:
         return 404,{"details":"doctor not found"}
+
+
+@router.get('doctor_patients_appointments',auth=AuthBearer())
+def doctor_patients_appointments(request):
+    requested_user_email = request.auth["EMAIL"]
+    try:
+        doctor = DoctorProfile.objects.get(user__email=requested_user_email)
+        data = []
+        for appointment in Appointments.objects.filter(doctor=doctor):
+            data.append({
+                "patient name":appointment.user.fullName,
+                "date":appointment.date
+            })    
+        return data
+    except DoctorProfile.DoesNotExist:
+        return {"details":"doctor not found"}
