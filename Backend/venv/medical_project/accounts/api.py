@@ -63,7 +63,8 @@ def create_user(request, user: AccountSchema):
         token = create_jwt_token(newUser)
         return 201, {
             "token": token,
-            "accountOut": newUser
+            "accountOut": newUser,
+            "base_role":"PA"
         }
     return 401, {"details": "already an account"}
 

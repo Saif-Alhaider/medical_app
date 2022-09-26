@@ -97,30 +97,38 @@ class HealthInfoRegister extends StatelessWidget {
                 ],
               ),
               ConstantValues.cardsGap,
+              SizedBox(
+                height: 200,
+                child: Row(
+                  children: [
+                    ConstantValues.cardsGap,
+                    Expanded(
+                        child: InfoCard(
+                            controller: ageController, title: "العمر", unit: "")),
+                  ],
+                ),
+              ),
               Row(
                 children: [
-                  // Expanded(
-                  //   child: Container(
-                  //     padding: const EdgeInsets.symmetric(horizontal: 5),
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.white,
-                  //       borderRadius: BorderRadius.circular(12),
-                  //     ),
-                  //     height: 60,
-                  //     child: Directionality(
-                  //       textDirection: TextDirection.rtl,
-                  //       child: DropDownBloodType(bloodType: bloodType),
-                  //     ),
-                  //   ),
-                  // ),
-                  ConstantValues.cardsGap,
                   Expanded(
-                      child: InfoCard(
-                          controller: ageController, title: "العمر", unit: "")),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      height: 60,
+                      child: Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: DropDownBloodType(bloodType: bloodType),
+                      ),
+                    ),
+                  )
                 ],
               ),
               ConstantValues.cardsGap,
               DescriptionInfo(controller: descriptionController),
+              ConstantValues.cardsGap,
               ConstantValues.cardsGap,
               NextSkipButtons(nextFunction: () async {
                 var pref = await SharedPreferences.getInstance();
@@ -154,6 +162,8 @@ class HealthInfoRegister extends StatelessWidget {
                       (route) => false);
                 });
               }),
+              ConstantValues.cardsGap,
+              ConstantValues.cardsGap,
             ],
           ),
         ),
