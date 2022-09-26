@@ -10,7 +10,7 @@ import '../Home/home_main.dart';
 import '../Medicines/medicines_main.dart';
 import '../User_Page/Login/login_main.dart';
 import '../User_Page/Register/registerEmail.dart';
-import '../User_Page/health_info_register_page/health_info_main.dart';
+import '../User_Page/Register/health_info_register_page/health_info_main.dart';
 import '../User_Page/loged_user_page/user_page.dart';
 import '../prescription/prescription_main.dart';
 import 'bottom_navigation_bar.dart';

@@ -50,7 +50,6 @@ def user_health_info(request, user_health_info: UserHealthInfoSchema):
 })
 def create_user(request, user: AccountSchema):
     try:
-
         Patient.objects.get(
             email=user.email
         )
@@ -82,7 +81,7 @@ def login(request,user:LoginSchema):
         if not querypassword:
             raise ValueError("the password is incorrect")
         
-        token = create_jwt_token(queryUser)
+        token = create_jwt_token(queryUser.user)
         
         return 200,{"token":token,'accountOut':queryUser.user,'base_role':"PA"}
             

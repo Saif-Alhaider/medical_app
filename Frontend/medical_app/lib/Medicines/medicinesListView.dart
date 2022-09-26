@@ -167,7 +167,7 @@ Future<List>? get_medicines() async {
               ? MedicineInfo(
                   title: e['title'],
                   description: e['description'],
-                  medicineType: MedicineType.syring,medicine_id: e['id'])
+                  medicineType: MedicineType.syring,medicine_id: e['id'].hashCode)
               : e['medicinetype'] == 'Syrup'
                   ? MedicineInfo(
                       title: e['title'],

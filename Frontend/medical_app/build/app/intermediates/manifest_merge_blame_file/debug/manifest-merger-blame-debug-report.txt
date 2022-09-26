@@ -46,7 +46,7 @@
 33    <application
 34        android:name="android.app.Application"
 35        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-35-->[androidx.core:core:1.6.0] C:\Users\HP\.gradle\caches\transforms-3\acbce933e4b464a5224ed377a62db1f5\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+35-->[androidx.core:core:1.8.0] C:\Users\HP\.gradle\caches\transforms-3\d363e3b5616f580c766e3e2b3c05f27d\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
 36        android:debuggable="true"
 37        android:icon="@mipmap/ic_launcher"
 38        android:label="medical_app"
@@ -84,27 +84,45 @@
 70            android:name="flutterEmbedding"
 71            android:value="2" />
 72
-73        <activity
-73-->[:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
-74            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-74-->[:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
-75            android:exported="false"
-75-->[:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
-76            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-76-->[:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
-77
-78        <uses-library
-78-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-79            android:name="androidx.window.extensions"
-79-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-80            android:required="false" />
-80-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-81        <uses-library
-81-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-82            android:name="androidx.window.sidecar"
-82-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-83            android:required="false" />
-83-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-84    </application>
-85
-86</manifest>
+73        <provider
+73-->[:image_picker_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+74            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+74-->[:image_picker_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+75            android:authorities="com.example.medical_app.flutter.image_provider"
+75-->[:image_picker_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+76            android:exported="false"
+76-->[:image_picker_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+77            android:grantUriPermissions="true" >
+77-->[:image_picker_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+78            <meta-data
+78-->[:image_picker_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+79                android:name="android.support.FILE_PROVIDER_PATHS"
+79-->[:image_picker_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+80                android:resource="@xml/flutter_image_picker_file_paths" />
+80-->[:image_picker_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+81        </provider>
+82
+83        <activity
+83-->[:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+84            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+84-->[:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+85            android:exported="false"
+85-->[:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+86            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+86-->[:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+87
+88        <uses-library
+88-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+89            android:name="androidx.window.extensions"
+89-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+90            android:required="false" />
+90-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+91        <uses-library
+91-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+92            android:name="androidx.window.sidecar"
+92-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+93            android:required="false" />
+93-->[androidx.window:window:1.0.0-beta04] C:\Users\HP\.gradle\caches\transforms-3\49bc944d29f70d45aa5add8e43e3247e\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+94    </application>
+95
+96</manifest>

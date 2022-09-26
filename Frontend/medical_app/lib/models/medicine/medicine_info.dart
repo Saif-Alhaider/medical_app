@@ -2,11 +2,13 @@ class MedicineInfo {
   String title;
   String description;
   MedicineType medicineType;
+  List? medicine_pharmacies;
   int? medicine_id;
   MedicineInfo({
     required this.title,
     required this.description,
     required this.medicineType,
+    this.medicine_pharmacies,
     this.medicine_id,
   });
 
@@ -24,3 +26,11 @@ class MedicineInfo {
 }
 
 enum MedicineType { pills, syrup, cream, syring }
+
+
+class Pharmacies {
+  final String name;
+  Pharmacies({
+    required this.name,
+  });
+}

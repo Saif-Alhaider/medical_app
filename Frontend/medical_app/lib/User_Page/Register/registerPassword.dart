@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:medical_app/Home/constants.dart';
-import 'package:medical_app/User_Page/health_info_register_page/health_info_main.dart';
+import 'package:medical_app/User_Page/Register/health_info_register_page/health_info_main.dart';
 import 'package:medical_app/auth/auth_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
