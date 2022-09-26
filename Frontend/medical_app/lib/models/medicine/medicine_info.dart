@@ -2,10 +2,12 @@ class MedicineInfo {
   String title;
   String description;
   MedicineType medicineType;
+  int? medicine_id;
   MedicineInfo({
     required this.title,
     required this.description,
     required this.medicineType,
+    this.medicine_id,
   });
 
   get medicine_image {

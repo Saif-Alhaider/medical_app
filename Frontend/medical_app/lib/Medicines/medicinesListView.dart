@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medical_app/Home/constants.dart';
+import 'package:medical_app/Medicines/medicine_screen/medicine_screen.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:medical_app/reuseable_widgets/waiting.dart';
@@ -81,39 +82,48 @@ class _MedicinesListViewState extends State<MedicinesListView> {
                       shrinkWrap: true,
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          margin: const EdgeInsets.only(right: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: const [
-                              BoxShadow(
-                                  color: Color.fromARGB(56, 0, 0, 0),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 8),
-                              BoxShadow(
-                                  color: Color.fromARGB(255, 229, 228, 228),
-                                  offset: Offset(-2, -4),
-                                  blurRadius: 8),
-                            ],
-                          ),
-                          width: 160,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: 80,
-                                child: SvgPicture.asset(
-                                  snapshot.data![index].medicine_image,
-                                  height: 100,
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MedicineScreen(medicine_id: snapshot.data![index].medicine_id),
+                                ));
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Color.fromARGB(56, 0, 0, 0),
+                                    offset: Offset(2, 4),
+                                    blurRadius: 8),
+                                BoxShadow(
+                                    color: Color.fromARGB(255, 229, 228, 228),
+                                    offset: Offset(-2, -4),
+                                    blurRadius: 8),
+                              ],
+                            ),
+                            width: 160,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 80,
+                                  child: SvgPicture.asset(
+                                    snapshot.data![index].medicine_image,
+                                    height: 100,
+                                  ),
                                 ),
-                              ),
-                              ConstantValues.cardsGap,
-                              SubText(
-                                text: snapshot.data![index].title,
-                                color: Colors.black,
-                              )
-                            ],
+                                ConstantValues.cardsGap,
+                                SubText(
+                                  text: snapshot.data![index].title,
+                                  color: Colors.black,
+                                )
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -150,26 +160,26 @@ Future<List>? get_medicines() async {
           ? MedicineInfo(
               title: e['title'],
               description: e['description'],
-              medicineType: MedicineType.cream)
+              medicineType: MedicineType.cream,
+              medicine_id: e['id']
+            )
           : e['medicinetype'] == 'Syring'
               ? MedicineInfo(
                   title: e['title'],
                   description: e['description'],
-                  medicineType: MedicineType.syring)
+                  medicineType: MedicineType.syring,medicine_id: e['id'])
               : e['medicinetype'] == 'Syrup'
                   ? MedicineInfo(
                       title: e['title'],
                       description: e['description'],
-                      medicineType: MedicineType.syrup)
+                      medicineType: MedicineType.syrup,medicine_id: e['id'])
                   : e['medicinetype'] == 'Pills'
                       ? MedicineInfo(
                           title: e['title'],
                           description: e['description'],
-                          medicineType: MedicineType.pills)
+                          medicineType: MedicineType.pills,medicine_id: e['id'])
                       : null;
     },
   ).toList() as List<MedicineInfo>;
   return received_mediciens;
 }
-
-

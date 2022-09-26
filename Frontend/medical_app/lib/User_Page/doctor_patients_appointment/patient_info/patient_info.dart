@@ -29,10 +29,10 @@ class PatientInfo extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Color(0xfff6f6f6),
+        backgroundColor: const Color(0xfff6f6f6),
         elevation: 0,
       ),
       body: Directionality(
@@ -46,17 +46,17 @@ class PatientInfo extends StatelessWidget {
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.waiting:
-                  return Waiting();
+                  return const Waiting();
                 case ConnectionState.done:
                 default:
                   if (snapshot.hasError) {
-                    return Text("something went wrong");
+                    return const Text("something went wrong");
                   } else if (snapshot.hasData) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           width: double.maxFinite,
                           // height: 80,
                           decoration: BoxDecoration(
@@ -98,7 +98,7 @@ class PatientInfo extends StatelessWidget {
                           color: Colors.blue,
                         ),
                         Container(
-                          padding: EdgeInsets.all(18),
+                          padding: const EdgeInsets.all(18),
                           width: double.maxFinite,
                           // height: 80,
                           decoration: BoxDecoration(
@@ -127,11 +127,11 @@ class PatientInfo extends StatelessWidget {
                                 ],
                               ),
                               ConstantValues.cardsGap,
-                              Breakline(),
+                              const Breakline(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Expanded(
+                                  const Expanded(
                                       child: SubText(
                                     text: "العمر:",
                                     size: 30,
@@ -148,11 +148,11 @@ class PatientInfo extends StatelessWidget {
                                   ))
                                 ],
                               ),
-                              Breakline(),
+                              const Breakline(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                children:  [
-                                  Expanded(
+                                children: [
+                                  const Expanded(
                                       child: SubText(
                                     text: "فصيلة الدم:",
                                     size: 30,
@@ -161,19 +161,20 @@ class PatientInfo extends StatelessWidget {
                                   )),
                                   Expanded(
                                       child: SubText(
-                                    text: snapshot.data!.userHealthInfo.blood_type,
+                                    text: snapshot
+                                        .data!.userHealthInfo.blood_type,
                                     size: 30,
                                     textAlign: TextAlign.left,
                                     color: Colors.black,
                                   ))
                                 ],
                               ),
-                              Breakline(),
+                              const Breakline(),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children:  [
-                                  Expanded(
+                                children: [
+                                  const Expanded(
                                       child: SubText(
                                     text: "الطول:",
                                     size: 30,
@@ -182,18 +183,19 @@ class PatientInfo extends StatelessWidget {
                                   )),
                                   Expanded(
                                       child: SubText(
-                                    text:snapshot.data!.userHealthInfo.height.toString() +'cm',
+                                    text:
+                                        '${snapshot.data!.userHealthInfo.height}cm',
                                     size: 30,
                                     textAlign: TextAlign.left,
                                     color: Colors.black,
                                   ))
                                 ],
                               ),
-                              Breakline(),
+                              const Breakline(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                children:  [
-                                  Expanded(
+                                children: [
+                                  const Expanded(
                                       child: SubText(
                                     text: "الوزن:",
                                     size: 30,
@@ -202,20 +204,35 @@ class PatientInfo extends StatelessWidget {
                                   )),
                                   Expanded(
                                       child: SubText(
-                                    text: snapshot.data!.userHealthInfo.weight.toString()+'kg',
+                                    text:
+                                        '${snapshot.data!.userHealthInfo.weight}kg',
                                     size: 30,
                                     textAlign: TextAlign.left,
                                     color: Colors.black,
                                   ))
                                 ],
-                              )
+                              ),
                             ],
                           ),
+                        ),
+                        ConstantValues.cardsGap,
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          color: Colors.white,
+                          height: 200,
+                          width: double.maxFinite,
+                          child: Expanded(
+                              child: Text(
+                            snapshot.data!.userHealthInfo.description == ""
+                                ? "لا توجد ملاحظات"
+                                : "",
+                            style: GoogleFonts.vazirmatn(fontSize: 20),
+                          )),
                         )
                       ],
                     );
                   } else {
-                    return Text("there is not data");
+                    return const Text("there is not data");
                   }
               }
             },

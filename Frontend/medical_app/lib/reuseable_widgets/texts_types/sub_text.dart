@@ -21,7 +21,7 @@ class SubText extends StatelessWidget {
       textAlign: textAlign,
       style: GoogleFonts.vazirmatn(
           fontSize: size, fontWeight: FontWeight.w400, color: color),
-      overflow: TextOverflow.ellipsis,
+      // overflow: TextOverflow.ellipsis,
     );
   }
 }
