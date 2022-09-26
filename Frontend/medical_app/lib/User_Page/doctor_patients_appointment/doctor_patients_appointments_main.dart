@@ -49,8 +49,14 @@ class DoctorPatientsAppointmentsMain extends StatelessWidget {
                             child: ListTileTheme(
                                 tileColor: MainColors.backgroundGreen,
                                 child: ListTile(
-                                  onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => PatientInfo(),));
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PatientInfo(
+                                              userId: snapshot.data[index]
+                                                  ['id']),
+                                        ));
                                   },
                                   title: Text(
                                     snapshot.data[index]['patient name'],
@@ -94,7 +100,8 @@ Future? getDoctorPatients() async {
       .map((e) => {
             'patient name': e['patient name'],
             'date': DateFormat('yyyy-MM-dd, EEEE, hh:mm')
-                .format(DateTime.parse(e['date']).toLocal())
+                .format(DateTime.parse(e['date']).toLocal()),
+            'id': e['id']
           })
       .toList();
   return result;

@@ -8,7 +8,7 @@ class Waiting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-          width: 100, child: Lottie.asset('Assets/Lottie json/loading.json')),
+          width: 300, child: Lottie.asset('Assets/Lottie json/loading.json')),
     );
   }
 }
