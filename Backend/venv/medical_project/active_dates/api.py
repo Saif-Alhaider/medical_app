@@ -15,15 +15,17 @@ router = Router(tags=['active_dates'])
 
 
 @router.get('doctor_active_dates')
-def doctor_active_dates(request):
-    doctors = DoctorProfile.objects.all()
-    data = []
-    for doctor in doctors:
-        data.append({
-            "doctor name": doctor.user.fullName,
-            "active dates": list(doctor.active_date.all().values_list('datetime', flat=True))
-        })
-    return data
+def doctor_active_dates(request, doctor_id: int):
+    doctor = DoctorProfile.objects.get(doctor_id=doctor_id)
+    active_dates = list(
+        doctor.active_date.all().values_list('datetime', flat=True))
+
+    return {
+        "id": doctor.doctor_id,
+        "full name": doctor.user.fullName,
+        "active dated": active_dates,
+
+    }
 
 
 @router.post("create_doctor_schedual", auth=AuthBearer(),)
@@ -33,7 +35,8 @@ def create_doctor_schedual(request, res: WeekDays):
         doc = DoctorProfile.objects.get(
             user__email=requested_user_email
         )
-        schedual = create_doctor_schedual_date_and_time(howManyDays=30,**res.dict())
+        schedual = create_doctor_schedual_date_and_time(
+            howManyDays=30, **res.dict())
 
         for appit in schedual:
             for day in list(appit.values())[0]:
@@ -41,14 +44,13 @@ def create_doctor_schedual(request, res: WeekDays):
                 for onetime in list(day.values())[0]:
 
                     requestedDate = f"{date}, {onetime}"
-                    # print()
                     assignedDate = datetime.strptime(
                         requestedDate, '%Y-%m-%d, %H:%M:%S')
 
                     try:
                         docdate = ActiveDates.objects.create(
-                        datetime=assignedDate, doctor=doc)
-                        
+                            datetime=assignedDate, doctor=doc)
+
                         docdate.save()
                     except:
                         pass
@@ -56,37 +58,3 @@ def create_doctor_schedual(request, res: WeekDays):
         return {"final": schedual}
     except DoctorProfile.DoesNotExist:
         return {"details": "only doctors are allowed to change their schedual"}
-
-
-# sunday=res.sunday,monday=res.modnay,tuesday=res.tuesday,wednesday=res.wensday,thursday=res.thursday,friday=res.friday,saturday=res.saturday
-# , response={200: WeekDays}
-
-# {
-#   "sunday": [
-#     "10:30"
-#   ],
-#   "modnay": [
-#     "9:30"
-#   ],
-#   "tuesday": [
-#     "11:45"
-#   ],
-#   "wensday": [
-#     "23:20"
-#   ],
-#   "thursday": [
-#     "4:30"
-#   ],
-#   "friday": [
-#     "7:15"
-#   ],
-#   "saturday": [
-#     "3:12"
-#   ]
-# }
-
-
-# response={
-#     201:SchedualSchema,
-#     404:AccountError,
-# }

@@ -42,7 +42,8 @@ def get_doctors(request):
         data.append({
             "full name": str(doctor.user.fullName),
             "speciality": str(doctor.speciality.title),
-            "image": "images/"+str(doctor.image)
+            "image": "images/"+str(doctor.image),
+            "id":doctor.doctor_id
         })
     return data
 
@@ -106,12 +107,15 @@ def create_specialities(request):
 def doctor_info(request, doctor_id: int):
     try:
         doctor = DoctorProfile.objects.get(doctor_id=doctor_id)
+        active_dates = list(
+        doctor.active_date.all().values_list('datetime', flat=True))
         return 200, {
             "fullName": doctor.user.fullName,
             "description": doctor.description,
             "email": doctor.user.email,
             "country": doctor.country.name,
-            "image": str(doctor.image)
+            "image": str(doctor.image),
+            "active_dates":active_dates
         }
     except DoctorProfile.DoesNotExist:
         return 404, {"details": "doctor not found"}

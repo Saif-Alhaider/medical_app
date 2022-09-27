@@ -16,12 +16,12 @@ import '../reuseable_widgets/texts_types/sub_text.dart';
 class DoctorPersonalInfoMain extends StatelessWidget {
   String img;
   String name;
-  int rate;
+  // int rate;
 
   DoctorPersonalInfoMain({
     required this.img,
     required this.name,
-    required this.rate,
+    // required this.rate,
     super.key,
   });
 
@@ -39,7 +39,7 @@ class DoctorPersonalInfoMain extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: Image.asset(img).image,
+                image: Image.network(img).image,
               ),
             ),
           ),
@@ -54,7 +54,7 @@ class DoctorPersonalInfoMain extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children:  [
                   HeadLineText(
-                    text: name,
+                    text: "$name",
                     color: Colors.black,
                     size: 25,
                     lineHeight: 1,
@@ -64,7 +64,7 @@ class DoctorPersonalInfoMain extends StatelessWidget {
                   ),
                 ],
               ),
-              StartRate(rate: rate, size: 24,),
+              // StartRate(rate: rate, size: 24,),
             ],
           ),
           SizedBox(

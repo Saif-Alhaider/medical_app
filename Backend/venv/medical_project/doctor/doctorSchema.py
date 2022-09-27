@@ -1,3 +1,4 @@
+from datetime import datetime
 import email
 from msilib import schema
 from .models import DoctorProfile
@@ -23,6 +24,7 @@ class GetDoctorInfoSchema(Schema):
     email:str
     country:str
     image:str
+    active_dates:list[datetime]
     
     
 class HealthInfoSchema(ModelSchema):

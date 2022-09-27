@@ -127,10 +127,7 @@ class ClinicMain extends StatelessWidget {
                         return DoctorsCards(
                           info: snapshot.data,
                           whereToGo: DoctorPage(
-                            name: "احمد",
-                            Speciality: "باطنية",
-                            rate: 4,
-                            img: '',
+                            doctor_id: 23,
                           ),
                         );
                       } else {

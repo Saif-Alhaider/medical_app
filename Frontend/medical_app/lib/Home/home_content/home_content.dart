@@ -55,7 +55,7 @@ class HomeContent extends StatelessWidget {
                     default:
                       if (snapshot.hasError) {
                         return Column(
-                          children: [
+                          children:const [
                             Icon(Icons.error),
                             Text("something went wrong please try again later")
                           ],
@@ -64,10 +64,7 @@ class HomeContent extends StatelessWidget {
                         return DoctorsCards(
                           info: snapshot.data,
                           whereToGo: DoctorPage(
-                            name: "احمد",
-                            Speciality: "باطنية",
-                            rate: 4,
-                            img: '',
+                            doctor_id: 23,
                           ),
                         );
                       } else {
@@ -128,7 +125,6 @@ Future<List<Doctor>> get_doctors() async {
   final body = jsonDecode(response.body) as List;
 
   // ignore: unnecessary_cast
-  print(body[0]);
   var recievedDoctors = body
       .map(
         (e) => Doctor(
@@ -136,6 +132,6 @@ Future<List<Doctor>> get_doctors() async {
             speciality: e['speciality'],
             image: "http://10.0.2.2:8000/${e['image']}"),
       )
-      .toList() as List<Doctor>;
+      .toList();
   return recievedDoctors;
 }
