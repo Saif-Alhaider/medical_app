@@ -7,6 +7,7 @@ import 'package:medical_app/Home/constants.dart';
 
 import 'package:medical_app/Home/home_content/specialities/specialities.dart';
 import 'package:medical_app/doctor_page/doctor_page.dart';
+import 'package:medical_app/more_screen/more_screen.dart';
 import 'package:medical_app/reuseable_widgets/doctors_cards/doctors_cards.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
@@ -33,14 +34,23 @@ class HomeContent extends StatelessWidget {
               ConstantValues.cardsGap,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  HeadLineText(
+                children: [
+                  const HeadLineText(
                     text: "الاطباء",
                     lineHeight: 1,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
-                    child: SubText(text: "المزيد"),
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: Size(50, 30),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            alignment: Alignment.centerLeft),
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => MoreScreen(),));
+                        },
+                        child: SubText(text: "المزيد")),
                   )
                 ],
               ),
@@ -55,7 +65,7 @@ class HomeContent extends StatelessWidget {
                     default:
                       if (snapshot.hasError) {
                         return Column(
-                          children:const [
+                          children: const [
                             Icon(Icons.error),
                             Text("something went wrong please try again later")
                           ],
@@ -63,9 +73,7 @@ class HomeContent extends StatelessWidget {
                       } else if (snapshot.hasData) {
                         return DoctorsCards(
                           info: snapshot.data,
-                          whereToGo: DoctorPage(
-                            doctor_id: 23,
-                          ),
+                          
                         );
                       } else {
                         return Text("there is no data");
@@ -101,7 +109,7 @@ class HomeContent extends StatelessWidget {
                       } else if (snapshot.hasData) {
                         return DoctorsCards(
                           info: snapshot.data,
-                          whereToGo: ClinicMain(),
+                          
                         );
                       } else {
                         return Text("there is no data");
@@ -117,21 +125,20 @@ class HomeContent extends StatelessWidget {
   }
 }
 
-Future<List<Doctor>> get_doctors() async {
-  const String url = 'http://10.0.2.2:8000/api/doctor/doctors';
+Future<List> get_doctors() async {
+  const String url = 'http://10.0.2.2:8000/api/doctor/doctors?page_num=1';
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
   });
-  final body = jsonDecode(response.body) as List;
+  final body = jsonDecode(response.body);
 
   // ignore: unnecessary_cast
-  var recievedDoctors = body
+  var recievedDoctors = body['doctors']
       .map(
-        (e) => Doctor(
-            full_name: e['full name'],
+        (e)=>Doctor(
+            full_name: e['full_name'],
             speciality: e['speciality'],
-            image: "http://10.0.2.2:8000/${e['image']}"),
-      )
-      .toList();
+            image: "http://10.0.2.2:8000/${e['image']}",id:e['id'] ),
+      ).toList();
   return recievedDoctors;
 }

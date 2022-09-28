@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/doctor_page/doctor_page.dart';
 import 'package:medical_app/models/doctor/doctorModel.dart';
 
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
@@ -6,13 +7,11 @@ import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
 
 class DoctorsCards extends StatelessWidget {
-  final List<Doctor>? info;
-  final Widget whereToGo;
+  final List? info;
 
   const DoctorsCards({
     Key? key,
     required this.info,
-    required this.whereToGo,
   }) : super(key: key);
 
   @override
@@ -28,6 +27,7 @@ class DoctorsCards extends StatelessWidget {
       ),
       height: 350,
       child: ListView.builder(
+        physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: info!.length,
         itemBuilder: (context, index) {
@@ -35,7 +35,7 @@ class DoctorsCards extends StatelessWidget {
             onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => whereToGo,
+                  builder: (context) => DoctorPage(doctor_id: info![index].id),
                 )),
             child: Container(
               margin: const EdgeInsets.all(10),

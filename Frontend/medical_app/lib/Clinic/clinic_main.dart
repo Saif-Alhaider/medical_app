@@ -126,9 +126,7 @@ class ClinicMain extends StatelessWidget {
                       } else if (snapshot.hasData) {
                         return DoctorsCards(
                           info: snapshot.data,
-                          whereToGo: DoctorPage(
-                            doctor_id: 23,
-                          ),
+                          
                         );
                       } else {
                         return Text("there is no data");

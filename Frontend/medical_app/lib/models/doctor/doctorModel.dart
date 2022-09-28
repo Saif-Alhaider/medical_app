@@ -6,6 +6,7 @@ class Doctor {
   final String? description;
   final String? country;
   final List? active_dates;
+  final int? id;
   Doctor({
     required this.full_name,
     required this.speciality,
@@ -14,6 +15,7 @@ class Doctor {
     this.description,
     this.country,
     this.active_dates,
+    this.id,
   });
 }
 

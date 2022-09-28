@@ -10,6 +10,7 @@ from .models import DoctorProfile
 from speciality.models import Specialitiy
 from django_countries.fields import Country
 from appointments.models import Appointments
+from django.core.paginator import Paginator,EmptyPage
 
 
 router = Router(tags=['doctor'])
@@ -34,18 +35,30 @@ def doctor_info(request, doctor_profile_details: DoctorInfoSchema):
         return 404, {'DoctorInfoErr': "doctor was not found"}
 
 
-@router.get("/doctors")
-def get_doctors(request):
+@router.get("/doctors",response={
+    200:PaginationDoctors,
+    404:DoctorInfoErr
+})
+def get_doctors(request,page_num:int):
     doctors = DoctorProfile.objects.all()
     data = []
     for doctor in doctors:
         data.append({
-            "full name": str(doctor.user.fullName),
+            "full_name": str(doctor.user.fullName),
             "speciality": str(doctor.speciality.title),
             "image": "images/"+str(doctor.image),
             "id":doctor.doctor_id
         })
-    return data
+    try:
+        p = Paginator(data,6)
+        page = p.page(page_num)
+        return 200,{
+            "num_pages":p.num_pages,
+            "doctors":page.object_list
+        }
+    except EmptyPage:
+        return 404,{"details":"there are no more doctors"}
+    
 
 
 @router.get('/doctorAppointments', auth=AuthBearer())
@@ -88,16 +101,14 @@ def create_user_doctor(request, user: AccountSchema):
     return 401, {"details": "already an account"}
 
 
-# doctor token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFTUFJTCI6Im1vaGFtbWFkQWxpQGdtYWlsLmNvbSJ9.6HZyA7a6AQHkUK7zKS79Xk9QNACS2Zifz9FMKxs1KEY
-
-@router.get('create_specialities')
-def create_specialities(request):
-    spes = ['General', ' Allergist', 'Anesthesiologist', 'Cardiologist', 'Dermatologist', 'Endocrinologist', 'Gastroenterologist', 'Hematologist', 'Infectious Disease Specialist', 'Nephrologist', 'Neurologist',
-            'Oncologist', 'Ophthalmologist', 'Orthopedic Surgeon', 'Otolaryngologist', 'Pathologist', 'Pediatrician', 'Psychiatrist', 'Pulmonologist', 'Radiologist', 'Rheumatologist', 'Urologist', 'Vascular Surgeon', 'Other']
-    for spe in spes:
-        newspe = Specialitiy.objects.create(title=spe)
-        newspe.save()
-    return str(Specialitiy.objects.all())
+# @router.get('create_specialities')
+# def create_specialities(request):
+#     spes = ['General', ' Allergist', 'Anesthesiologist', 'Cardiologist', 'Dermatologist', 'Endocrinologist', 'Gastroenterologist', 'Hematologist', 'Infectious Disease Specialist', 'Nephrologist', 'Neurologist',
+#             'Oncologist', 'Ophthalmologist', 'Orthopedic Surgeon', 'Otolaryngologist', 'Pathologist', 'Pediatrician', 'Psychiatrist', 'Pulmonologist', 'Radiologist', 'Rheumatologist', 'Urologist', 'Vascular Surgeon', 'Other']
+#     for spe in spes:
+#         newspe = Specialitiy.objects.create(title=spe)
+#         newspe.save()
+#     return str(Specialitiy.objects.all())
 
 
 @router.get('/doctor_info', response={
@@ -115,7 +126,8 @@ def doctor_info(request, doctor_id: int):
             "email": doctor.user.email,
             "country": doctor.country.name,
             "image": str(doctor.image),
-            "active_dates":active_dates
+            "speciality":doctor.speciality.title,
+            "active_dates":active_dates,
         }
     except DoctorProfile.DoesNotExist:
         return 404, {"details": "doctor not found"}

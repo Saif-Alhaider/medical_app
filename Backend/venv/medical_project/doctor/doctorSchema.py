@@ -24,6 +24,7 @@ class GetDoctorInfoSchema(Schema):
     email:str
     country:str
     image:str
+    speciality:str
     active_dates:list[datetime]
     
     
@@ -36,4 +37,17 @@ class DoctorPatientInfo(Schema):
     fullName:str
     email:str
     health_info:HealthInfoSchema
+    
+    
+
+class Doctor(Schema):
+    full_name:str
+    speciality:str
+    image:str
+    id:int
+
+
+class PaginationDoctors(Schema):
+    num_pages:int
+    doctors:list[Doctor]
     

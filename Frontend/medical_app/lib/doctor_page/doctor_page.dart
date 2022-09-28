@@ -13,18 +13,18 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class DoctorPage extends StatelessWidget {
-  final int doctor_id;
+  final int? doctor_id;
 
   DoctorPage({required this.doctor_id, super.key});
 
   @override
   Widget build(BuildContext context) {
-    getDoctorInfo(doctor_id: doctor_id);
+    getDoctorInfo(doctor_id: doctor_id!);
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
         body: FutureBuilder(
-          future: getDoctorInfo(doctor_id: doctor_id),
+          future: getDoctorInfo(doctor_id: doctor_id!),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.waiting:
@@ -87,6 +87,7 @@ class DoctorPage extends StatelessWidget {
 }
 
 Future getDoctorInfo({required int doctor_id}) async {
+  print(doctor_id);
   final String url =
       "http://10.0.2.2:8000/api/doctor/doctor_info?doctor_id=$doctor_id";
   var response = await http.get(Uri.parse(url));
