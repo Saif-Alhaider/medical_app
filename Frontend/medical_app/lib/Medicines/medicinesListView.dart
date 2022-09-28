@@ -24,11 +24,7 @@ class MedicinesListView extends StatefulWidget {
 class _MedicinesListViewState extends State<MedicinesListView> {
   late Future<List>? dataFuture;
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    dataFuture = get_medicines();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +64,7 @@ class _MedicinesListViewState extends State<MedicinesListView> {
           width: double.maxFinite,
           decoration: const BoxDecoration(),
           child: FutureBuilder(
-            future: dataFuture,
+            future: get_medicines(),
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.waiting:
@@ -99,6 +95,7 @@ class _MedicinesListViewState extends State<MedicinesListView> {
                   if (snapshot.hasError) {
                     return Text("something went wrong");
                   } else if (snapshot.hasData) {
+                    print(snapshot.data);
                     return ListView.builder(
                       clipBehavior: Clip.none,
                       physics: BouncingScrollPhysics(),
@@ -111,7 +108,7 @@ class _MedicinesListViewState extends State<MedicinesListView> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MedicineScreen(medicine_id: snapshot.data![index].medicine_id),
+                                  builder: (context) => MedicineScreen(medicine_id: snapshot.data![index].id),
                                 ));
                           },
                           child: Container(
@@ -168,42 +165,16 @@ class _MedicinesListViewState extends State<MedicinesListView> {
   }
 }
 
-Future<List>? get_medicines() async {
-  const String url = 'http://10.0.2.2:8000/api/medicines/';
+Future<List<Medicine>>? get_medicines() async {
+  const String url = 'http://10.0.2.2:8000/api/medicines/?page_num=1';
   var response = await http.get(
     Uri.parse(url),
     headers: {
       "Content-Type": "application/json",
     },
   );
-  final body = jsonDecode(response.body) as List;
-  // print("medicines received ${body.length}");
-  var received_mediciens = body.map(
-    (e) {
-      return e['medicinetype'] == 'Cream'
-          ? MedicineInfo(
-              title: e['title'],
-              description: e['description'],
-              medicineType: MedicineType.cream,
-              medicine_id: e['id']
-            )
-          : e['medicinetype'] == 'Syring'
-              ? MedicineInfo(
-                  title: e['title'],
-                  description: e['description'],
-                  medicineType: MedicineType.syring,medicine_id: e['id'].hashCode)
-              : e['medicinetype'] == 'Syrup'
-                  ? MedicineInfo(
-                      title: e['title'],
-                      description: e['description'],
-                      medicineType: MedicineType.syrup,medicine_id: e['id'])
-                  : e['medicinetype'] == 'Pills'
-                      ? MedicineInfo(
-                          title: e['title'],
-                          description: e['description'],
-                          medicineType: MedicineType.pills,medicine_id: e['id'])
-                      : null;
-    },
-  ).toList() as List<MedicineInfo>;
-  return received_mediciens;
+  final medicines = MedicineFromJson(response.body);
+  print(medicines);
+  return medicines;
+  
 }

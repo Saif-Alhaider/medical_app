@@ -87,7 +87,7 @@ class MedicineScreen extends StatelessWidget {
                                 ConstantValues.cardsGap,
                                 SubText(
                                     text:
-                                        " النوع: ${snapshot.data!.medicineType.name}",
+                                        " النوع: ${snapshot.data!.medicinetype}",
                                     color: Colors.black,
                                     size: 25,
                                     textAlign: TextAlign.right),
@@ -124,49 +124,49 @@ class MedicineScreen extends StatelessWidget {
                                       isExpanded: flag.value),
                                 ],
                               )),
-                          HeadLineText(
-                              text: "الصيدليات التي يتوفر فيها الدواء"),
-                          snapshot.data!.medicine_pharmacies!.length == 0
-                              ? SizedBox(
-                                  height: 400,
-                                  child: SubText(
-                                      text: "الدواء غير متوفر في اي صيدلية"))
-                              : Container(
-                                  margin: EdgeInsets.only(top: 10),
-                                  width: double.maxFinite,
-                                  height: 200,
-                                  child: ListView.builder(
-                                    clipBehavior: Clip.none,
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: snapshot
-                                        .data!.medicine_pharmacies!.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return Container(
-                                        width: 180,
-                                        height: 60,
-                                        margin: EdgeInsets.only(right: 8),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                            color: Colors.white,
-                                            boxShadow:
-                                                ConstantValues.cardShadow),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            SubText(
-                                              text: snapshot.data!
-                                                      .medicine_pharmacies![
-                                                  index]['name'],
-                                            )
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                )
+                          // HeadLineText(
+                          //     text: "الصيدليات التي يتوفر فيها الدواء"),
+                          // snapshot.data!.medicine_pharmacies!.length == 0
+                              // ? SizedBox(
+                              //     height: 400,
+                              //     child: SubText(
+                              //         text: "الدواء غير متوفر في اي صيدلية"))
+                              // : Container(
+                              //     margin: EdgeInsets.only(top: 10),
+                              //     width: double.maxFinite,
+                              //     height: 200,
+                              //     child: ListView.builder(
+                              //       clipBehavior: Clip.none,
+                              //       scrollDirection: Axis.horizontal,
+                              //       itemCount: snapshot
+                              //           .data!.medicine_pharmacies!.length,
+                              //       itemBuilder:
+                              //           (BuildContext context, int index) {
+                              //         return Container(
+                              //           width: 180,
+                              //           height: 60,
+                              //           margin: EdgeInsets.only(right: 8),
+                              //           decoration: BoxDecoration(
+                              //               borderRadius:
+                              //                   BorderRadius.circular(12),
+                              //               color: Colors.white,
+                              //               boxShadow:
+                              //                   ConstantValues.cardShadow),
+                              //           child: Column(
+                              //             mainAxisAlignment:
+                              //                 MainAxisAlignment.center,
+                              //             children: [
+                              //               SubText(
+                              //                 text: snapshot.data!
+                              //                         .medicine_pharmacies![
+                              //                     index]['name'],
+                              //               )
+                              //             ],
+                              //           ),
+                              //         );
+                              //       },
+                              //     ),
+                              //   )
                         ],
                       ),
                     );
@@ -182,18 +182,18 @@ class MedicineScreen extends StatelessWidget {
   }
 }
 
-Future<MedicineInfo> getMedicineById({required int id}) async {
+Future<Medicine> getMedicineById({required int id}) async {
   final String url =
       "http://10.0.2.2:8000/api/medicines/medicine_info?medicine_id=$id";
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
   });
   var result = jsonDecode(response.body);
-  result = MedicineInfo(
+  result = Medicine(id: id,
       title: result['title'],
       description: result['description'],
-      medicineType:
-          MedicineType.values.byName(result['medicinetype'].toLowerCase()),
-      medicine_pharmacies: result['pharmacies availabel']);
+      medicinetype:result['medicinetype'],
+      pharmacies: result['pharmacies']
+      );
   return result;
 }

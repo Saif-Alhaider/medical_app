@@ -7,22 +7,31 @@ from django.core.paginator import Paginator,EmptyPage
 router = Router(tags=['Medicines'])
 
 
-@router.get("/", response={
-    200: AllMedicinesSchema,
-    404:MedicineErr
-})
+@router.get("/",)
 def medicines(request,page_num:int):
-    medicines = list(Medicine.objects.all().values())
+    medicines = Medicine.objects.all()
     
-    try:
-        p = Paginator(medicines,6)
-        page = p.page(page_num)
-        return 200,{
-            "num_pages":p.num_pages,
-            "medicines":page.object_list
-        }
-    except EmptyPage:
-        return 404,{"details":"there are no more doctors"}
+    data = []
+    for medicine in medicines:
+        pharmacies = Medicine.objects.get(title=medicine.title).pharmacy_medicine.all(
+        ).values('name', 'latitude', 'longitude')
+        data.append({
+            "id":medicine.id,
+            "title":medicine.title,
+            "description":medicine.description,
+            "medicinetype":medicine.medicinetype,
+            "pharmacies":list(pharmacies)
+        })
+    return data
+    # try:
+    #     p = Paginator(medicines,6)
+    #     page = p.page(page_num)
+    #     return {
+    #         "num_pages":p.num_pages,
+    #         "medicines":page.object_list
+    #     }
+    # except EmptyPage:
+    #     return {"details":"there are no more doctors"}
 
 
 @router.post("add", response={201: MedicineSchema})
