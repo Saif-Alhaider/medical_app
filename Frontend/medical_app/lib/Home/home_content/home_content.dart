@@ -100,7 +100,7 @@ class HomeContent extends StatelessWidget {
                 ],
               ),
               FutureBuilder(
-                future: get_doctors(),
+                future: get_clinics(),
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
@@ -161,7 +161,7 @@ Future<List<HomeCardInfo>> get_clinics() async {
   final List<HomeCardInfo> result = ClinicsFromJson(response.body).clinics.map((e) {
     return HomeCardInfo(
       id: e.id,
-      image: e.image,
+      image: 'http://10.0.2.2:8000/images/${e.image}',
       title: e.name,
       subTitle: ""
     );
