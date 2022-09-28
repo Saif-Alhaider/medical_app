@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart' hide TextDirection;
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../reuseable_widgets/texts_types/headline_text.dart';
 import 'appointments details/appointments_details_main.dart';
 
@@ -12,20 +13,22 @@ class AppointmentCard extends StatelessWidget {
   final String doctorImage;
   final String speciality;
   final String date;
+  final String clinic;
   const AppointmentCard({
     Key? key,
     required this.doctorName,
     required this.doctorImage,
     required this.speciality,
     required this.date,
+    required this.clinic,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
-    var formatedDate = DateFormat('E, M LLL').format(DateTime.parse(date).toLocal());
-    var formatedTime = TimeOfDay.fromDateTime(DateTime.parse(date).toLocal()).format(context);
-    print(formatedTime);
+    var formatedDate =
+        DateFormat('E, M LLL').format(DateTime.parse(date).toLocal());
+    var formatedTime =
+        TimeOfDay.fromDateTime(DateTime.parse(date).toLocal()).format(context);
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -47,11 +50,9 @@ class AppointmentCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                
                 radius: 40,
                 backgroundImage: NetworkImage(
                   'http://10.0.2.2:8000/images/' + doctorImage,
-                  
                 ),
               ),
               const SizedBox(width: 10),
@@ -154,8 +155,13 @@ class AppointmentCard extends StatelessWidget {
                       onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                const AppointmentDetailsMain(),
+                            builder: (context) => AppointmentDetailsMain(
+                              date: date,
+                              doctorName: doctorName,
+                              image: doctorImage,
+                              clinic: clinic,
+                              doctorSpeciality: speciality,
+                            ),
                           )),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
@@ -180,4 +186,3 @@ class AppointmentCard extends StatelessWidget {
     );
   }
 }
-

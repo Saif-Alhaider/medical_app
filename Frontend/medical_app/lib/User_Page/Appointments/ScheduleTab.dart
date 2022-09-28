@@ -87,14 +87,16 @@ class _ScheduleTabState extends State<ScheduleTab>
                               itemCount: snapshot.data!['appointments'].length,
                               itemBuilder: (context, index) {
                                 return AppointmentCard(
-                                    doctorName: snapshot.data!['appointments']
-                                        [index]['doctor'],
-                                    doctorImage: snapshot.data!['appointments']
-                                        [index]['doctor image'],
-                                    speciality: snapshot.data!['appointments']
-                                        [index]['speciality'],
-                                    date: snapshot.data!['appointments'][index]
-                                        ['date']);
+                                  doctorName: snapshot.data!['appointments']
+                                      [index]['doctor'],
+                                  doctorImage: snapshot.data!['appointments']
+                                      [index]['doctor image'],
+                                  speciality: snapshot.data!['appointments']
+                                      [index]['speciality'],
+                                  date: snapshot.data!['appointments'][index]
+                                      ['date'],
+                                      clinic: snapshot.data!['appointments'][index]['clinic'],
+                                );
                               },
                             ),
                             ListView.builder(
@@ -110,6 +112,7 @@ class _ScheduleTabState extends State<ScheduleTab>
                                       [index]['speciality'],
                                   date: snapshot.data!['appointments'][index]
                                       ['date'],
+                                      clinic: snapshot.data!['appointments'][index]['clinic'],
                                 );
                               },
                             )

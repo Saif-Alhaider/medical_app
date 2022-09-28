@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import '../../../Home/constants.dart';
 import '../../../reuseable_widgets/break_line.dart';
@@ -7,18 +8,32 @@ import '../../../reuseable_widgets/texts_types/headline_text.dart';
 import '../../../reuseable_widgets/texts_types/sub_text.dart';
 
 class FirstCard extends StatelessWidget {
-  const FirstCard({super.key});
+  final String clinic;
+  final String doctorName;
+  final String doctorSpeciality;
+  final String date;
+  final String doctorImage;
+  const FirstCard({
+    Key? key,
+    required this.clinic,
+    required this.doctorName,
+    required this.doctorSpeciality,
+    required this.date,
+    required this.doctorImage,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var formatedDate = DateFormat('M').format(DateTime.parse(date).toLocal());
+    var formatedDay = DateFormat('EEE').format(DateTime.parse(date).toLocal());
+    var formatedTime =
+        TimeOfDay.fromDateTime(DateTime.parse(date).toLocal()).format(context);
+    print(doctorImage);
     return Container(
       width: double.maxFinite,
-      // height: 200,
       decoration: BoxDecoration(
           color: Colors.white,
-          // border: Border.all(
-          //   color: Color(0xff9d9d9d),
-          // ),
+          
           boxShadow: ConstantValues.cardShadow,
           borderRadius: BorderRadius.circular(8)),
       child: Column(
@@ -34,15 +49,15 @@ class FirstCard extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        "23",
+                        formatedDate,
                         style: GoogleFonts.rubik(
                             color: Color(0xffBE4330), fontSize: 22),
                       ),
-                      const SubText(
-                        text: "الاثنين",
+                      SubText(
+                        text: formatedDay,
                         color: Colors.black,
                       ),
-                      const SubText(text: "10:30 AM"),
+                       SubText(text: formatedTime),
                     ],
                   ),
                   Padding(
@@ -59,22 +74,22 @@ class FirstCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const CircleAvatar(
+                        CircleAvatar(
                           backgroundImage: NetworkImage(
-                              "https://media.istockphoto.com/photos/doctor-holding-digital-tablet-at-meeting-room-picture-id1189304032?k=20&m=1189304032&s=612x612&w=0&h=ovTNnR0JX2cRZkzMBed9exRO_PamZLlysLDFkXesr4Q="),
+                              "http://10.0.2.2:8000/images/$doctorImage"),
                           radius: 35,
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             HeadLineText(
-                              text: "د.نادية الكاظمي",
+                              text: doctorName,
                               color: Colors.blue,
                               size: 20,
                               lineHeight: 1,
                             ),
-                            SubText(text: "اسنان")
+                            SubText(text: doctorSpeciality)
                           ],
                         )
                       ],
@@ -85,8 +100,8 @@ class FirstCard extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 8),
-            child:  Breakline(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: Breakline(
               color: Color(0xff9d9d9d),
               height: 1,
             ),
@@ -95,13 +110,13 @@ class FirstCard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                SubText(
+              children: [
+                const SubText(
                   text: "العيادة",
                   size: 18,
                 ),
                 SubText(
-                  text: "ماء الحياة",
+                  text: clinic,
                   color: Colors.blue,
                 ),
               ],

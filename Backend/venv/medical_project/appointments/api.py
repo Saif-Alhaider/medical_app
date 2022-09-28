@@ -25,6 +25,7 @@ def get_appointments(request):
             "doctor image": str(appointment.doctor.image),
             'doctor_id': appointment.doctor.doctor_id,
             "speciality":appointment.doctor.speciality.title,
+            "clinic":appointment.doctor.work_at.name
             })
 
     return {

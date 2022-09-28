@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from datetime import date
 from turtle import title
 from unicodedata import name
@@ -47,7 +48,8 @@ def get_doctors(request,page_num:int):
             "full_name": str(doctor.user.fullName),
             "speciality": str(doctor.speciality.title),
             "image": "images/"+str(doctor.image),
-            "id":doctor.doctor_id
+            "id":doctor.doctor_id,
+            "clinic":None if doctor.work_at is None else doctor.work_at.name,
         })
     try:
         p = Paginator(data,6)

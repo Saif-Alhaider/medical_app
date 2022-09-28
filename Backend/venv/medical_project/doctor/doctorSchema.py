@@ -41,10 +41,11 @@ class DoctorPatientInfo(Schema):
     
 
 class Doctor(Schema):
+    id:int
     full_name:str
     speciality:str
     image:str
-    id:int
+    clinic:str | None
 
 
 class PaginationDoctors(Schema):
