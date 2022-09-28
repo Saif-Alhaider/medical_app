@@ -10,7 +10,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../doctor_page/doctor_page.dart';
 import '../models/doctor/doctorModel.dart';
 import '../models/doctors_images.dart';
-import '../reuseable_widgets/doctors_cards/doctors_cards.dart';
+import '../reuseable_widgets/home_card.dart';
 import 'package:http/http.dart' as http;
 
 import '../reuseable_widgets/waiting.dart';
@@ -124,7 +124,7 @@ class ClinicMain extends StatelessWidget {
                       if (snapshot.hasError) {
                         return Text("something went wrong");
                       } else if (snapshot.hasData) {
-                        return DoctorsCards(
+                        return HomeCard(
                           info: snapshot.data,
                           
                         );

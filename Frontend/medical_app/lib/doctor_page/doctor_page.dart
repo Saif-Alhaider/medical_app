@@ -34,7 +34,6 @@ class DoctorPage extends StatelessWidget {
                 if (snapshot.hasError) {
                   return Text("something went wrong");
                 } else if (snapshot.hasData) {
-                  
                   return SafeArea(
                     child: SingleChildScrollView(
                       child: Padding(
@@ -61,14 +60,14 @@ class DoctorPage extends StatelessWidget {
                               name: snapshot.data.full_name,
                             ),
                             const SizedBox(height: 35),
-                            DoctorDetails(
-                                text:snapshot.data.description),
+                            DoctorDetails(text: snapshot.data.description),
                             const SizedBox(height: 20),
                             DoctorLocation(location: snapshot.data.country),
                             DoctorSpeciality(
-                              Speciality: "ش",
+                              Speciality: snapshot.data.speciality,
                             ),
-                            DoctorSchedual(active_dates: snapshot.data.active_dates),
+                            DoctorSchedual(
+                                active_dates: snapshot.data.active_dates),
                             const SizedBox(height: 20),
                           ],
                         ),
@@ -93,13 +92,15 @@ Future getDoctorInfo({required int doctor_id}) async {
   var response = await http.get(Uri.parse(url));
   var result = jsonDecode(response.body);
   result = Doctor(
-      full_name: result['fullName'],
-      speciality: result['speciality'],
-      image: result['image'],
-      description: result['description'],
-      email: result['email'],
-      country: result['country'],
-      active_dates: result['active_dates']);
+    full_name: result['fullName'],
+    speciality: result['speciality'],
+    image: result['image'],
+    description: result['description'],
+    email: result['email'],
+    country: result['country'],
+    active_dates: result['active_dates'],
+    
+  );
   // print(result['active_dates']);
   return result;
 }

@@ -7,8 +7,9 @@ import 'package:medical_app/Home/constants.dart';
 
 import 'package:medical_app/Home/home_content/specialities/specialities.dart';
 import 'package:medical_app/doctor_page/doctor_page.dart';
+import 'package:medical_app/models/clinic/clinic_model.dart';
 import 'package:medical_app/more_screen/more_screen.dart';
-import 'package:medical_app/reuseable_widgets/doctors_cards/doctors_cards.dart';
+import 'package:medical_app/reuseable_widgets/home_card.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:medical_app/models/doctors_images.dart';
@@ -16,6 +17,7 @@ import 'package:http/http.dart' as http;
 import 'package:medical_app/reuseable_widgets/waiting.dart';
 
 import '../../models/doctor/doctorModel.dart';
+import '../../models/home_card_info.dart';
 import '../../reuseable_widgets/waitingCarousel.dart';
 
 class HomeContent extends StatelessWidget {
@@ -23,7 +25,7 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    get_doctors();
+    get_clinics();
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -48,7 +50,11 @@ class HomeContent extends StatelessWidget {
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             alignment: Alignment.centerLeft),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => MoreScreen(),));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MoreScreen(),
+                              ));
                         },
                         child: SubText(text: "المزيد")),
                   )
@@ -71,9 +77,8 @@ class HomeContent extends StatelessWidget {
                           ],
                         );
                       } else if (snapshot.hasData) {
-                        return DoctorsCards(
+                        return HomeCard(
                           info: snapshot.data,
-                          
                         );
                       } else {
                         return Text("there is no data");
@@ -107,9 +112,8 @@ class HomeContent extends StatelessWidget {
                           ],
                         );
                       } else if (snapshot.hasData) {
-                        return DoctorsCards(
+                        return HomeCard(
                           info: snapshot.data,
-                          
                         );
                       } else {
                         return Text("there is no data");
@@ -125,7 +129,7 @@ class HomeContent extends StatelessWidget {
   }
 }
 
-Future<List> get_doctors() async {
+Future<List<HomeCardInfo>> get_doctors() async {
   const String url = 'http://10.0.2.2:8000/api/doctor/doctors?page_num=1';
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
@@ -135,10 +139,23 @@ Future<List> get_doctors() async {
   // ignore: unnecessary_cast
   var recievedDoctors = body['doctors']
       .map(
-        (e)=>Doctor(
-            full_name: e['full_name'],
-            speciality: e['speciality'],
-            image: "http://10.0.2.2:8000/${e['image']}",id:e['id'] ),
-      ).toList();
+        (e) => HomeCardInfo(
+            title: e['full_name'],
+            subTitle: e['speciality'],
+            image: "http://10.0.2.2:8000/${e['image']}",
+            id: e['id']),
+      )
+      .toList();
   return recievedDoctors;
+}
+
+Future<List> get_clinics() async {
+  const String url = 'http://10.0.2.2:8000/api/clinics/?page_num=1';
+
+  var response = await http.get(Uri.parse(url));
+
+  final Clinics result = ClinicsFromJson(response.body);
+  print(result.clinics);
+
+  return [];
 }

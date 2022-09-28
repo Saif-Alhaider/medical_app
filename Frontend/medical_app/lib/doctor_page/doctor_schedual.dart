@@ -114,7 +114,11 @@ class DoctorSchedual extends StatelessWidget {
                     ),
                   )
                 : SizedBox(),
-            sentDate != null
+            StatefulBuilder(
+              builder: (BuildContext context, setState) {
+                setState((){});
+                return sentDate != null
+                
                 ? MainButton(
                     onPressed: () {
                       time == null
@@ -122,7 +126,9 @@ class DoctorSchedual extends StatelessWidget {
                           : Navigator.pop(context);
                     },
                     buttonTitle: "احجز")
-                : SizedBox()
+                : SizedBox();
+              },
+            ),
           ],
         );
       },
