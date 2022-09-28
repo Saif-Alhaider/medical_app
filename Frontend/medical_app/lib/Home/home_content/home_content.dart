@@ -83,6 +83,7 @@ class HomeContent extends StatelessWidget {
                       } else if (snapshot.hasData) {
                         return HomeCard(
                           info: snapshot.data,
+                          goToDoctor: true,
                         );
                       } else {
                         return Text("there is no data");
@@ -134,6 +135,7 @@ class HomeContent extends StatelessWidget {
                       } else if (snapshot.hasData) {
                         return HomeCard(
                           info: snapshot.data,
+                          goToDoctor: false,
                         );
                       } else {
                         return Text("there is no data");

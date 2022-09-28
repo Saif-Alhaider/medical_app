@@ -174,7 +174,6 @@ Future<List<Medicine>>? get_medicines() async {
     },
   );
   final medicines = MedicineFromJson(response.body);
-  print(medicines);
   return medicines;
   
 }

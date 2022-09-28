@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/Clinic/clinic_main.dart';
+
 import 'package:medical_app/doctor_page/doctor_page.dart';
 import 'package:medical_app/models/doctor/doctorModel.dart';
-
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
 import '../models/home_card_info.dart';
 
-
-
 class HomeCard extends StatelessWidget {
   final List<HomeCardInfo>? info;
+  final bool goToDoctor;
   
   const HomeCard({
     Key? key,
     required this.info,
+    required this.goToDoctor,
   }) : super(key: key);
 
   @override
@@ -37,7 +38,9 @@ class HomeCard extends StatelessWidget {
             onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DoctorPage(doctor_id: info![index].id),
+                  builder: (context) {
+                    return goToDoctor? DoctorPage(doctor_id: info![index].id):ClinicMain();
+                  },
                 )),
             child: Container(
               margin: const EdgeInsets.all(10),

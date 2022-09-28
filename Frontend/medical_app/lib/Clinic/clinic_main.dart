@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:medical_app/Home/constants.dart';
+import 'package:medical_app/models/doctors.dart';
 import 'package:medical_app/models/home_card_info.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
@@ -15,6 +16,7 @@ import '../reuseable_widgets/home_card.dart';
 import 'package:http/http.dart' as http;
 
 import '../reuseable_widgets/waiting.dart';
+import '../reuseable_widgets/waitingCarousel.dart';
 
 class ClinicMain extends StatelessWidget {
   const ClinicMain({super.key});
@@ -121,25 +123,32 @@ class ClinicMain extends StatelessWidget {
                           ),
                           height: 350,
                           child: FutureBuilder(
-                            future: get_doctors(),
-                            builder: (context, snapshot) {
-                              switch (snapshot.connectionState) {
-                                case ConnectionState.waiting:
-                                  return Waiting();
-                                case ConnectionState.done:
-                                default:
-                                  if (snapshot.hasError) {
-                                    return Text("something went wrong");
-                                  } else if (snapshot.hasData) {
-                                    return HomeCard(
-                                      info: snapshot.data,
-                                    );
-                                  } else {
-                                    return Text("there is no data");
-                                  }
-                              }
-                            },
-                          ),
+                future: get_doctors(),
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.waiting:
+                      return WaitingCarousel();
+                    case ConnectionState.done:
+                    default:
+                      if (snapshot.hasError) {
+                        return Column(
+                          children:  [
+                            const Icon(Icons.error),
+                            const Text("something went wrong please try again later"),
+                            Text(snapshot.error.toString())
+                          ],
+                        );
+                      } else if (snapshot.hasData) {
+                        return HomeCard(
+                          info: snapshot.data,
+                          goToDoctor: true,
+                        );
+                      } else {
+                        return Text("there is no data");
+                      }
+                  }
+                },
+              ),
                         )
                       ],
                     ),
@@ -168,21 +177,22 @@ class ClinicMain extends StatelessWidget {
 }
 
 Future<List<HomeCardInfo>> get_doctors() async {
-  const String url = 'http://10.0.2.2:8000/api/doctor/doctors';
+  const String url = 'http://10.0.2.2:8000/api/doctor/doctors?page_num=1';
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
   });
-  final body = jsonDecode(response.body) as List;
+  final body = DoctorsFromJson(response.body).doctors;
 
   // ignore: unnecessary_cast
-  var recievedDoctors = body
+  List<HomeCardInfo> recievedDoctors = body
       .map(
         (e) => HomeCardInfo(
-            id: e['id'],
-            title: e['full name'],
-            subTitle: e['speciality'],
-            image: "http://10.0.2.2:8000/${e['image']}"),
+            title: e.fullName,
+            subTitle: e.speciality,
+            image: "http://10.0.2.2:8000/${e.image}",
+            id: e.id),
       )
-      .toList() as List<HomeCardInfo>;
-  return recievedDoctors;
+      .toList();
+      
+  return recievedDoctors as List<HomeCardInfo>;
 }
