@@ -9,7 +9,7 @@ import 'package:medical_app/Home/home_content/specialities/specialities.dart';
 import 'package:medical_app/doctor_page/doctor_page.dart';
 import 'package:medical_app/models/clinic/clinic_model.dart';
 import 'package:medical_app/models/doctors.dart';
-import 'package:medical_app/more_screen/more_screen.dart';
+import 'package:medical_app/more_screen/more_doctors_screen.dart';
 import 'package:medical_app/reuseable_widgets/home_card.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
@@ -19,6 +19,7 @@ import 'package:medical_app/reuseable_widgets/waiting.dart';
 
 import '../../models/doctor/doctorModel.dart';
 import '../../models/home_card_info.dart';
+import '../../more_screen/more_clinics_screen.dart';
 import '../../reuseable_widgets/waitingCarousel.dart';
 
 class HomeContent extends StatelessWidget {
@@ -55,7 +56,7 @@ class HomeContent extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MoreScreen(),
+                                builder: (context) => MoreDoctorsScreen(),
                               ));
                         },
                         child: SubText(text: "المزيد")),
@@ -91,12 +92,28 @@ class HomeContent extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  HeadLineText(
+                children:  [
+                  const HeadLineText(
                     text: "العيادات",
                     lineHeight: 1,
                   ),
-                  SubText(text: "المزيد")
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: Size(50, 30),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            alignment: Alignment.centerLeft),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MoreClinicsScreen(),
+                              ));
+                        },
+                        child: SubText(text: "المزيد")),
+                  )
                 ],
               ),
               FutureBuilder(

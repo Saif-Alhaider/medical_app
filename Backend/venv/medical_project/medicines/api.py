@@ -1,17 +1,28 @@
 from turtle import title
 from ninja import Router
 from .models import Medicine
-from .schema import MedicineSchema
+from .schema import AllMedicinesSchema,MedicineErr,MedicineSchema
 from pharmacies.models import Pharmacy
+from django.core.paginator import Paginator,EmptyPage
 router = Router(tags=['Medicines'])
 
 
 @router.get("/", response={
-    200: list[MedicineSchema]
+    200: AllMedicinesSchema,
+    404:MedicineErr
 })
-def medicines(request):
-    medicines = Medicine.objects.all().values()
-    return list(medicines)
+def medicines(request,page_num:int):
+    medicines = list(Medicine.objects.all().values())
+    
+    try:
+        p = Paginator(medicines,6)
+        page = p.page(page_num)
+        return 200,{
+            "num_pages":p.num_pages,
+            "medicines":page.object_list
+        }
+    except EmptyPage:
+        return 404,{"details":"there are no more doctors"}
 
 
 @router.post("add", response={201: MedicineSchema})

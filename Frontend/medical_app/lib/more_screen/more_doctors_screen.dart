@@ -8,14 +8,14 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../models/doctors.dart';
 
-class MoreScreen extends StatefulWidget {
-  const MoreScreen({super.key});
+class MoreDoctorsScreen extends StatefulWidget {
+  const MoreDoctorsScreen({super.key});
 
   @override
-  State<MoreScreen> createState() => _MoreScreenState();
+  State<MoreDoctorsScreen> createState() => _MoreScreenState();
 }
 
-class _MoreScreenState extends State<MoreScreen> {
+class _MoreScreenState extends State<MoreDoctorsScreen> {
   late int totalPages;
   final RefreshController refreshController = RefreshController(initialRefresh: true);
   int current_page = 1;

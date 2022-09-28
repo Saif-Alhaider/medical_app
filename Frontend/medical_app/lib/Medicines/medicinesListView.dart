@@ -12,6 +12,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/medicine/medicine_info.dart';
+import '../more_screen/more_medicine_screen.dart';
 
 class MedicinesListView extends StatefulWidget {
   const MedicinesListView({super.key});
@@ -34,11 +35,34 @@ class _MedicinesListViewState extends State<MedicinesListView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const HeadLineText(
-          text: "الادوية",
-          color: Colors.blue,
-          size: 35,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const HeadLineText(
+              text: "الادوية",
+              color: Colors.blue,
+              size: 35,
+            ),
+            Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: Size(50, 30),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            alignment: Alignment.centerLeft),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MoreMedicinesScreen(),
+                              ));
+                        },
+                        child: SubText(text: "المزيد")),
+                  )
+          ],
         ),
+        
         Container(
           height: 180,
           width: double.maxFinite,

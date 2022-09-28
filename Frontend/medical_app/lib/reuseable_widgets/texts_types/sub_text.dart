@@ -6,12 +6,14 @@ class SubText extends StatelessWidget {
   final String text;
   final Color color;
   final TextAlign textAlign;
+  final bool overflow;
   const SubText({
     Key? key,
     this.size = 22.0,
     required this.text,
     this.color = const Color(0xff929BA1),
     this.textAlign = TextAlign.center,
+    this.overflow = false,
   }) : super(key: key);
 
   @override
@@ -21,7 +23,7 @@ class SubText extends StatelessWidget {
       textAlign: textAlign,
       style: GoogleFonts.vazirmatn(
           fontSize: size, fontWeight: FontWeight.w400, color: color),
-      // overflow: TextOverflow.ellipsis,
+      overflow: overflow ?TextOverflow.ellipsis:null,
     );
   }
 }
