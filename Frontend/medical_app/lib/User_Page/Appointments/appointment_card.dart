@@ -2,22 +2,30 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart' hide TextDirection;
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../reuseable_widgets/texts_types/headline_text.dart';
 import 'appointments details/appointments_details_main.dart';
 
 class AppointmentCard extends StatelessWidget {
   final String doctorName;
   final String doctorImage;
+  final String speciality;
+  final String date;
   const AppointmentCard({
     Key? key,
     required this.doctorName,
     required this.doctorImage,
+    required this.speciality,
+    required this.date,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    
+    var formatedDate = DateFormat('E, M LLL').format(DateTime.parse(date).toLocal());
+    var formatedTime = TimeOfDay.fromDateTime(DateTime.parse(date).toLocal()).format(context);
+    print(formatedTime);
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -39,14 +47,18 @@ class AppointmentCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
+                
                 radius: 40,
-                backgroundImage: AssetImage(doctorImage),
+                backgroundImage: NetworkImage(
+                  'http://10.0.2.2:8000/images/' + doctorImage,
+                  
+                ),
               ),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children:  [
+                children: [
                   HeadLineText(
                     text: doctorName,
                     color: Colors.black,
@@ -57,7 +69,7 @@ class AppointmentCard extends StatelessWidget {
                     height: 10,
                   ),
                   HeadLineText(
-                    text: 'اختصاص باطنية',
+                    text: speciality,
                     color: Color(0xffc4c4c4),
                     lineHeight: 1,
                     size: 15,
@@ -77,15 +89,15 @@ class AppointmentCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Row(
                       children: [
                         const Icon(Icons.date_range_rounded),
                         Text(
-                          'الاثنين, 29 شباط',
+                          formatedDate,
                           style: GoogleFonts.vazirmatn(
-                              fontSize: 17,
+                              fontSize: 22,
                               fontWeight: FontWeight.bold,
                               height: 2),
                         )
@@ -95,9 +107,9 @@ class AppointmentCard extends StatelessWidget {
                       textDirection: TextDirection.ltr,
                       child: Row(
                         children: [
-                          Text('10:00 AM - 11:00 AM',
+                          Text(formatedTime,
                               style: GoogleFonts.vazirmatn(
-                                  fontSize: 17,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                   height: 2)),
                           const Icon(Icons.watch_later_outlined),
@@ -168,3 +180,4 @@ class AppointmentCard extends StatelessWidget {
     );
   }
 }
+

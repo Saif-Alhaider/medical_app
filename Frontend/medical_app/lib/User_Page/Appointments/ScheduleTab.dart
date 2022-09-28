@@ -90,7 +90,11 @@ class _ScheduleTabState extends State<ScheduleTab>
                                     doctorName: snapshot.data!['appointments']
                                         [index]['doctor'],
                                     doctorImage: snapshot.data!['appointments']
-                                        [index]['doctor image']);
+                                        [index]['doctor image'],
+                                    speciality: snapshot.data!['appointments']
+                                        [index]['speciality'],
+                                    date: snapshot.data!['appointments'][index]
+                                        ['date']);
                               },
                             ),
                             ListView.builder(
@@ -98,10 +102,15 @@ class _ScheduleTabState extends State<ScheduleTab>
                               itemCount: snapshot.data!['appointments'].length,
                               itemBuilder: (context, index) {
                                 return AppointmentCard(
-                                    doctorName: snapshot.data!['appointments']
-                                        [index]['doctor'],
-                                    doctorImage: snapshot.data!['appointments']
-                                        [index]['doctor image']);
+                                  doctorName: snapshot.data!['appointments']
+                                      [index]['doctor'],
+                                  doctorImage: snapshot.data!['appointments']
+                                      [index]['doctor image'],
+                                  speciality: snapshot.data!['appointments']
+                                      [index]['speciality'],
+                                  date: snapshot.data!['appointments'][index]
+                                      ['date'],
+                                );
                               },
                             )
                           ]),

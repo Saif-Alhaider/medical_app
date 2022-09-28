@@ -3,7 +3,7 @@ from .models import Clinic
 # Register your models here.
 
 class ClinicAdmin(admin.ModelAdmin):
-    list_display = ['title']
+    list_display = ['name']
     class Meta:
         model = Clinic
 

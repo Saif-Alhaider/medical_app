@@ -20,7 +20,12 @@ def get_appointments(request):
     for appointment in userAppointments:
         print(appointment)
         data.append({
-            'doctor': str(appointment.doctor.user.fullName), 'date': appointment.date, "doctor image": str(appointment.doctor.image), 'doctor_id': appointment.doctor.doctor_id, })
+            'doctor': str(appointment.doctor.user.fullName),
+            'date': appointment.date,
+            "doctor image": str(appointment.doctor.image),
+            'doctor_id': appointment.doctor.doctor_id,
+            "speciality":appointment.doctor.speciality.title,
+            })
 
     return {
         'user': user.fullName,
