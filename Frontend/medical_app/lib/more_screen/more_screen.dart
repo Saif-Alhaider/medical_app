@@ -25,10 +25,10 @@ class _MoreScreenState extends State<MoreScreen> {
     if (isReferesh) {
       current_page = 1;
     }else{
-      if (current_page >= totalPages) {
+      if (current_page > totalPages) {
         
         refreshController.loadNoData();
-        // return true;
+        return false;
       }
     }
     final String url =
@@ -76,8 +76,6 @@ class _MoreScreenState extends State<MoreScreen> {
             final result = await getAllDoctors(isReferesh: false);
             if (result) {
               refreshController.loadComplete();
-            }else{
-              refreshController.loadFailed();
             }
           },
           child: GridView.builder(
