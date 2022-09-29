@@ -16,14 +16,15 @@ import '../reuseable_widgets/texts_types/sub_text.dart';
 class DoctorPersonalInfoMain extends StatelessWidget {
   String img;
   String name;
+  String doctor_number;
   // int rate;
 
   DoctorPersonalInfoMain({
+    Key? key,
     required this.img,
     required this.name,
-    // required this.rate,
-    super.key,
-  });
+    required this.doctor_number,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +74,7 @@ class DoctorPersonalInfoMain extends StatelessWidget {
               splashColor: MainColors.backgroundGreen,
               color: MainColors.foreignGreen,
               onPressed: () {
-                contactDoctor(context);
+                contactDoctor(context:context,phone_number:doctor_number);
               },
               padding: EdgeInsets.zero,
               icon: const Icon(
@@ -88,8 +89,8 @@ class DoctorPersonalInfoMain extends StatelessWidget {
   }
 }
 
-contactDoctor(BuildContext context) async {
-  var contactNumber = '7702638672';
+contactDoctor({required BuildContext context,required String phone_number}) async {
+  var contactNumber = phone_number;
   var android_url = 'https://wa.me/$contactNumber?text=مرحبا';
   var ios_url = 'https://wa.me/$contactNumber?text=${Uri.parse("مرحبا")}';
 

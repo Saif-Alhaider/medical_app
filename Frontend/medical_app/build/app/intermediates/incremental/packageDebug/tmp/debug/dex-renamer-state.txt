@@ -1,4 +1,4 @@
-#Thu Sep 29 17:59:00 AST 2022
+#Thu Sep 29 20:37:47 AST 2022
 base.0=D\:\\atom file\\projects\\medical_app\\Frontend\\medical_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

@@ -7,7 +7,7 @@ import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import '../Home/welcome_section.dart';
 import 'package:get/get.dart';
 class Medicines extends StatelessWidget {
-  
+  Rx<bool> isSubmitted = Rx<bool>(false);
   Medicines({super.key});
   
   final Rx<bool> searchPageDisplay = Rx<bool>(false);
@@ -24,7 +24,7 @@ class Medicines extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HeadLineText(text: "ابحث عن دواء او صيدلية",size: 32,),
-                  SearchBar(searchPageDisplay: searchPageDisplay),
+                  SearchBar(searchPageDisplay: searchPageDisplay,isSubmitted: isSubmitted),
                   Expanded(
                   child: Stack(
                     children: [
@@ -32,7 +32,7 @@ class Medicines extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.only(top: 30),
                           child: searchPageDisplay.value
-                              ? const SearchScreen()
+                              ?  SearchScreen(isSubmitted:isSubmitted ,)
                               : const MedicinesContent(),
                         );
                       }),

@@ -57,7 +57,7 @@ class DoctorPage extends StatelessWidget {
                             DoctorPersonalInfoMain(
                               img:
                                   'http://10.0.2.2:8000/images/${snapshot.data!.image}',
-                              name: snapshot.data.full_name,
+                              name: snapshot.data.full_name, doctor_number: snapshot.data.phone_number,
                             ),
                             const SizedBox(height: 35),
                             DoctorDetails(text: snapshot.data.description),
@@ -86,7 +86,6 @@ class DoctorPage extends StatelessWidget {
 }
 
 Future getDoctorInfo({required int doctor_id}) async {
-  print(doctor_id);
   final String url =
       "http://10.0.2.2:8000/api/doctor/doctor_info?doctor_id=$doctor_id";
   var response = await http.get(Uri.parse(url));
@@ -99,8 +98,7 @@ Future getDoctorInfo({required int doctor_id}) async {
     email: result['email'],
     country: result['country'],
     active_dates: result['active_dates'],
-    
+    phone_number: result['phone_number']
   );
-  // print(result['active_dates']);
   return result;
 }

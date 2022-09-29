@@ -18,6 +18,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final Rx<bool> searchPageDisplay = Rx<bool>(false);
+  final Rx<bool> isSubmitted = Rx<bool>(false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +40,11 @@ class _HomeState extends State<Home> {
                         return Padding(
                           padding: const EdgeInsets.only(top: 30),
                           child: searchPageDisplay.value
-                              ? const SearchScreen()
+                              ? SearchScreen(isSubmitted: isSubmitted,)
                               : const HomeContent(),
                         );
                       }),
-                      SearchBar(searchPageDisplay: searchPageDisplay),
+                      SearchBar(searchPageDisplay: searchPageDisplay,isSubmitted: isSubmitted),
                     ],
                   ),
                 )
