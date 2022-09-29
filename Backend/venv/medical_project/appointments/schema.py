@@ -1,8 +1,17 @@
+from datetime import datetime
 from ninja import Schema,ModelSchema 
 from .models import Appointments
 
 
-class appointmentSchema(ModelSchema):
-    class Config:
-        model = Appointments
-        model_fields = ['date','doctor']
+class appointmentSchema(Schema):
+    date:datetime
+    doctor_id:int
+
+
+class appointmentFourOFour(Schema):
+    details:str
+    
+class ResponseAppointment(Schema):
+    date:str
+    doctor:str
+    user:str

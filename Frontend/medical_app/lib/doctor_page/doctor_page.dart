@@ -67,7 +67,7 @@ class DoctorPage extends StatelessWidget {
                               Speciality: snapshot.data.speciality,
                             ),
                             DoctorSchedual(
-                                active_dates: snapshot.data.active_dates),
+                                active_dates: snapshot.data.active_dates,doctor_id: doctor_id),
                             const SizedBox(height: 20),
                           ],
                         ),

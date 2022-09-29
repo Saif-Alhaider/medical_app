@@ -4,7 +4,7 @@ from accounts.models import CustomUser
 from doctor.models import DoctorProfile
 from ninja import Router
 from accounts.authorization import AuthBearer
-from .schema import appointmentSchema
+from .schema import appointmentSchema,appointmentFourOFour,ResponseAppointment
 from active_dates.models import ActiveDates
 from appointments.models import Appointments
 import datetime
@@ -34,13 +34,16 @@ def get_appointments(request):
     }
 
 
-@router.post('/create_appointment', auth=AuthBearer(),)
+@router.post('/create_appointment', auth=AuthBearer(),response={
+    200:ResponseAppointment,
+    404:appointmentFourOFour
+})
 def create_appointment(request, appointment: appointmentSchema):
     requested_user_email = request.auth['EMAIL']
 
     user = CustomUser.objects.get(email=requested_user_email)
     try:
-        doctor = DoctorProfile.objects.get(doctor_id=appointment.doctor)
+        doctor = DoctorProfile.objects.get(doctor_id=appointment.doctor_id)
         if user.email == doctor.user.email:
             return {"details": "you can't assign an appointment to yourself"}
         doctor_active_times = list(
@@ -56,11 +59,11 @@ def create_appointment(request, appointment: appointmentSchema):
                 newAppointment.save()
                 ActiveDates.objects.get(doctor=doctor, datetime=time).delete()
 
-                return {"date": stringifiedTime, "user": user.fullName, "doctor": doctor.user.fullName}
+                return 200,{"date": stringifiedTime, "user": user.fullName, "doctor": doctor.user.fullName}
 
-        return {"details": "doctor is not active at this time"}
+        return 404,{"details": "doctor is not active at this time"}
     except DoctorProfile.DoesNotExist:
-        return {"details": "doctor was not found"}
+        return 404,{"details": "doctor was not found"}
 
 
 # doctor token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFTUFJTCI6InNhaWZoYXJpdGhAZ21haWwuY29tIn0.woh4yiDYk_-sL5Aq2bPQOr91BK_5GadQOGfTdBiETBw

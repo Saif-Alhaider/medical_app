@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/date_picker_timeline-1.2.3/date_picker_timeline.dart';
 import 'package:medical_app/reuseable_widgets/main_button.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
@@ -11,10 +16,11 @@ import 'convert_utc_time_to_active_dates.dart';
 
 class DoctorSchedual extends StatelessWidget {
   final List active_dates;
-
+  final int? doctor_id;
   DoctorSchedual({
     Key? key,
     required this.active_dates,
+    required this.doctor_id,
   }) : super(key: key);
 
   TimeOfDay? time;
@@ -116,22 +122,36 @@ class DoctorSchedual extends StatelessWidget {
                 : SizedBox(),
             StatefulBuilder(
               builder: (BuildContext context, setState) {
-                setState((){});
+                setState(() {});
                 return sentDate != null
-                
-                ? MainButton(
-                    onPressed: () {
-                      time == null
-                          ? print("can't make appointment")
-                          : Navigator.pop(context);
-                    },
-                    buttonTitle: "احجز")
-                : SizedBox();
+                    ? MainButton(
+                        onPressed: ()async {
+                          sendDate(date: sentDate!.toUtc(),doctor_id: doctor_id!);
+                        },
+                        buttonTitle: "احجز")
+                    : SizedBox();
               },
             ),
+            ConstantValues.cardsGap
           ],
         );
       },
     );
   }
+}
+
+Future sendDate({required DateTime date,required int doctor_id}) async {
+  final url = "http://10.0.2.2:8000/api/appointment/create_appointment";
+  var prefs = await SharedPreferences.getInstance();
+  String? token = prefs.getString('token');
+  var response = await http.post(Uri.parse(url),
+  headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode({
+          "date":date,
+          "doctor_id":doctor_id
+        })
+        );
 }

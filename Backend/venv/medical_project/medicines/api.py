@@ -23,7 +23,6 @@ def medicines(request,page_num:int):
             "title":medicine.title,
             "description":medicine.description,
             "medicinetype":medicine.medicinetype,
-            # "pharmacies":list(pharmacies)
         })
     try:
         p = Paginator(data,6)
