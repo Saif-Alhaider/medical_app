@@ -27,7 +27,8 @@ class DoctorProfile(models.Model):
     country = CountryField(blank=True, null=True)
     description = models.TextField(max_length=220, blank=True, null=True)
     work_at = models.ForeignKey(
-        Clinic,related_name='clinic_doctors', on_delete=models.DO_NOTHING, blank=True, null=True)
+        Clinic, related_name='clinic_doctors', on_delete=models.DO_NOTHING, blank=True, null=True)
+    phone_number = models.CharField(max_length=256, blank=True, null=True)
 
     def __str__(self):
         return self.user.fullName

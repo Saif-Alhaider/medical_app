@@ -25,6 +25,7 @@ class GetDoctorInfoSchema(Schema):
     country:str
     image:str
     speciality:str
+    phone_number: str|None
     active_dates:list[datetime]
     
     

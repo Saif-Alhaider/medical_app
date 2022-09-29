@@ -130,6 +130,7 @@ def doctor_info(request, doctor_id: int):
             "image": str(doctor.image),
             "speciality":doctor.speciality.title,
             "active_dates":active_dates,
+            "phone_number":doctor.phone_number
         }
     except DoctorProfile.DoesNotExist:
         return 404, {"details": "doctor not found"}
