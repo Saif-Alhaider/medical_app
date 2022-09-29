@@ -7,7 +7,10 @@ from django.core.paginator import Paginator,EmptyPage
 router = Router(tags=['Medicines'])
 
 
-@router.get("/",)
+@router.get("/",response={
+    200:AllMedicinesSchema,
+    404:MedicineErr
+})
 def medicines(request,page_num:int):
     medicines = Medicine.objects.all()
     
@@ -20,18 +23,18 @@ def medicines(request,page_num:int):
             "title":medicine.title,
             "description":medicine.description,
             "medicinetype":medicine.medicinetype,
-            "pharmacies":list(pharmacies)
+            # "pharmacies":list(pharmacies)
         })
-    return data
-    # try:
-    #     p = Paginator(medicines,6)
-    #     page = p.page(page_num)
-    #     return {
-    #         "num_pages":p.num_pages,
-    #         "medicines":page.object_list
-    #     }
-    # except EmptyPage:
-    #     return {"details":"there are no more doctors"}
+    try:
+        p = Paginator(data,6)
+        page = p.page(page_num)
+        return 200,{
+            "num_pages":p.num_pages,
+            "medicines":page.object_list
+        }
+    except:
+        return 404,{"details":"there are no more medicines"}
+
 
 
 @router.post("add", response={201: MedicineSchema})

@@ -66,6 +66,7 @@ class _MedicinesListViewState extends State<MedicinesListView> {
           child: FutureBuilder(
             future: get_medicines(),
             builder: (context, snapshot) {
+              print(snapshot.data);
               switch (snapshot.connectionState) {
                 case ConnectionState.waiting:
                   return ListView.builder(
@@ -173,7 +174,8 @@ Future<List<Medicine>>? get_medicines() async {
       "Content-Type": "application/json",
     },
   );
-  final medicines = MedicineFromJson(response.body);
+  final medicines = medicinesFromJson(response.body).medicines;
+  print(medicines);
   return medicines;
   
 }

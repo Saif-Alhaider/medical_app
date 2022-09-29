@@ -193,7 +193,6 @@ Future<Medicine> getMedicineById({required int id}) async {
       title: result['title'],
       description: result['description'],
       medicinetype:result['medicinetype'],
-      pharmacies: result['pharmacies']
       );
   return result;
 }

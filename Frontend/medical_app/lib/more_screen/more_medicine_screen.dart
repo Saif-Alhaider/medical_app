@@ -1,13 +1,16 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/models/clinic/clinic_model.dart';
+import 'package:medical_app/models/medicine/medicine_info.dart';
 import 'package:medical_app/reuseable_widgets/doctor_card.dart';
 import 'package:medical_app/reuseable_widgets/waiting.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../Medicines/medicine_screen/medicine_screen.dart';
 import '../models/doctors.dart';
 import '../reuseable_widgets/texts_types/sub_text.dart';
 
@@ -22,7 +25,7 @@ class _MoreScreenState extends State<MoreMedicinesScreen> {
   late int totalPages;
   final RefreshController refreshController = RefreshController(initialRefresh: true);
   int current_page = 1;
-  List<Clinic> clinics=[];
+  List<Medicine> medicines=[];
 
   Future getAllClincis({bool isReferesh = false}) async {
     if (isReferesh) {
@@ -35,16 +38,16 @@ class _MoreScreenState extends State<MoreMedicinesScreen> {
       }
     }
     final String url =
-        "http://10.0.2.2:8000/api/clinics/?page_num=$current_page";
+        "http://10.0.2.2:8000/api/medicines/?page_num=$current_page";
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       
-      final result = ClinicsFromJson(response.body);
+      final result = medicinesFromJson(response.body);
       if (isReferesh) {
-        clinics = result.clinics;
+        medicines = result.medicines;
       }else{
-        clinics.addAll(result.clinics);
+        medicines.addAll(result.medicines);
       }
       current_page++;
       
@@ -85,39 +88,52 @@ class _MoreScreenState extends State<MoreMedicinesScreen> {
             physics: BouncingScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, childAspectRatio: 0.65),
-            itemCount: clinics.length,
+            itemCount: medicines.length,
             itemBuilder: (BuildContext context, int index) {
-              return Container(
-              margin: const EdgeInsets.all(10),
-              width: 250,
-              decoration: BoxDecoration(
-                boxShadow: ConstantValues.cardShadow,
-                  color: const Color(0xffFDFDFD),
-                  borderRadius: BorderRadius.circular(12)),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                        height: 200,
-                        child: Image.network(
-                          'http://10.0.2.2:8000/images/'+clinics[index].image,
-                          fit: BoxFit.cover,
-                        )),
-                    SubText(
-                      text: clinics[index].name,
-                      color: Colors.black,
-                      overflow: true,
-                    ),
-                    SubText(
-                      text: "",
-                      size: 15,
-                    )
-                  ],
-                ),
-              ),
-            );
+              return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MedicineScreen(medicine_id: medicines[index].id),
+                                ));
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Color.fromARGB(56, 0, 0, 0),
+                                    offset: Offset(2, 4),
+                                    blurRadius: 8),
+                                BoxShadow(
+                                    color: Color.fromARGB(255, 229, 228, 228),
+                                    offset: Offset(-2, -4),
+                                    blurRadius: 8),
+                              ],
+                            ),
+                            width: 160,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 80,
+                                  child: SvgPicture.asset(
+                                    medicines[index].medicine_image,
+                                    height: 100,
+                                  ),
+                                ),
+                                ConstantValues.cardsGap,
+                                SubText(
+                                  text: medicines[index].title,
+                                  color: Colors.black,
+                                )
+                              ],
+                            ),
+                          ),
+                        );
             },
           ),
         ),
