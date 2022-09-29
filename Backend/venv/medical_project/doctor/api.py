@@ -1,5 +1,6 @@
 from asyncio.windows_events import NULL
 from datetime import date
+import re
 from turtle import title
 from unicodedata import name
 from ninja import Router
@@ -11,7 +12,7 @@ from .models import DoctorProfile
 from speciality.models import Specialitiy
 from django_countries.fields import Country
 from appointments.models import Appointments
-from django.core.paginator import Paginator,EmptyPage
+from django.core.paginator import Paginator, EmptyPage
 
 
 router = Router(tags=['doctor'])
@@ -36,11 +37,11 @@ def doctor_info(request, doctor_profile_details: DoctorInfoSchema):
         return 404, {'DoctorInfoErr': "doctor was not found"}
 
 
-@router.get("/doctors",response={
-    200:PaginationDoctors,
-    404:DoctorInfoErr
+@router.get("/doctors", response={
+    200: PaginationDoctors,
+    404: DoctorInfoErr
 })
-def get_doctors(request,page_num:int):
+def get_doctors(request, page_num: int):
     doctors = DoctorProfile.objects.all()
     data = []
     for doctor in doctors:
@@ -48,19 +49,18 @@ def get_doctors(request,page_num:int):
             "full_name": str(doctor.user.fullName),
             "speciality": str(doctor.speciality.title),
             "image": "images/"+str(doctor.image),
-            "id":doctor.doctor_id,
-            "clinic":None if doctor.work_at is None else doctor.work_at.name,
+            "id": doctor.doctor_id,
+            "clinic": None if doctor.work_at is None else doctor.work_at.name,
         })
     try:
-        p = Paginator(data,6)
+        p = Paginator(data, 6)
         page = p.page(page_num)
-        return 200,{
-            "num_pages":p.num_pages,
-            "doctors":page.object_list
+        return 200, {
+            "num_pages": p.num_pages,
+            "doctors": page.object_list
         }
     except EmptyPage:
-        return 404,{"details":"there are no more doctors"}
-    
+        return 404, {"details": "there are no more doctors"}
 
 
 @router.get('/doctorAppointments', auth=AuthBearer())
@@ -121,16 +121,16 @@ def doctor_info(request, doctor_id: int):
     try:
         doctor = DoctorProfile.objects.get(doctor_id=doctor_id)
         active_dates = list(
-        doctor.active_date.all().values_list('datetime', flat=True))
+            doctor.active_date.all().values_list('datetime', flat=True))
         return 200, {
             "fullName": doctor.user.fullName,
             "description": doctor.description,
             "email": doctor.user.email,
             "country": doctor.country.name,
             "image": str(doctor.image),
-            "speciality":doctor.speciality.title,
-            "active_dates":active_dates,
-            "phone_number":doctor.phone_number
+            "speciality": doctor.speciality.title,
+            "active_dates": active_dates,
+            "phone_number": doctor.phone_number
         }
     except DoctorProfile.DoesNotExist:
         return 404, {"details": "doctor not found"}
@@ -165,4 +165,36 @@ def doctor_patient_info(request, user_id: int):
             doctor=doctor, user__id=user_id).user
         return 200, {"fullName": patient.fullName, "email": patient.email, "health_info": patient.health_info.__dict__}
     except DoctorProfile.DoesNotExist:
-        return 404,{"details": "doctor not found", }
+        return 404, {"details": "doctor not found", }
+
+
+@router.get('search',response={
+    200:list[Doctor],
+    404: DoctorInfoErr
+})
+def search_doctor(request, doctor_full_name: str):
+    try:
+        doctor_full_name = doctor_full_name.split(" ")
+        if len(doctor_full_name) >2: 
+            doctors = DoctorProfile.objects.filter(
+                user__first_name=doctor_full_name[0], user__last_name=doctor_full_name[1])
+        else:
+            doctors = DoctorProfile.objects.filter(
+                user__first_name=doctor_full_name[0])
+        
+        data = []
+        for doctor in doctors:
+            try:
+                data.append({
+                "id":doctor.doctor_id,
+                "full_name":doctor.user.fullName,
+                "speciality":doctor.speciality.title,
+                "image":str(doctor.image),
+                "clinic":doctor.work_at.name 
+                
+            })
+            except:
+                pass
+        return 200,data
+    except DoctorProfile.DoesNotExist:
+        return {"details":"doctor not found"}
