@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'active_dates',
     'pharmacies',
     'medicines',
-    'user_profile_pic'
+    'user_profile_pic',
+    
 ]
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
