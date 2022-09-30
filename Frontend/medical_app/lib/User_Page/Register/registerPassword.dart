@@ -123,9 +123,7 @@ class RegisterPassword extends StatelessWidget {
                                   account_type: "patient")
                               .then(
                             (res) async {
-                              print(res);
                               final String token = res['token']['access_token'];
-                              print(token);
                               var prefs = await SharedPreferences.getInstance();
                               prefs.setString('token', token);
                               String? fullName =

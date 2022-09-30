@@ -70,7 +70,7 @@ class AuthServic {
   }
 
   static Future login({required String email, required String password}) async {
-    var response = await client.post(Uri.parse("$url/user/login"),
+    var response = await client.post(Uri.parse("$url/account/signin"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({"email": email, "password": password}));
     return response;

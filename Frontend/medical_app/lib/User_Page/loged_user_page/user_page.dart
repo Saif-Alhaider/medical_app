@@ -86,6 +86,9 @@ class _UserPageState extends State<UserPage> {
                     final prefs = await SharedPreferences.getInstance();
                     prefs.remove('token');
                     prefs.remove('fullName');
+                    prefs.remove('account_id');
+                    prefs.remove('account_type_id');
+                    prefs.remove('account_type');
 
                     // ignore: use_build_context_synchronously
                     Navigator.pushReplacement(

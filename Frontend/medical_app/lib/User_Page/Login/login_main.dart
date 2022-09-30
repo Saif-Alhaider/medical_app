@@ -108,13 +108,17 @@ class Login extends StatelessWidget {
                             Map res = jsonDecode(response.body);
                             if (response.statusCode == 200) {
                               var prefs = await SharedPreferences.getInstance();
-                              final String token = res['token']['access'];
-                              String? fullName =
-                                  "${res['accountOut']['first_name']} ${res['accountOut']['last_name']}";
-                              final String role = res['base_role'];
+                              final String token = res['token']['access_token'];
                               prefs.setString('token', token);
+                              String? fullName =
+                                  "${res['profile']['first_name']} ${res['profile']['last_name']}";
                               prefs.setString('fullName', fullName);
-                              prefs.setString('role', role);
+                              prefs.setString(
+                                  'account_id', res['profile']['id']);
+                              // prefs.setString(
+                              //     'account_type_id', res['profile_id']);
+                              prefs.setString('account_type',
+                                  res['profile']['account_type']);
                               
                               // ignore: use_build_context_synchronously
                               Navigator.pushAndRemoveUntil(
