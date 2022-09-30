@@ -134,7 +134,7 @@ class RegisterPassword extends StatelessWidget {
                               prefs.setString(
                                   'account_id', res['profile']['id']);
                               prefs.setString(
-                                  'account_type', res['profile_id']);
+                                  'account_type_id', res['profile_id']);
                               prefs.setString('account_type',
                                   res['profile']['account_type']);
                                   waitingRegister.value = true;

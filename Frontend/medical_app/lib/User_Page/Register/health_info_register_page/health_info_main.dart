@@ -138,16 +138,17 @@ class HealthInfoRegister extends StatelessWidget {
               NextSkipButtons(nextFunction: () async {
                 var pref = await SharedPreferences.getInstance();
                 String? token = pref.getString('token');
-
+                String? account_type_id = pref.getString('account_type_id');
                 AuthServic.sendHealthInfo(
-                        token: token!,
-                        gender: maleSelection.value ? "M" : "F",
-                        age: int.tryParse(ageController.text),
-                        height: int.parse(hegihtController.text),
-                        weight: int.parse(weightController.text),
-                        blood_type: bloodType.value,
-                        description: descriptionController.text)
-                    .then((value) {
+                  token: token!,
+                  gender: maleSelection.value ? "MALE" : "FEMALE",
+                  age: int.tryParse(ageController.text),
+                  height: int.parse(hegihtController.text),
+                  weight: int.parse(weightController.text),
+                  blood_type: bloodType.value,
+                  description: descriptionController.text,
+                  patient_id: account_type_id!,
+                ).then((value) {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
@@ -158,7 +159,11 @@ class HealthInfoRegister extends StatelessWidget {
               }, skipFunction: () async {
                 var pref = await SharedPreferences.getInstance();
                 String? token = pref.getString('token');
-                AuthServic.sendHealthInfo(token: token!).then((value) {
+                String? account_id = pref.getString('account_id');
+                AuthServic.sendHealthInfo(
+                  token: token!,
+                  patient_id: account_id!,
+                ).then((value) {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(

@@ -23,34 +23,49 @@ class AuthServic {
         "last_name": lastName,
         "password1": password,
         "password2": confirmPassword,
-        "phone":phone_number,
-        "account_type":account_type
+        "phone": phone_number,
+        "account_type": account_type
       }),
     );
     return jsonDecode(response.body);
   }
 
-  static Future sendHealthInfo(
-      {String? gender,
-      int? height,
-      int? weight,
-      int? age,
-      String? blood_type,
-      String? description,
-      required String token}) async {
-    var response = await client.post(Uri.parse("$url/user/create_health_info"),
-        headers: {
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer $token',
-        },
-        body: jsonEncode({
-          "gender": gender,
-          "height": height,
-          "weight": weight,
-          "age": age,
-          "blood_type": blood_type,
-          "description": description
-        }));
+  static Future sendHealthInfo({
+    String? gender,
+    int? height,
+    int? weight,
+    int? age,
+    String? blood_type,
+    String? description,
+    required String token,
+    String? allergies,
+    String? diseases="",
+    String? surgeries="",
+    String? medications="",
+    String? body_mass_index="",
+    required String patient_id,
+    
+  }) async {
+    var response =
+        await client.post(Uri.parse("$url/patient/patient/medical_history"),
+            headers: {
+              "Content-Type": "application/json",
+              'Authorization': 'Bearer $token',
+            },
+            body: jsonEncode({
+              "gender": gender,
+              "height": height,
+              "weight": weight,
+              "age": age,
+              "blood_group": blood_type,
+              "description": description,
+              "allergies": allergies,
+              "diseases": diseases,
+              "body_mass_index": body_mass_index,
+              "patient": patient_id,
+
+            }));
+            
     return jsonDecode(response.body);
   }
 
