@@ -10,15 +10,21 @@ class AuthServic {
     required String lastName,
     required String email,
     required String password,
+    required String confirmPassword,
+    String phone_number = "",
+    required String account_type,
   }) async {
     var response = await client.post(
-      Uri.parse("$url/user/create_user"),
+      Uri.parse("$url/account/signup"),
       headers: {"Content-Type": "application/json"},
-      body: jsonEncode(<String, String>{
+      body: jsonEncode(<String, String?>{
         "email": email,
         "first_name": firstName,
         "last_name": lastName,
-        "password": password,
+        "password1": password,
+        "password2": confirmPassword,
+        "phone":phone_number,
+        "account_type":account_type
       }),
     );
     return jsonDecode(response.body);

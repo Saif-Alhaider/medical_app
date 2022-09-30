@@ -107,30 +107,37 @@ class RegisterPassword extends StatelessWidget {
                           if (!_formKey.currentState!.validate()) {
                             return;
                           }
-                          waitingRegister.value = true;
-                          User().addUser(UserAccount(
-                            firstName: firstName.text,
-                            lastName: lastName.text,
-                            email: email.text,
-                            password: password.text,
-                          ));
+                          
+                          // User().addUser(UserAccount(
+                          //   firstName: firstName.text,
+                          //   lastName: lastName.text,
+                          //   email: email.text,
+                          //   password: password.text,
+                          // ));
                           await AuthServic.register(
                                   firstName: firstName.text,
                                   lastName: lastName.text,
                                   email: email.text,
                                   password: password.text,
-                                  )
+                                  confirmPassword: confirmPassword.text,
+                                  account_type: "patient")
                               .then(
                             (res) async {
                               print(res);
-                              final String token = res['token']['access'];
+                              final String token = res['token']['access_token'];
                               print(token);
                               var prefs = await SharedPreferences.getInstance();
                               prefs.setString('token', token);
                               String? fullName =
-                                  "${res['accountOut']['first_name']} ${res['accountOut']['last_name']}";
+                                  "${res['profile']['first_name']} ${res['profile']['last_name']}";
                               prefs.setString('fullName', fullName);
-
+                              prefs.setString(
+                                  'account_id', res['profile']['id']);
+                              prefs.setString(
+                                  'account_type', res['profile_id']);
+                              prefs.setString('account_type',
+                                  res['profile']['account_type']);
+                                  waitingRegister.value = true;
                               firstName.clear();
                               lastName.clear();
                               email.clear();
