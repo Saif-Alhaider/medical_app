@@ -34,15 +34,15 @@ class BottomSalamonNavigationBar extends StatelessWidget {
             ),
 
             /// Likes
-            SalomonBottomBarItem(
-              icon: const Icon(
-                Icons.medication_outlined,
-                size: 35,
-                color: MainColors.foreignBlue,
-              ),
-              title: const Text("الادوية",style: TextStyle(fontSize: 16,color: MainColors.foreignBlue)),
-              selectedColor: Colors.blue,
-            ),
+            // SalomonBottomBarItem(
+            //   icon: const Icon(
+            //     Icons.medication_outlined,
+            //     size: 35,
+            //     color: MainColors.foreignBlue,
+            //   ),
+            //   title: const Text("الادوية",style: TextStyle(fontSize: 16,color: MainColors.foreignBlue)),
+            //   selectedColor: Colors.blue,
+            // ),
 
             /// Search
             SalomonBottomBarItem(

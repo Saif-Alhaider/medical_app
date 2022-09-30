@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
                           padding: const EdgeInsets.only(top: 30),
                           child: searchPageDisplay.value
                               ? SearchScreen(isSubmitted: isSubmitted,)
-                              : const HomeContent(),
+                              :  HomeContent(),
                         );
                       }),
                       SearchBar(searchPageDisplay: searchPageDisplay,isSubmitted: isSubmitted),

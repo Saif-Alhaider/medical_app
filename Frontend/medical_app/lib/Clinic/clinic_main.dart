@@ -16,7 +16,7 @@ import '../reuseable_widgets/home_card.dart';
 import 'package:http/http.dart' as http;
 
 import '../reuseable_widgets/waiting.dart';
-import '../reuseable_widgets/waitingCarousel.dart';
+import '../reuseable_widgets/connection widgets/waitingCarousel.dart';
 
 class ClinicMain extends StatelessWidget {
   const ClinicMain({super.key});

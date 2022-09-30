@@ -10,6 +10,7 @@ import 'package:medical_app/doctor_page/doctor_page.dart';
 import 'package:medical_app/models/clinic/clinic_model.dart';
 import 'package:medical_app/models/doctors.dart';
 import 'package:medical_app/more_screen/more_doctors_screen.dart';
+import 'package:medical_app/reuseable_widgets/connection%20widgets/something_went_wrong.dart';
 import 'package:medical_app/reuseable_widgets/home_card.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
@@ -20,10 +21,23 @@ import 'package:medical_app/reuseable_widgets/waiting.dart';
 import '../../models/doctor/doctorModel.dart';
 import '../../models/home_card_info.dart';
 import '../../more_screen/more_clinics_screen.dart';
-import '../../reuseable_widgets/waitingCarousel.dart';
+import '../../reuseable_widgets/connection widgets/waitingCarousel.dart';
 
-class HomeContent extends StatelessWidget {
-  const HomeContent({super.key});
+class HomeContent extends StatefulWidget {
+   HomeContent({super.key});
+
+  @override
+  State<HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<HomeContent> {
+  late Future doctorsData;
+
+  @override
+  void initState() {
+    super.initState();
+    doctorsData= get_doctors();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,21 +79,16 @@ class HomeContent extends StatelessWidget {
               ),
               ConstantValues.cardsGap,
               FutureBuilder(
-                future: get_doctors(),
+                future: doctorsData,
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
                       return WaitingCarousel();
+                      
                     case ConnectionState.done:
                     default:
                       if (snapshot.hasError) {
-                        return Column(
-                          children:  [
-                            const Icon(Icons.error),
-                            const Text("something went wrong please try again later"),
-                            Text(snapshot.error.toString())
-                          ],
-                        );
+                        return SomethingWentWrong();
                       } else if (snapshot.hasData) {
                         return HomeCard(
                           info: snapshot.data,
@@ -126,12 +135,7 @@ class HomeContent extends StatelessWidget {
                     case ConnectionState.done:
                     default:
                       if (snapshot.hasError) {
-                        return Column(
-                          children: [
-                            Icon(Icons.error),
-                            Text("something went wrong please try again later")
-                          ],
-                        );
+                        return SomethingWentWrong();
                       } else if (snapshot.hasData) {
                         return HomeCard(
                           info: snapshot.data,
