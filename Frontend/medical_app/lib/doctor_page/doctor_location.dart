@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
+import '../main.dart';
+import '../main_colors.dart';
+
 class DoctorLocation extends StatelessWidget {
   final String location;
+
   const DoctorLocation({
     Key? key,
     required this.location,
@@ -13,8 +17,17 @@ class DoctorLocation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(Icons.location_on,size: 30,),
-        SubText(text: location,color: Colors.blue,),
+        Icon(
+          Icons.location_on,
+          size: 30,
+          color: IsDark
+              ? MainDarkColors.primaryFontColor
+              : MainLiteColors.primaryFontColor,
+        ),
+        SubText(
+          text: location,
+          color: Colors.blue,
+        ),
       ],
     );
   }

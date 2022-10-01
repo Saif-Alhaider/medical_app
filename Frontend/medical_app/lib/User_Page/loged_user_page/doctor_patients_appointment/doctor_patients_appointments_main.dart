@@ -8,6 +8,8 @@ import 'package:medical_app/main_colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/reuseable_widgets/waiting.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../main.dart';
+import 'package:get/get.dart';
 
 class DoctorPatientsAppointmentsMain extends StatelessWidget {
   const DoctorPatientsAppointmentsMain({super.key});
@@ -17,12 +19,19 @@ class DoctorPatientsAppointmentsMain extends StatelessWidget {
     getDoctorPatients();
 
     return Scaffold(
+      backgroundColor: IsDark ? MainDarkColors.bgColor : MainLiteColors.bgColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: IsDark
+                ? MainDarkColors.primaryFontColor
+                : MainLiteColors.primaryFontColor,
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Color(0xfff6f6f6),
+        backgroundColor:
+            IsDark ? MainDarkColors.bgColor : MainLiteColors.bgColor,
         elevation: 0,
       ),
       body: SafeArea(
@@ -47,28 +56,39 @@ class DoctorPatientsAppointmentsMain extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 5),
                             child: ListTileTheme(
-                                tileColor: MainColors.backgroundGreen,
+                                tileColor: MainLiteColors.backgroundGreen,
                                 child: ListTile(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => PatientInfo(
-                                              userId: snapshot.data[index]
-                                                  ['id']),
-                                        ));
+                                   Get.to(PatientInfo(
+                                       userId: snapshot.data[index]
+                                       ['id']),);
                                   },
                                   title: Text(
                                     snapshot.data[index]['patient name'],
-                                    style: GoogleFonts.vazirmatn(fontSize: 30),
+                                    style: GoogleFonts.vazirmatn(
+                                      fontSize: 30,
+                                      color: IsDark
+                                          ? MainDarkColors.primaryFontColor
+                                          : MainLiteColors.primaryFontColor,
+                                    ),
                                   ),
                                   subtitle: Text(
                                     snapshot.data[index]['date'],
-                                    style: GoogleFonts.vazirmatn(fontSize: 18),
+                                    style: GoogleFonts.vazirmatn(
+                                      fontSize: 18,
+                                      color: IsDark
+                                          ? MainDarkColors.primaryFontColor
+                                          : MainLiteColors.primaryFontColor,
+                                    ),
                                   ),
                                   trailing: IconButton(
                                     onPressed: () {},
-                                    icon: Icon(Icons.arrow_forward_ios),
+                                    icon: Icon(
+                                      Icons.arrow_forward_ios,
+                                      color: IsDark
+                                          ? MainDarkColors.primaryFontColor
+                                          : MainLiteColors.primaryFontColor,
+                                    ),
                                   ),
                                 )),
                           );

@@ -9,6 +9,7 @@ import 'package:medical_app/models/doctors.dart';
 class SearchBar extends StatelessWidget {
   Rx<bool> searchPageDisplay;
   Rx<bool> isSubmitted;
+
   SearchBar({
     Key? key,
     required this.searchPageDisplay,

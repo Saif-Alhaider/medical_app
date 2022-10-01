@@ -27,7 +27,7 @@ class BottomSalamonNavigationBar extends StatelessWidget {
               icon: const Icon(
                 Icons.home,
                 size: 35,
-                color: MainColors.foreignBlue,
+                color: MainLiteColors.foreignBlue,
               ),
               title: const Text("الرئيسية",style: TextStyle(fontSize: 16,)),
               selectedColor: Colors.blue,
@@ -50,7 +50,7 @@ class BottomSalamonNavigationBar extends StatelessWidget {
               icon: const Icon(
                 Icons.person_outline,
                 size: 35,
-                color: MainColors.foreignBlue,
+                color: MainLiteColors.foreignBlue,
               ),
               title: const Text("الحساب",style: TextStyle(fontSize: 16,)),
               selectedColor: Colors.blue,

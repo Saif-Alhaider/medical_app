@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/Home/constants.dart';
+import 'package:medical_app/main.dart';
+import 'package:medical_app/main_colors.dart';
 import 'package:medical_app/models/clinic/clinic_model.dart';
 import 'package:medical_app/reuseable_widgets/doctor_card.dart';
 import 'package:medical_app/reuseable_widgets/waiting.dart';
@@ -60,6 +62,7 @@ class _MoreScreenState extends State<MoreClinicsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: IsDark? MainDarkColors.bgColor:MainLiteColors.bgColor,
       appBar: AppBar(),
       body: Container(
         width: double.maxFinite,

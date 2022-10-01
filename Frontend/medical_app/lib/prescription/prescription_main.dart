@@ -17,6 +17,7 @@ import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../User_Page/Register/health_info_register_page/description_info.dart';
+import '../main.dart';
 import '../models/medicine/medicine_details.dart';
 import 'doctor_clinic_info.dart';
 import 'medicines_info.dart';
@@ -74,11 +75,12 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: IsDark?MainDarkColors.bgColor:MainLiteColors.bgColor,
       appBar: AppBar(
-        backgroundColor: const Color(0xfff6f6f6),
+        backgroundColor: IsDark?MainDarkColors.bgColor:MainLiteColors.bgColor,
         elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.black, //change your color here
+        iconTheme:  IconThemeData(
+          color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,//change your color here
         ),
       ),
       body: SafeArea(
@@ -183,7 +185,7 @@ class _PrescriptionMainState extends State<PrescriptionMain> {
                                                 color: Colors.white,
                                               ),
                                               backgroundColor:
-                                                  MainColors.foreignGreen,
+                                                  MainLiteColors.foreignGreen,
                                             ));
                                           }
                                         },

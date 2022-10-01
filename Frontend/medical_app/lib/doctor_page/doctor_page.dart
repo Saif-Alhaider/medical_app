@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:medical_app/models/doctor/doctorModel.dart';
 import 'package:medical_app/reuseable_widgets/waiting.dart';
+import '../main.dart';
+import '../main_colors.dart';
 import '../reuseable_widgets/break_line.dart';
 import 'doctor_details.dart';
 import 'doctor_location.dart';
@@ -23,6 +25,8 @@ class DoctorPage extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        backgroundColor:
+            IsDark ? MainDarkColors.bgColor : MainLiteColors.bgColor,
         body: FutureBuilder(
           future: getDoctorInfo(doctor_id: doctor_id!),
           builder: (context, snapshot) {
@@ -47,7 +51,12 @@ class DoctorPage extends StatelessWidget {
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: IconButton(
-                                  icon: const Icon(Icons.arrow_forward_ios),
+                                  icon: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
+                                  ),
                                   onPressed: () {
                                     Get.back();
                                   },
@@ -57,7 +66,8 @@ class DoctorPage extends StatelessWidget {
                             DoctorPersonalInfoMain(
                               img:
                                   'http://10.0.2.2:8000/images/${snapshot.data!.image}',
-                              name: snapshot.data.full_name, doctor_number: snapshot.data.phone_number,
+                              name: snapshot.data.full_name,
+                              doctor_number: snapshot.data.phone_number,
                             ),
                             const SizedBox(height: 35),
                             DoctorDetails(text: snapshot.data.description),
@@ -67,7 +77,8 @@ class DoctorPage extends StatelessWidget {
                               Speciality: snapshot.data.speciality,
                             ),
                             DoctorSchedual(
-                                active_dates: snapshot.data.active_dates,doctor_id: doctor_id),
+                                active_dates: snapshot.data.active_dates,
+                                doctor_id: doctor_id),
                             const SizedBox(height: 20),
                           ],
                         ),
@@ -91,14 +102,13 @@ Future getDoctorInfo({required int doctor_id}) async {
   var response = await http.get(Uri.parse(url));
   var result = jsonDecode(response.body);
   result = Doctor(
-    full_name: result['fullName'],
-    speciality: result['speciality'],
-    image: result['image'],
-    description: result['description'],
-    email: result['email'],
-    country: result['country'],
-    active_dates: result['active_dates'],
-    phone_number: result['phone_number']
-  );
+      full_name: result['fullName'],
+      speciality: result['speciality'],
+      image: result['image'],
+      description: result['description'],
+      email: result['email'],
+      country: result['country'],
+      active_dates: result['active_dates'],
+      phone_number: result['phone_number']);
   return result;
 }

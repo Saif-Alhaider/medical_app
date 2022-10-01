@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../main.dart';
+import '../main_colors.dart';
 import '../reuseable_widgets/texts_types/headline_text.dart';
 
 class WelcomeSection extends StatefulWidget {
@@ -28,19 +30,19 @@ class _WelcomeSectionState extends State<WelcomeSection> {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children:  [
                 HeadLineText(
                   text: "مرحبا",
                   lineHeight: 1,
                   size: 28,
-                  color: Colors.black,
+                  color: IsDark? MainDarkColors.primaryFontColor: MainLiteColors.primaryFontColor,
                   fontWeight: FontWeight.w300,
                 ),
                 HeadLineText(
                   text: 'ابحث عن طبيب او عيادة',
                   lineHeight: 2,
                   size: 24,
-                  color: Colors.black,
+                  color: IsDark? MainDarkColors.primaryFontColor: MainLiteColors.primaryFontColor,
                   fontWeight: FontWeight.w800,
                 ),
               ],

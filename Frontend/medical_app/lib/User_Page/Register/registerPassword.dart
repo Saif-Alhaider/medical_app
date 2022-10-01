@@ -10,6 +10,8 @@ import 'package:medical_app/auth/auth_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Main_View/main_view.dart';
+import '../../main.dart';
+import '../../main_colors.dart';
 import '../../models/user_model/account_model.dart';
 import '../../reuseable_widgets/back_Icon.dart';
 import '../../reuseable_widgets/main_button.dart';
@@ -37,6 +39,7 @@ class RegisterPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     final Rx<bool> waitingRegister = Rx<bool>(false);
     return Scaffold(
+      backgroundColor: IsDark?MainDarkColors.bgColor:MainLiteColors.bgColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
@@ -54,9 +57,9 @@ class RegisterPassword extends StatelessWidget {
                         child: LottieBuilder.asset(
                             'Assets/Lottie json/signup.json'))),
 
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-                  child: HeadLineText(text: "انشاء كلمة سر"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+                  child: HeadLineText(text: "انشاء كلمة سر",color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),

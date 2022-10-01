@@ -5,6 +5,8 @@ import 'package:lottie/lottie.dart';
 import 'package:medical_app/User_Page/Register/registerPassword.dart';
 import 'package:medical_app/reuseable_widgets/main_button.dart';
 
+import '../../main.dart';
+import '../../main_colors.dart';
 import '../Login/login_main.dart';
 import '../textfield/registerTextField.dart';
 import 'validationDetatils.dart';
@@ -12,6 +14,7 @@ import 'package:get/get.dart';
 
 class RegisterEmail extends StatelessWidget {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,7 +34,12 @@ class RegisterEmail extends StatelessWidget {
               child: Text(
                 "انشاء حساب جديد",
                 style: GoogleFonts.vazirmatn(
-                    fontSize: 25, fontWeight: FontWeight.bold),
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: IsDark
+                      ? MainDarkColors.primaryFontColor
+                      : MainLiteColors.primaryFontColor,
+                ),
               ),
             ),
             const SizedBox(height: 20),
@@ -98,7 +106,11 @@ class RegisterEmail extends StatelessWidget {
                     RichText(
                       text: TextSpan(
                           text: 'لديك حساب بالفعل؟',
-                          style: GoogleFonts.vazirmatn(color: Colors.black),
+                          style: GoogleFonts.vazirmatn(
+                            color: IsDark
+                                ? MainDarkColors.primaryFontColor
+                                : MainLiteColors.primaryFontColor,
+                          ),
                           children: [
                             const WidgetSpan(
                                 alignment: PlaceholderAlignment.baseline,

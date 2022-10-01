@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../Main_View/main_view.dart';
+import '../../main.dart';
+import '../../main_colors.dart';
 
 class LoggedinAnimation extends StatefulWidget {
   const LoggedinAnimation({Key? key}) : super(key: key);
@@ -42,6 +44,7 @@ class _RegisterdAnimationState extends State<LoggedinAnimation>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: IsDark?MainDarkColors.bgColor:MainLiteColors.bgColor,
       body: Center(
         child: LottieBuilder.asset(
           'Assets/Lottie json/login_success.json',

@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:medical_app/main_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../main.dart';
 import '../reuseable_widgets/star_rate.dart';
 import '../reuseable_widgets/star_rating.dart';
 import '../reuseable_widgets/texts_types/headline_text.dart';
@@ -35,7 +36,7 @@ class DoctorPersonalInfoMain extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 105,
+            width: Get.width*0.26,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
@@ -56,7 +57,7 @@ class DoctorPersonalInfoMain extends StatelessWidget {
                 children:  [
                   HeadLineText(
                     text: "$name",
-                    color: Colors.black,
+                    color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,
                     size: 25,
                     lineHeight: 1,
                   ),
@@ -71,8 +72,8 @@ class DoctorPersonalInfoMain extends StatelessWidget {
           SizedBox(
             width: 50,
             child: IconButton(
-              splashColor: MainColors.backgroundGreen,
-              color: MainColors.foreignGreen,
+              splashColor: MainLiteColors.backgroundGreen,
+              color: MainLiteColors.foreignGreen,
               onPressed: () {
                 contactDoctor(context:context,phone_number:doctor_number);
               },

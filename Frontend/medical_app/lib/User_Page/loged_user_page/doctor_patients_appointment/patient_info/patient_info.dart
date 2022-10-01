@@ -12,10 +12,14 @@ import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../main.dart';
+import '../../../../main_colors.dart';
 import '../../../../reuseable_widgets/waiting.dart';
+import 'package:get/get.dart';
 
 class PatientInfo extends StatelessWidget {
   final int userId;
+
   const PatientInfo({
     Key? key,
     required this.userId,
@@ -27,12 +31,19 @@ class PatientInfo extends StatelessWidget {
       id: userId,
     );
     return Scaffold(
+      backgroundColor: IsDark ? MainDarkColors.bgColor : MainLiteColors.bgColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: IsDark
+                ? MainDarkColors.primaryFontColor
+                : MainLiteColors.primaryFontColor,
+          ),
+          onPressed: () => Get.back(),
         ),
-        backgroundColor: const Color(0xfff6f6f6),
+        backgroundColor:
+            IsDark ? MainDarkColors.bgColor : MainLiteColors.bgColor,
         elevation: 0,
       ),
       body: Directionality(
@@ -73,7 +84,9 @@ class PatientInfo extends StatelessWidget {
                                     text: "الاسم: ${snapshot.data!.fullName}",
                                     size: 30,
                                     textAlign: TextAlign.right,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   )),
                                 ],
                               ),
@@ -84,7 +97,12 @@ class PatientInfo extends StatelessWidget {
                                   Expanded(
                                       child: SelectableText(
                                     "الحساب: ${snapshot.data!.email}",
-                                    style: GoogleFonts.vazirmatn(fontSize: 18),
+                                    style: GoogleFonts.vazirmatn(
+                                      fontSize: 18,
+                                      color: IsDark
+                                          ? MainDarkColors.primaryFontColor
+                                          : MainLiteColors.primaryFontColor,
+                                    ),
                                   )),
                                 ],
                               )
@@ -102,7 +120,9 @@ class PatientInfo extends StatelessWidget {
                           width: double.maxFinite,
                           // height: 80,
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: IsDark
+                                  ? MainDarkColors.bgColor
+                                  : MainLiteColors.bgColor,
                               boxShadow: ConstantValues.cardShadow,
                               borderRadius: BorderRadius.circular(12)),
                           child: Column(
@@ -110,33 +130,43 @@ class PatientInfo extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                       child: SubText(
                                     text: "الجنس:",
                                     size: 30,
                                     textAlign: TextAlign.right,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   )),
                                   Expanded(
                                       child: SubText(
                                     text: snapshot.data!.userHealthInfo.gender,
                                     size: 30,
                                     textAlign: TextAlign.left,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   ))
                                 ],
                               ),
                               ConstantValues.cardsGap,
-                              const Breakline(),
+                              Breakline(
+                                color: IsDark
+                                    ? MainDarkColors.primaryFontColor
+                                    : MainLiteColors.primaryFontColor,
+                              ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                       child: SubText(
                                     text: "العمر:",
                                     size: 30,
                                     textAlign: TextAlign.right,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   )),
                                   Expanded(
                                       child: SubText(
@@ -144,7 +174,9 @@ class PatientInfo extends StatelessWidget {
                                         .toString(),
                                     size: 30,
                                     textAlign: TextAlign.left,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   ))
                                 ],
                               ),
@@ -152,12 +184,14 @@ class PatientInfo extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                       child: SubText(
                                     text: "فصيلة الدم:",
                                     size: 30,
                                     textAlign: TextAlign.right,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   )),
                                   Expanded(
                                       child: SubText(
@@ -165,21 +199,29 @@ class PatientInfo extends StatelessWidget {
                                         .data!.userHealthInfo.blood_type,
                                     size: 30,
                                     textAlign: TextAlign.left,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   ))
                                 ],
                               ),
-                              const Breakline(),
+                              Breakline(
+                                color: IsDark
+                                    ? MainDarkColors.primaryFontColor
+                                    : MainLiteColors.primaryFontColor,
+                              ),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                       child: SubText(
                                     text: "الطول:",
                                     size: 30,
                                     textAlign: TextAlign.right,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   )),
                                   Expanded(
                                       child: SubText(
@@ -187,7 +229,9 @@ class PatientInfo extends StatelessWidget {
                                         '${snapshot.data!.userHealthInfo.height}cm',
                                     size: 30,
                                     textAlign: TextAlign.left,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   ))
                                 ],
                               ),
@@ -195,12 +239,14 @@ class PatientInfo extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                       child: SubText(
                                     text: "الوزن:",
                                     size: 30,
                                     textAlign: TextAlign.right,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   )),
                                   Expanded(
                                       child: SubText(
@@ -208,7 +254,9 @@ class PatientInfo extends StatelessWidget {
                                         '${snapshot.data!.userHealthInfo.weight}kg',
                                     size: 30,
                                     textAlign: TextAlign.left,
-                                    color: Colors.black,
+                                    color: IsDark
+                                        ? MainDarkColors.primaryFontColor
+                                        : MainLiteColors.primaryFontColor,
                                   ))
                                 ],
                               ),
@@ -218,7 +266,9 @@ class PatientInfo extends StatelessWidget {
                         ConstantValues.cardsGap,
                         Container(
                           padding: EdgeInsets.all(10),
-                          color: Colors.white,
+                          color: IsDark
+                              ? MainDarkColors.bgColor
+                              : MainLiteColors.bgColor,
                           height: 200,
                           width: double.maxFinite,
                           child: Expanded(
@@ -226,7 +276,12 @@ class PatientInfo extends StatelessWidget {
                             snapshot.data!.userHealthInfo.description == ""
                                 ? "لا توجد ملاحظات"
                                 : "",
-                            style: GoogleFonts.vazirmatn(fontSize: 20),
+                            style: GoogleFonts.vazirmatn(
+                              fontSize: 20,
+                              color: IsDark
+                                  ? MainDarkColors.primaryFontColor
+                                  : MainLiteColors.primaryFontColor,
+                            ),
                           )),
                         )
                       ],

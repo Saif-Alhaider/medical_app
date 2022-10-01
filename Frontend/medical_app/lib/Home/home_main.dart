@@ -6,6 +6,8 @@ import 'package:medical_app/Home/welcome_section.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../main.dart';
+import '../main_colors.dart';
 import '../models/user_model/account_model.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +24,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor:IsDark?MainDarkColors.bgColor:MainLiteColors.bgColor,
       resizeToAvoidBottomInset: false,
       body: Directionality(
         textDirection: TextDirection.rtl,

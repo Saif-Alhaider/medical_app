@@ -6,6 +6,8 @@ import 'package:medical_app/Main_View/main_view.dart';
 import 'package:medical_app/main_colors.dart';
 import 'package:medical_app/reuseable_widgets/next_skip_buttons.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
+import '../../main.dart';
+import 'package:get/get.dart';
 
 class AddUserImage extends StatelessWidget {
   const AddUserImage({super.key});
@@ -14,6 +16,7 @@ class AddUserImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: IsDark? MainDarkColors.bgColor:MainLiteColors.bgColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -38,6 +41,9 @@ class AddUserImage extends StatelessWidget {
                       },
                       child: SubText(
                         text: "اضغط لاختيار الصورة",
+                        color: IsDark
+                            ? MainDarkColors.primaryFontColor
+                            : MainLiteColors.primaryFontColor,
                       ),
                     ),
                   ],
@@ -45,18 +51,10 @@ class AddUserImage extends StatelessWidget {
                 Spacer(),
                 NextSkipButtons(
                   nextFunction: (() {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MainView(),
-                        ));
+                   Get.to(MainView());
                   }),
                   skipFunction: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MainView(),
-                        ));
+                   Get.to(MainView());
                   },
                 )
               ],

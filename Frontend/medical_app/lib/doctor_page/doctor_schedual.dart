@@ -10,6 +10,8 @@ import 'package:medical_app/date_picker_timeline-1.2.3/date_picker_timeline.dart
 import 'package:medical_app/reuseable_widgets/main_button.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 
+import '../main.dart';
+import '../main_colors.dart';
 import '../models/doctor_appointments/appointments.dart';
 import '../reuseable_widgets/break_line.dart';
 import 'convert_utc_time_to_active_dates.dart';
@@ -17,6 +19,7 @@ import 'convert_utc_time_to_active_dates.dart';
 class DoctorSchedual extends StatelessWidget {
   final List active_dates;
   final int? doctor_id;
+
   DoctorSchedual({
     Key? key,
     required this.active_dates,
@@ -25,6 +28,7 @@ class DoctorSchedual extends StatelessWidget {
 
   TimeOfDay? time;
   int? selectedIndex;
+
   @override
   Widget build(BuildContext context) {
     DateTime? sentDate;
@@ -37,24 +41,48 @@ class DoctorSchedual extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const HeadLineText(
+            HeadLineText(
               text: 'جدول المواعيد',
               size: 24,
-              color: Colors.black,
+              color: IsDark
+                  ? MainDarkColors.primaryFontColor
+                  : MainLiteColors.primaryFontColor,
             ),
             DatePicker(
               daysCount: 30,
               width: 80,
               height: 110,
               DateTime.now(),
-              initialSelectedDate: null, //selectedDate
-              selectionColor: Colors.black,
-              selectedTextColor: Colors.white,
+              initialSelectedDate: null,
+              //selectedDate
+              selectionColor: IsDark
+                  ? MainDarkColors.primaryCardColor
+                  : MainLiteColors.primaryCardColor,
+              selectedTextColor: IsDark
+                  ? MainDarkColors.primaryFontColor
+                  : MainLiteColors.primaryFontColor,
               activeDates: active_dates2.keys.toList(),
-              dateTextStyle: GoogleFonts.vazirmatn(fontSize: 18),
-              monthTextStyle: GoogleFonts.vazirmatn(fontSize: 18),
-              dayTextStyle: GoogleFonts.vazirmatn(fontSize: 18),
-              deactivatedColor: Colors.grey,
+              dateTextStyle: GoogleFonts.vazirmatn(
+                fontSize: 18,
+                color: IsDark
+                    ? MainDarkColors.primaryFontColor
+                    : MainLiteColors.primaryFontColor,
+              ),
+              monthTextStyle: GoogleFonts.vazirmatn(
+                fontSize: 18,
+                color: IsDark
+                    ? MainDarkColors.primaryFontColor
+                    : MainLiteColors.primaryFontColor,
+              ),
+              dayTextStyle: GoogleFonts.vazirmatn(
+                fontSize: 18,
+                color: IsDark
+                    ? MainDarkColors.primaryFontColor
+                    : MainLiteColors.primaryFontColor,
+              ),
+              deactivatedColor: IsDark
+                  ? MainDarkColors.seconderyFontColor
+                  : MainLiteColors.seconderyFontColor,
 
               onDateChange: (date) {
                 setState(() {
@@ -109,7 +137,10 @@ class DoctorSchedual extends StatelessWidget {
                                     active_dates2[selectedDate]![index]
                                         .format(context),
                                     style: GoogleFonts.vazirmatn(
-                                        color: Colors.white, fontSize: 20),
+                                        color: IsDark
+                                            ? MainDarkColors.primaryFontColor
+                                            : MainLiteColors.primaryFontColor,
+                                        fontSize: 20),
                                   ),
                                 ),
                               ),
@@ -125,8 +156,9 @@ class DoctorSchedual extends StatelessWidget {
                 setState(() {});
                 return sentDate != null
                     ? MainButton(
-                        onPressed: ()async {
-                          sendDate(date: sentDate!.toUtc(),doctor_id: doctor_id!);
+                        onPressed: () async {
+                          sendDate(
+                              date: sentDate!.toUtc(), doctor_id: doctor_id!);
                         },
                         buttonTitle: "احجز")
                     : SizedBox();
@@ -140,18 +172,14 @@ class DoctorSchedual extends StatelessWidget {
   }
 }
 
-Future sendDate({required DateTime date,required int doctor_id}) async {
+Future sendDate({required DateTime date, required int doctor_id}) async {
   final url = "http://10.0.2.2:8000/api/appointment/create_appointment";
   var prefs = await SharedPreferences.getInstance();
   String? token = prefs.getString('token');
   var response = await http.post(Uri.parse(url),
-  headers: {
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer $token',
-        },
-        body: jsonEncode({
-          "date":date,
-          "doctor_id":doctor_id
-        })
-        );
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({"date": date, "doctor_id": doctor_id}));
 }

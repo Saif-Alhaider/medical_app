@@ -10,6 +10,7 @@ import 'package:medical_app/reuseable_widgets/main_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Main_View/main_view.dart';
+import '../../main.dart';
 import '../../models/user_model/account_model.dart';
 import '../../reuseable_widgets/texts_types/headline_text.dart';
 import '../textfield/registerTextField.dart';
@@ -24,6 +25,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      backgroundColor: IsDark?MainDarkColors.bgColor:MainLiteColors.bgColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(
@@ -144,14 +146,14 @@ class Login extends StatelessWidget {
                                   .showSnackBar( SnackBar(
                                 content: Text(
                                     "Welcome Back ${fullName} !"),
-                                backgroundColor: MainColors.foreignGreen,
+                                backgroundColor: MainLiteColors.foreignGreen,
                               ));
                             } else if (response.statusCode == 404) {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(const SnackBar(
                                 content: Text(
                                     "there is no such user please try again"),
-                                backgroundColor: MainColors.foreignRed,
+                                backgroundColor: MainLiteColors.foreignRed,
                               ));
                               
                             }

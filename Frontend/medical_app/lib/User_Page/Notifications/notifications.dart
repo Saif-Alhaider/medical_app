@@ -4,6 +4,9 @@ import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
+import '../../main.dart';
+import '../../main_colors.dart';
+
 class Notifications extends StatelessWidget {
   Notifications({super.key});
   final List notifications = [
@@ -21,6 +24,8 @@ class Notifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: IsDark?MainDarkColors.bgColor:MainLiteColors.bgColor,
+
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -33,9 +38,9 @@ class Notifications extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: IconButton(
                         onPressed: () => Navigator.pop(context),
-                        icon: const Icon(Icons.arrow_forward_ios)),
+                        icon: Icon(Icons.arrow_forward_ios,color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,)),
                   ),
-                const HeadLineText(text: "الاشعارات"),
+                HeadLineText(text: "الاشعارات",color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,),
                 Expanded(
                   child: ListView.builder(
                     shrinkWrap: true,

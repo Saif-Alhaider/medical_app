@@ -10,6 +10,8 @@ import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../doctor_page/doctor_page.dart';
+import '../main.dart';
+import '../main_colors.dart';
 import '../models/doctor/doctorModel.dart';
 import '../models/doctors_images.dart';
 import '../reuseable_widgets/home_card.dart';
@@ -29,6 +31,9 @@ class ClinicMain extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             Container(
+                color: IsDark
+                    ? MainDarkColors.primaryCardColor
+                    : MainLiteColors.primaryCardColor,
                 width: double.maxFinite,
                 height: 500,
                 child: Image.asset(
@@ -49,11 +54,18 @@ class ClinicMain extends StatelessWidget {
                           width: 350,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              HeadLineText(text: "عيادة الهدى"),
+                            children: [
+                              HeadLineText(
+                                text: "عيادة الهدى",
+                                color: IsDark
+                                    ? MainDarkColors.primaryFontColor
+                                    : MainLiteColors.primaryFontColor,
+                              ),
                               SubText(
                                 text: 'تفاصيل',
-                                color: Colors.black,
+                                color: IsDark
+                                    ? MainDarkColors.primaryFontColor
+                                    : MainLiteColors.primaryFontColor,
                               ),
                               SubText(
                                 text:
@@ -69,12 +81,15 @@ class ClinicMain extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                              children: const [
+                              children:  [
                                 Icon(
                                   Icons.pin_drop,
                                   size: 40,
+                                  color: IsDark
+                                      ? MainDarkColors.primaryFontColor
+                                      : MainLiteColors.primaryFontColor,
                                 ),
-                                SubText(
+                                const SubText(
                                   text: "بغداد ,الكرادة",
                                   color: Colors.blue,
                                 )
@@ -82,12 +97,15 @@ class ClinicMain extends StatelessWidget {
                             ),
                             ConstantValues.cardsGap,
                             Row(
-                              children: const [
+                              children:  [
                                 Icon(
                                   Icons.watch_later,
                                   size: 40,
+                                  color: IsDark
+                                      ? MainDarkColors.primaryFontColor
+                                      : MainLiteColors.primaryFontColor,
                                 ),
-                                SubText(
+                                const SubText(
                                   text: "12:00PM - 09:00AM",
                                   color: Colors.blue,
                                 )
@@ -95,12 +113,14 @@ class ClinicMain extends StatelessWidget {
                             ),
                             ConstantValues.cardsGap,
                             Row(
-                              children: const [
+                              children:  [
                                 SubText(
                                   text: "سعر الحجز: ",
-                                  color: Colors.black,
+                                  color: IsDark
+                                      ? MainDarkColors.primaryFontColor
+                                      : MainLiteColors.primaryFontColor,
                                 ),
-                                SubText(
+                                const SubText(
                                   text: "30\$",
                                   color: Colors.blue,
                                 )
@@ -123,32 +143,33 @@ class ClinicMain extends StatelessWidget {
                           ),
                           height: 350,
                           child: FutureBuilder(
-                future: get_doctors(),
-                builder: (context, snapshot) {
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.waiting:
-                      return WaitingCarousel();
-                    case ConnectionState.done:
-                    default:
-                      if (snapshot.hasError) {
-                        return Column(
-                          children:  [
-                            const Icon(Icons.error),
-                            const Text("something went wrong please try again later"),
-                            Text(snapshot.error.toString())
-                          ],
-                        );
-                      } else if (snapshot.hasData) {
-                        return HomeCard(
-                          info: snapshot.data,
-                          goToDoctor: true,
-                        );
-                      } else {
-                        return Text("there is no data");
-                      }
-                  }
-                },
-              ),
+                            future: get_doctors(),
+                            builder: (context, snapshot) {
+                              switch (snapshot.connectionState) {
+                                case ConnectionState.waiting:
+                                  return WaitingCarousel();
+                                case ConnectionState.done:
+                                default:
+                                  if (snapshot.hasError) {
+                                    return Column(
+                                      children: [
+                                        const Icon(Icons.error),
+                                        const Text(
+                                            "something went wrong please try again later"),
+                                        Text(snapshot.error.toString())
+                                      ],
+                                    );
+                                  } else if (snapshot.hasData) {
+                                    return HomeCard(
+                                      info: snapshot.data,
+                                      goToDoctor: true,
+                                    );
+                                  } else {
+                                    return Text("there is no data");
+                                  }
+                              }
+                            },
+                          ),
                         )
                       ],
                     ),
@@ -193,6 +214,6 @@ Future<List<HomeCardInfo>> get_doctors() async {
             id: e.id),
       )
       .toList();
-      
+
   return recievedDoctors as List<HomeCardInfo>;
 }

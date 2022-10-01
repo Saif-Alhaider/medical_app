@@ -6,6 +6,8 @@ import 'package:medical_app/reuseable_widgets/doctor_card.dart';
 import 'package:medical_app/reuseable_widgets/waiting.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../main.dart';
+import '../main_colors.dart';
 import '../models/doctors.dart';
 
 class MoreDoctorsScreen extends StatefulWidget {
@@ -57,6 +59,7 @@ class _MoreScreenState extends State<MoreDoctorsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: IsDark? MainDarkColors.bgColor:MainLiteColors.bgColor,
       appBar: AppBar(),
       body: Container(
         width: double.maxFinite,

@@ -3,6 +3,9 @@ import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
+import '../../../../main.dart';
+import '../../../../main_colors.dart';
+
 class SecondCard extends StatelessWidget {
   const SecondCard({super.key});
 
@@ -12,7 +15,8 @@ class SecondCard extends StatelessWidget {
       width: double.maxFinite,
       // height: 200,
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: IsDark?MainDarkColors.bgColor:MainLiteColors.bgColor,
+
           // border: Border.all(
           //   color: Color(0xff9d9d9d),
           // ),
@@ -23,10 +27,10 @@ class SecondCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Row(
-              children: const [
-                Icon(Icons.calendar_today_rounded,size: 30,),
+              children:  [
+                Icon(Icons.calendar_today_rounded,size: 30,color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,),
                 ConstantValues.cardsGap,
-                SubText(text: "اضافة الى التقويم",color: Colors.black,)
+                SubText(text: "اضافة الى التقويم",color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,)
               ],
             ),
           ),
@@ -40,10 +44,10 @@ class SecondCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Row(
-              children: const [
-                Icon(Icons.close,size: 30,),
+              children:  [
+                Icon(Icons.close,size: 30,color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,),
                 ConstantValues.cardsGap,
-                SubText(text: "الغاء الحجز",color: Colors.black,)
+                SubText(text: "الغاء الحجز",color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,)
               ],
             ),
           ),

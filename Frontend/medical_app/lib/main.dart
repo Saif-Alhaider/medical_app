@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 import 'OnBoarding/onboarding_main.dart';
 
+bool IsDark =true;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,9 +21,9 @@ class MyApp extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    
+
     return GetMaterialApp(
-      
+
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       initialRoute: showHome ?'/main':'/',

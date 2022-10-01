@@ -11,6 +11,9 @@ import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
+import '../../../../main.dart';
+import '../../../../main_colors.dart';
+
 class AppointmentDetailsMain extends StatelessWidget {
   final String doctorName;
   final String clinic;
@@ -31,11 +34,12 @@ class AppointmentDetailsMain extends StatelessWidget {
     
         
     return Scaffold(
+      backgroundColor: IsDark?MainDarkColors.bgColor:MainLiteColors.bgColor,
       appBar: AppBar(
         backgroundColor: Color(0xfff6f6f6),
         elevation: 0,
         iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
+          color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor, //change your color here
         ),
       ),
       body: Padding(

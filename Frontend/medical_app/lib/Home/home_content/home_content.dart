@@ -18,10 +18,13 @@ import 'package:medical_app/models/doctors_images.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/reuseable_widgets/waiting.dart';
 
+import '../../main.dart';
+import '../../main_colors.dart';
 import '../../models/doctor/doctorModel.dart';
 import '../../models/home_card_info.dart';
 import '../../more_screen/more_clinics_screen.dart';
 import '../../reuseable_widgets/connection widgets/waitingCarousel.dart';
+import 'package:get/get.dart';
 
 class HomeContent extends StatefulWidget {
    HomeContent({super.key});
@@ -54,9 +57,10 @@ class _HomeContentState extends State<HomeContent> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const HeadLineText(
+                   HeadLineText(
                     text: "الاطباء",
                     lineHeight: 1,
+                    color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
@@ -67,11 +71,7 @@ class _HomeContentState extends State<HomeContent> {
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             alignment: Alignment.centerLeft),
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MoreDoctorsScreen(),
-                              ));
+                          Get.to(MoreDoctorsScreen());
                         },
                         child: SubText(text: "المزيد")),
                   )
@@ -103,9 +103,10 @@ class _HomeContentState extends State<HomeContent> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children:  [
-                  const HeadLineText(
+                   HeadLineText(
                     text: "العيادات",
                     lineHeight: 1,
+                    color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
@@ -116,11 +117,7 @@ class _HomeContentState extends State<HomeContent> {
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             alignment: Alignment.centerLeft),
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MoreClinicsScreen(),
-                              ));
+                        Get.to(MoreClinicsScreen());
                         },
                         child: SubText(text: "المزيد")),
                   )

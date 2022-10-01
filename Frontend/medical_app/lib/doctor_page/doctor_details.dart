@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../main.dart';
+import '../main_colors.dart';
+
 class DoctorDetails extends StatefulWidget {
   final String text;
 
@@ -45,16 +48,19 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   textAlign: TextAlign.right,
                   style: GoogleFonts.vazirmatn(
                     fontSize: 14,
+                    color: IsDark
+                        ? MainDarkColors.primaryFontColor
+                        : MainLiteColors.primaryFontColor,
                   ))
               : Column(
                   children: <Widget>[
-                    Text(
-                        flag
-                            ? (firstHalf + "...")
-                            : (firstHalf + secondHalf),
+                    Text(flag ? (firstHalf + "...") : (firstHalf + secondHalf),
                         textAlign: TextAlign.right,
                         style: GoogleFonts.vazirmatn(
                           fontSize: 20,
+                          color: IsDark
+                              ? MainDarkColors.primaryFontColor
+                              : MainLiteColors.primaryFontColor,
                         )),
                     InkWell(
                       child: Row(

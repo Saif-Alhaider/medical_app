@@ -4,6 +4,7 @@ import 'package:medical_app/main_colors.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 
 import '../../../../Home/constants.dart';
+import '../../../../main.dart';
 import '../../../../prescription/prescription_main.dart';
 import '../../../../reuseable_widgets/texts_types/sub_text.dart';
 
@@ -12,15 +13,16 @@ class ReceiptSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
+    return Scaffold(
+      backgroundColor: IsDark? MainDarkColors.bgColor:MainLiteColors.bgColor,
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         // ignore: prefer_const_literals_to_create_immutables
         children: [
-          const HeadLineText(
+           HeadLineText(
             text: "الراجيتات",
             lineHeight: 1,
-            color: Color(0xff9d9d9d),
+            color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,
           ),
           for(var i=0;i<2;i++) ConstantValues.cardsGap,
           Expanded(
@@ -36,7 +38,7 @@ class ReceiptSection extends StatelessWidget {
                           width: double.maxFinite,
                           height: 120,
                           decoration: BoxDecoration(
-                              color: MainColors.backgroundBlue,
+                              color: MainLiteColors.backgroundBlue,
                               borderRadius: BorderRadius.circular(8)),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +52,7 @@ class ReceiptSection extends StatelessWidget {
                                 child: const Icon(
                                   FontAwesome5.stethoscope,
                                   size: 45,
-                                  color: MainColors.foreignBlue,
+                                  color: MainLiteColors.foreignBlue,
                                 ),
                               ),
                               ConstantValues.cardsGap,

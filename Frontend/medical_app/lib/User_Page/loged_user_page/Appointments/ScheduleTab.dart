@@ -4,13 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medical_app/User_Page/loged_user_page/Appointments/appointment_card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
+import '../../../main.dart';
+import '../../../main_colors.dart';
 import '../../../reuseable_widgets/waiting.dart';
 
 class ScheduleTab extends StatefulWidget {
   const ScheduleTab({super.key});
+
   static const double pagePadding = 16;
 
   @override
@@ -20,6 +24,7 @@ class ScheduleTab extends StatefulWidget {
 class _ScheduleTabState extends State<ScheduleTab>
     with TickerProviderStateMixin {
   late Future<Map> dataFuture;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -31,15 +36,20 @@ class _ScheduleTabState extends State<ScheduleTab>
   Widget build(BuildContext context) {
     final TabController _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
+      backgroundColor: IsDark ? MainDarkColors.bgColor : MainLiteColors.bgColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: Icon(
+            Icons.arrow_back_ios,
+              color: IsDark
+                  ? MainDarkColors.primaryFontColor
+                  : MainLiteColors.primaryFontColor
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Color(0xfff6f6f6),
+        backgroundColor: IsDark ? MainDarkColors.bgColor : MainLiteColors.bgColor,
         elevation: 0,
       ),
-      backgroundColor: Colors.grey[60],
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: SafeArea(
@@ -95,7 +105,8 @@ class _ScheduleTabState extends State<ScheduleTab>
                                       [index]['speciality'],
                                   date: snapshot.data!['appointments'][index]
                                       ['date'],
-                                      clinic: snapshot.data!['appointments'][index]['clinic'],
+                                  clinic: snapshot.data!['appointments'][index]
+                                      ['clinic'],
                                 );
                               },
                             ),
@@ -112,7 +123,8 @@ class _ScheduleTabState extends State<ScheduleTab>
                                       [index]['speciality'],
                                   date: snapshot.data!['appointments'][index]
                                       ['date'],
-                                      clinic: snapshot.data!['appointments'][index]['clinic'],
+                                  clinic: snapshot.data!['appointments'][index]
+                                      ['clinic'],
                                 );
                               },
                             )
