@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/doctor_page/doctor_page.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../User_Page/Appointments/ScheduleTab.dart';
-import '../Clinic/clinic_main.dart';
 import '../Home/home_main.dart';
-import '../Medicines/medicines_main.dart';
-import '../User_Page/Login/login_main.dart';
 import '../User_Page/Register/registerEmail.dart';
-import '../User_Page/Register/health_info_register_page/health_info_main.dart';
 import '../User_Page/loged_user_page/user_page.dart';
-import '../prescription/prescription_main.dart';
 import 'bottom_navigation_bar.dart';
 
 class MainView extends StatefulWidget {
@@ -54,7 +47,6 @@ class _MainViewState extends State<MainView> {
         itemCount: 3,
         itemBuilder: (context, index) {
           return pages[index];
-          // return ClinicMain();
         },
       ),
       bottomNavigationBar: BottomSalamonNavigationBar(

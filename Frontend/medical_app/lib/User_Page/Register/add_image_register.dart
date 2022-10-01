@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:lottie/lottie.dart';
 import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/Main_View/main_view.dart';
 import 'package:medical_app/main_colors.dart';
@@ -23,31 +24,17 @@ class AddUserImage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // 'Assets/images/profile_pic.jpg'
+                Spacer(),
                 Column(
                   children: [
-                    Container(
-                      width: 200.0,
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: const Color(0xff7c94b6),
-                        image: const DecorationImage(
-                          image: AssetImage('Assets/images/profile_pic.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                        border: Border.all(
-                          color: MainColors.foreignBlue,
-                          width: 4.0,
-                        ),
-                      ),
-                    ),
+                    LottieBuilder.asset(
+                          'Assets/Lottie json/add_profile_pic.json',height: 300,width: 300,repeat: false,),
                     ConstantValues.cardsGap,
                     TextButton(
                       onPressed: () async {
                         final XFile? image = await _picker.pickImage(
                             source: ImageSource.gallery);
-                            print(image);
+                        print(image);
                       },
                       child: SubText(
                         text: "اضغط لاختيار الصورة",
@@ -55,12 +42,21 @@ class AddUserImage extends StatelessWidget {
                     ),
                   ],
                 ),
+                Spacer(),
                 NextSkipButtons(
                   nextFunction: (() {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MainView(),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainView(),
+                        ));
                   }),
                   skipFunction: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => MainView(),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainView(),
+                        ));
                   },
                 )
               ],
