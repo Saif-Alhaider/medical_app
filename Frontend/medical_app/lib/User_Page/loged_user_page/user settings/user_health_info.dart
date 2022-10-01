@@ -4,7 +4,7 @@ import 'package:medical_app/User_Page/textfield/registerTextField.dart';
 import 'package:medical_app/reuseable_widgets/main_button.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 
-import '../Register/validationDetatils.dart';
+import '../../Register/validationDetatils.dart';
 
 class UserHealthInfo extends StatelessWidget {
   static final TextEditingController firstNameController =
