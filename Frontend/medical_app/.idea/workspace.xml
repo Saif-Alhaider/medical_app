@@ -4,70 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4157fc36-f106-4958-a819-92533c63f553" name="Changes" comment="">
+    <list default="true" id="4157fc36-f106-4958-a819-92533c63f553" name="Changes" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/profile details/profile_details.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/profile details/single_detail.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user settings/user_account_info.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user settings/user_health_info.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user_page.dart">
+      <change afterPath="$PROJECT_DIR$/Assets/icons/dark_mood.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/icons/lite_mood.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/version" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/version" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/c7922d95bf4a2462b75c84a97c312edb.cache.dill.track.dill" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Clinic/clinic_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Clinic/clinic_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Home/home_content/home_content.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Home/home_content/home_content.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Home/home_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Home/home_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Home/searchBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Home/searchBar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Home/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Home/search_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Home/welcome_section.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Home/welcome_section.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Main_View/bottom_navigation_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Main_View/bottom_navigation_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Main_View/main_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Main_View/main_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/OnBoarding/onboarding_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/OnBoarding/onboarding_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/Login/loggedin_animation.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/Login/loggedin_animation.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/Login/login_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/Login/login_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/Notifications/notifications.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/Notifications/notifications.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/Register/add_image_register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/Register/add_image_register.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/Register/registerEmail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/Register/registerEmail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/Register/registerPassword.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/Register/registerPassword.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/Appointments/ScheduleTab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/Appointments/ScheduleTab.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/Appointments/appointments details/appointments_details_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/Appointments/appointments details/appointments_details_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/Appointments/appointments details/receipt_section.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/Appointments/appointments details/receipt_section.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/Appointments/appointments details/second_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/Appointments/appointments details/second_card.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/doctor_patients_appointment/doctor_patients_appointments_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/doctor_patients_appointment/doctor_patients_appointments_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/doctor_patients_appointment/patient_info/patient_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/doctor_patients_appointment/patient_info/patient_info.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/profile details/profile_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/profile details/profile_details.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/profile details/single_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/profile details/single_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/user settings/user_account_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/user settings/user_account_info.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/user settings/user_health_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/user settings/user_health_info.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/User_Page/loged_user_page/user_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/User_Page/loged_user_page/user_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/doctor_page/doctor_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/doctor_page/doctor_details.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/doctor_page/doctor_location.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/doctor_page/doctor_location.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/doctor_page/doctor_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/doctor_page/doctor_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/doctor_page/doctor_personal_info_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/doctor_page/doctor_personal_info_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/doctor_page/doctor_schedual.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/doctor_page/doctor_schedual.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/doctor_page/doctor_speciality.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/doctor_page/doctor_speciality.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_colors.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/doctors_catogary/card_catogary_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/doctors_catogary/card_catogary_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/more_screen/more_clinics_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/more_screen/more_clinics_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/more_screen/more_doctors_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/more_screen/more_doctors_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/prescription/prescription_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/prescription/prescription_main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/shared_preferences_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/ephemeral/.plugin_symlinks/shared_preferences_windows" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +20,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Saif Alhaider &lt;saifharith90@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="2EoqNfWJ8UdjLcljMoHtNzAWp00" />
@@ -90,16 +40,16 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/ferst_app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assets/icons" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Murtadha Emad\Desktop\My Book\medical_app\Frontend\medical_app\Assets\icons" />
       <recent name="C:\Users\Murtadha Emad\Documents\medecal_app_app\medical_app\Frontend\medical_app\lib" />
       <recent name="C:\Users\Murtadha Emad\Documents\medecal_app_app\medical_app\Frontend\medical_app\Assets\images\doctors" />
       <recent name="C:\Users\Murtadha Emad\Documents\medecal_app_app\medical_app\Frontend\medical_app\lib\reuseable_widgets\doctors_cards" />
       <recent name="C:\Users\Murtadha Emad\Documents\medecal_app_app\medical_app\Frontend\medical_app\lib\reuseable_widgets" />
-      <recent name="C:\Users\Murtadha Emad\Documents\medecal_app_app\medical_app\Frontend\medical_app\Assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Murtadha Emad\Documents\medecal_app_app\medical_app\Frontend\medical_app\lib\reuseable_widgets\doctors_cards" />
@@ -121,6 +71,21 @@
       <option name="presentableId" value="Default" />
       <updated>1663272249089</updated>
     </task>
+    <task id="LOCAL-00001" summary="added logout alert dialog also added splash">
+      <created>1664711980601</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664711980601</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/profile details/profile_details.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/profile details/single_detail.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user settings/user_account_info.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user settings/user_health_info.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user_page.dart">
+      <created>1664712010200</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1664712010200</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,5 +99,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added logout alert dialog also added splash" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/profile details/profile_details.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/profile details/single_detail.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user settings/user_account_info.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user settings/user_health_info.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user_page.dart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/profile details/profile_details.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/profile details/single_detail.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user settings/user_account_info.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user settings/user_health_info.dart&#10;#&#9;Frontend/medical_app/lib/User_Page/loged_user_page/user_page.dart" />
   </component>
 </project>

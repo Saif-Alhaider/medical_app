@@ -3,34 +3,21 @@ import 'package:medical_app/Main_View/main_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 import 'OnBoarding/onboarding_main.dart';
+import 'User_Page/loged_user_page/profile details/profile_details.dart';
 
-bool IsDark =true;
+bool IsDark =true ;
+RxBool isDark=true.obs;
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final prefs = await SharedPreferences.getInstance();
-  final showHome = prefs.getBool('showHome') ?? false;
-  runApp(MyApp(showHome: showHome,));
+void main() {
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final bool showHome;
-  const MyApp({
-    Key? key,
-    required this.showHome,
-  }) : super(key: key);
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return GetMaterialApp(
-
-      debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      initialRoute: showHome ?'/main':'/',
-      routes: {
-        '/': (context) => OnBoardingMain(),
-        '/main': (context) => MainView(),
-      },
+      home:ProfileDetails(),
     );
   }
 }
