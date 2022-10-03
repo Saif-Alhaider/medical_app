@@ -87,22 +87,22 @@ class _ProfileDetailsState extends State<ProfileDetails> {
                   ));
             },
           ),
-          Container(
-            child: SinglDetail(
-              backgroundIconColor: IsDark ? Colors.black : Colors.white,
-              icon: Icons.nightlight_round,
-              iconColor: IsDark ? Colors.white : Colors.black,
-              title: "الوضع الداكن",
-              whereToGo: () {
-                setState(() {});
-                if (IsDark == true) {
-                  IsDark = false;
-                } else {
-                  IsDark = true;
-                }
-              },
-            ),
-          ),
+          // Container(
+          //   child: SinglDetail(
+          //     backgroundIconColor: IsDark ? Colors.black : Colors.white,
+          //     icon: Icons.nightlight_round,
+          //     iconColor: IsDark ? Colors.white : Colors.black,
+          //     title: "الوضع الداكن",
+          //     whereToGo: () {
+          //       setState(() {});
+          //       if (IsDark == true) {
+          //         IsDark = false;
+          //       } else {
+          //         IsDark = true;
+          //       }
+          //     },
+          //   ),
+          // ),
           if (widget.role == "DO")
             SinglDetail(
               backgroundIconColor: MainLiteColors.backgroundRed,

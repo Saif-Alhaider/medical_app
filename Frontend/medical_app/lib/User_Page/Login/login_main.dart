@@ -117,8 +117,8 @@ class Login extends StatelessWidget {
                               prefs.setString('fullName', fullName);
                               prefs.setString(
                                   'account_id', res['profile']['id']);
-                              // prefs.setString(
-                              //     'account_type_id', res['profile_id']);
+                              prefs.setString(
+                                  'account_type_id', res['profile_id']);
                               prefs.setString('account_type',
                                   res['profile']['account_type']);
                               
