@@ -23,19 +23,15 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  // static String? full_name;
-  // Future<Null> getUserData() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   full_name = prefs.getString("fullName");
-  //   print(full_name);
-  // }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Directionality(
         textDirection: TextDirection.rtl,
-        child: Column(
+        child: SingleChildScrollView(
+          // controller: controller,
+          child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
@@ -54,6 +50,7 @@ class _UserPageState extends State<UserPage> {
                 ),
               ],
             ),
+            SizedBox(height: 25,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ProfileDetails(role: widget.role),
@@ -61,6 +58,7 @@ class _UserPageState extends State<UserPage> {
             // -------doctor section-------------
 
             // -----------logout section-----------
+            SizedBox(height: 25,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Container(
@@ -189,38 +187,8 @@ class _UserPageState extends State<UserPage> {
             ),
           ],
         ),
+        ),
       ),
     );
   }
 }
-
-/*
-
-() async {
-                    final prefs = await SharedPreferences.getInstance();
-                    prefs.remove('token');
-                    prefs.remove('fullName');
-                    prefs.remove('account_id');
-                    prefs.remove('account_type_id');
-                    prefs.remove('account_type');
-
-                    // ignore: use_build_context_synchronously
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HoldOnAnimation(
-                          animationDirectory: 'Assets/Lottie json/done.json',
-                          whenItEnds: () {
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MainView(),
-                                ),
-                                (Route<dynamic> route) => false);
-                          },
-                        ),
-                      ),
-                    );
-                  }
-
- */

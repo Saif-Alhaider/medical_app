@@ -48,7 +48,6 @@ class _MoreScreenState extends State<MoreDoctorsScreen> {
       current_page++;
       
       totalPages = result.numPages;
-      // print(doctors);
       setState(() {});
       return true;
     } else {

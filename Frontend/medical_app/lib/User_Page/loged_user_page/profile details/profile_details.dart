@@ -31,8 +31,7 @@ class ProfileDetails extends StatefulWidget {
 class _ProfileDetailsState extends State<ProfileDetails> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return Container(
         padding: const EdgeInsets.all(20),
         width: double.maxFinite,
         // height: 380,
@@ -70,7 +69,9 @@ class _ProfileDetailsState extends State<ProfileDetails> {
               icon: Icons.person,
               iconColor: Colors.blue,
               title: "الحساب",
-              whereToGo: () {},
+              whereToGo: () {
+                Get.to(UserHealthInfo());
+              },
             ),
             SinglDetail(
               break_line: true,
@@ -142,7 +143,6 @@ class _ProfileDetailsState extends State<ProfileDetails> {
               Container(),
           ],
         ),
-      ),
-    );
+      );
   }
 }
