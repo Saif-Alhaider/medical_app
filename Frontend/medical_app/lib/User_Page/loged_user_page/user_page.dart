@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:medical_app/Home/constants.dart';
+import 'package:medical_app/User_Page/loged_user_page/profile%20details/darkModDetail.dart';
+import 'package:medical_app/main.dart';
 import 'package:medical_app/main_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,6 +36,7 @@ class _UserPageState extends State<UserPage> {
           child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            SizedBox(height: 25,),
             Column(
               children: [
                 const CircleAvatar(
@@ -50,6 +53,8 @@ class _UserPageState extends State<UserPage> {
                 ),
               ],
             ),
+            SizedBox(height: 25,),
+            DarkModDetail(),
             SizedBox(height: 25,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -185,6 +190,7 @@ class _UserPageState extends State<UserPage> {
                     }),
               ),
             ),
+            SizedBox(height: 25,),
           ],
         ),
         ),
