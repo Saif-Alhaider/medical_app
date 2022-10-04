@@ -34,6 +34,7 @@ class HomeCard extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: info!.length,
         itemBuilder: (context, index) {
+          print(info?[index].image);
           return GestureDetector(
             onTap: () => Navigator.push(
                 context,
@@ -57,7 +58,7 @@ class HomeCard extends StatelessWidget {
                     SizedBox(
                         height: 200,
                         child: Image.network(
-                          info![index].image,
+                          info?[index].image == "http://10.0.2.2:8000/null"?"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png":info![index].image,
                           fit: BoxFit.cover,
                         )),
                     SubText(
