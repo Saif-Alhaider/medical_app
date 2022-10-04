@@ -5,12 +5,12 @@ import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 class DoctorCard extends StatelessWidget {
   final String image;
   final String fullName;
-  final String speciality;
+  final String? speciality;
   const DoctorCard({
     Key? key,
     required this.image,
     required this.fullName,
-    required this.speciality,
+     this.speciality,
   }) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class DoctorCard extends StatelessWidget {
                       color: Colors.black,
                     ),
                     SubText(
-                      text: speciality,
+                      text: speciality??"",
                       size: 15,
                     )
                   ],

@@ -71,7 +71,7 @@ class _HomeContentState extends State<HomeContent> {
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             alignment: Alignment.centerLeft),
                         onPressed: () {
-                          // Get.to(MoreDoctorsScreen());
+                          Get.to(MoreDoctorsScreen());
                         },
                         child: SubText(text: "المزيد")),
                   )
