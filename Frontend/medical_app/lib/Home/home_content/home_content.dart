@@ -71,7 +71,7 @@ class _HomeContentState extends State<HomeContent> {
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             alignment: Alignment.centerLeft),
                         onPressed: () {
-                          Get.to(MoreDoctorsScreen());
+                          // Get.to(MoreDoctorsScreen());
                         },
                         child: SubText(text: "المزيد")),
                   )
@@ -153,19 +153,19 @@ class _HomeContentState extends State<HomeContent> {
 }
 
 Future<List<HomeCardInfo>> get_doctors() async {
-  const String url = 'http://10.0.2.2:8000/api/doctor/doctors?page_num=1';
+  const String url = 'http://10.0.2.2:8000/api/doctor/doctors/isfeatured?per_page=12&page=1';
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
   });
-  final body = DoctorsFromJson(response.body).doctors;
+  final body = doctorsFromJson(response.body).data;
 
   // ignore: unnecessary_cast
   List<HomeCardInfo> recievedDoctors = body
       .map(
         (e) => HomeCardInfo(
             title: e.fullName,
-            subTitle: e.speciality,
-            image: "http://10.0.2.2:8000/${e.image}",
+            subTitle: e.specialty?.title,
+            image: "http://10.0.2.2:8000/${e.images}",
             id: e.id),
       )
       .toList();
@@ -180,7 +180,7 @@ Future<List<HomeCardInfo>> get_clinics() async {
 
   final List<HomeCardInfo> result = ClinicsFromJson(response.body).clinics.map((e) {
     return HomeCardInfo(
-      id: e.id,
+      id: e.id.toString(),
       image: 'http://10.0.2.2:8000/images/${e.image}',
       title: e.name,
       subTitle: ""

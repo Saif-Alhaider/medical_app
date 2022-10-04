@@ -70,15 +70,15 @@ Future<List>? get_fetched_doctors({required doctor_name}) async {
       "http://10.0.2.2:8000/api/doctor/search?doctor_full_name=$doctor_name";
 
   var response = await http.get(Uri.parse(url));
-  if (response.statusCode == 200) {
-    var result = jsonDecode(response.body) as List;
-    result = result
-        .map((e) => Doctor(
-            full_name: e['full_name'],
-            speciality: e['speciality'],
-            image: e['image']))
-        .toList();
-    return result;
-  }
+  // if (response.statusCode == 200) {
+  //   var result = jsonDecode(response.body) as List;
+  //   result = result
+  //       .map((e) => Doctor(
+  //           full_name: e['full_name'],
+  //           speciality: e['speciality'],
+  //           image: e['image']))
+  //       .toList();
+  //   return result;
+  // }
   return [];
 }

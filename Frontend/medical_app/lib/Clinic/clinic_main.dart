@@ -202,18 +202,19 @@ Future<List<HomeCardInfo>> get_doctors() async {
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
   });
-  final body = DoctorsFromJson(response.body).doctors;
+  // final body = DoctorsFromJson(response.body).doctors;
 
-  // ignore: unnecessary_cast
-  List<HomeCardInfo> recievedDoctors = body
-      .map(
-        (e) => HomeCardInfo(
-            title: e.fullName,
-            subTitle: e.speciality,
-            image: "http://10.0.2.2:8000/${e.image}",
-            id: e.id),
-      )
-      .toList();
+  // // ignore: unnecessary_cast
+  // List<HomeCardInfo> recievedDoctors = body
+  //     .map(
+  //       (e) => HomeCardInfo(
+  //           title: e.fullName,
+  //           subTitle: e.speciality,
+  //           image: "http://10.0.2.2:8000/${e.image}",
+  //           id: e.id),
+  //     )
+  //     .toList();
 
-  return recievedDoctors as List<HomeCardInfo>;
+  // return recievedDoctors as List<HomeCardInfo>;
+  return [];
 }
