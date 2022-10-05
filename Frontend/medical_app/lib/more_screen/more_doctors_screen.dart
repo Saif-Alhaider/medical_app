@@ -2,16 +2,21 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+
 import 'package:medical_app/reuseable_widgets/doctor_card.dart';
 import 'package:medical_app/reuseable_widgets/waiting.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../main.dart';
 import '../main_colors.dart';
 import '../models/doctors.dart';
 
 class MoreDoctorsScreen extends StatefulWidget {
-  const MoreDoctorsScreen({super.key});
+  final String more_url;
+  const MoreDoctorsScreen({
+    Key? key,
+    required this.more_url,
+  }) : super(key: key);
 
   @override
   State<MoreDoctorsScreen> createState() => _MoreScreenState();
@@ -34,7 +39,7 @@ class _MoreScreenState extends State<MoreDoctorsScreen> {
       }
     }
     final String url =
-        "http://10.0.2.2:8000/api/doctor/doctors/isfeatured?per_page=12&page=$current_page";
+        "${widget.more_url}$current_page";
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
