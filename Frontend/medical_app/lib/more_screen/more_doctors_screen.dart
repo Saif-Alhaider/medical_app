@@ -34,7 +34,7 @@ class _MoreScreenState extends State<MoreDoctorsScreen> {
       }
     }
     final String url =
-        "http://10.0.2.2:8000/api/doctor/doctors?page_num=$current_page";
+        "http://10.0.2.2:8000/api/doctor/doctors/isfeatured?per_page=12&page=$current_page";
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
@@ -47,7 +47,7 @@ class _MoreScreenState extends State<MoreDoctorsScreen> {
       }
       current_page++;
       
-      totalPages = result.totalCount;
+      totalPages = result.pageCount;
       setState(() {});
       return true;
     } else {
@@ -86,11 +86,12 @@ class _MoreScreenState extends State<MoreDoctorsScreen> {
                 crossAxisCount: 2, childAspectRatio: 0.65),
             itemCount: doctors.length,
             itemBuilder: (BuildContext context, int index) {
+              print("image => ${doctors[index].images}");
               return DoctorCard(
                 fullName: doctors[index].fullName,
                 speciality: doctors[index].specialty?.title,
                 image:
-                    'http://10.0.2.2:8000/'+doctors[index].images,
+                    doctors[index].images == null?"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png":'http://10.0.2.2:8000/${doctors[index].images}',
               );
             },
           ),

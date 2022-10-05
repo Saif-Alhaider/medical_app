@@ -80,7 +80,7 @@ class Doctor {
     final String phone;
     final Specialty? specialty;
     final String email;
-    final dynamic images;
+    final String? images;
     final bool isActive;
     final bool isFeatured;
 
