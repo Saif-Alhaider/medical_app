@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
 import '../main_colors.dart';
-import '../models/user_model/account_model.dart';
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {

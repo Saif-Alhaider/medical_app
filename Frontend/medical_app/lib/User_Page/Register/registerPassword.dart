@@ -12,7 +12,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Main_View/main_view.dart';
 import '../../main.dart';
 import '../../main_colors.dart';
-import '../../models/user_model/account_model.dart';
 import '../../reuseable_widgets/back_Icon.dart';
 import '../../reuseable_widgets/main_button.dart';
 import '../../reuseable_widgets/texts_types/headline_text.dart';

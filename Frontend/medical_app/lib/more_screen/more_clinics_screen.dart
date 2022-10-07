@@ -10,7 +10,7 @@ import 'package:medical_app/reuseable_widgets/doctor_card.dart';
 import 'package:medical_app/reuseable_widgets/waiting.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../models/doctors.dart';
+import '../models/doctor/doctors.dart';
 import '../reuseable_widgets/texts_types/sub_text.dart';
 
 class MoreClinicsScreen extends StatefulWidget {

@@ -11,7 +11,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Main_View/main_view.dart';
 import '../../main.dart';
-import '../../models/user_model/account_model.dart';
 import '../../reuseable_widgets/texts_types/headline_text.dart';
 import '../textfield/registerTextField.dart';
 

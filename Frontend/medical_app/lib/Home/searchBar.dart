@@ -3,8 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:medical_app/models/doctor/doctorModel.dart';
-import 'package:medical_app/models/doctors.dart';
+import 'package:medical_app/models/doctor/doctors.dart';
 
 class SearchBar extends StatelessWidget {
   Rx<bool> searchPageDisplay;

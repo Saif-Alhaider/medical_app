@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:medical_app/Home/constants.dart';
-import 'package:medical_app/models/doctors.dart';
+import 'package:medical_app/models/doctor/doctors.dart';
 import 'package:medical_app/models/home_card_info.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
@@ -12,7 +12,6 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../doctor_page/doctor_page.dart';
 import '../main.dart';
 import '../main_colors.dart';
-import '../models/doctor/doctorModel.dart';
 import '../models/doctors_images.dart';
 import '../reuseable_widgets/home_card.dart';
 import 'package:http/http.dart' as http;

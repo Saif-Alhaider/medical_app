@@ -9,7 +9,8 @@ import 'package:medical_app/reuseable_widgets/waiting.dart';
 
 import '../main.dart';
 import '../main_colors.dart';
-import '../models/doctors.dart';
+import '../models/doctor/doctor.dart';
+import '../models/doctor/doctors.dart';
 
 class MoreDoctorsScreen extends StatefulWidget {
   final String more_url;

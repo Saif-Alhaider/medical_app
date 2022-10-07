@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/Clinic/clinic_main.dart';
 
 import 'package:medical_app/doctor_page/doctor_page.dart';
-import 'package:medical_app/models/doctor/doctorModel.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 
 import '../models/home_card_info.dart';

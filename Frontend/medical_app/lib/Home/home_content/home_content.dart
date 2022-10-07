@@ -8,7 +8,7 @@ import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/Home/home_content/specialities/specialities.dart';
 import 'package:medical_app/doctor_page/doctor_page.dart';
 import 'package:medical_app/models/clinic/clinic_model.dart';
-import 'package:medical_app/models/doctors.dart';
+import 'package:medical_app/models/doctor/doctors.dart';
 import 'package:medical_app/more_screen/more_doctors_screen.dart';
 import 'package:medical_app/reuseable_widgets/connection%20widgets/something_went_wrong.dart';
 import 'package:medical_app/reuseable_widgets/home_card.dart';
@@ -20,7 +20,6 @@ import 'package:medical_app/reuseable_widgets/waiting.dart';
 
 import '../../main.dart';
 import '../../main_colors.dart';
-import '../../models/doctor/doctorModel.dart';
 import '../../models/home_card_info.dart';
 import '../../more_screen/more_clinics_screen.dart';
 import '../../reuseable_widgets/connection widgets/waitingCarousel.dart';

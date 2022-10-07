@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/profile_details.dart';
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/single_detail.dart';
-import 'package:medical_app/models/user_model/account_model.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 
 import '../../Main_View/main_view.dart';
