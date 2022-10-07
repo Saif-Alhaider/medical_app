@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/reuseable_widgets/waiting.dart';
 import '../main.dart';
 import '../main_colors.dart';
+import '../models/doctor/doctor.dart';
 import '../reuseable_widgets/break_line.dart';
 import 'doctor_details.dart';
 import 'doctor_location.dart';
@@ -14,7 +15,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class DoctorPage extends StatelessWidget {
-  final int? doctor_id;
+  final String? doctor_id;
 
   DoctorPage({required this.doctor_id, super.key});
 
@@ -37,6 +38,7 @@ class DoctorPage extends StatelessWidget {
                 if (snapshot.hasError) {
                   return Text("something went wrong");
                 } else if (snapshot.hasData) {
+                  print("data ${snapshot.data}");
                   return SafeArea(
                     child: SingleChildScrollView(
                       child: Padding(
@@ -63,20 +65,19 @@ class DoctorPage extends StatelessWidget {
                               ),
                             ),
                             DoctorPersonalInfoMain(
-                              img:
-                                  'http://10.0.2.2:8000/images/${snapshot.data!.image}',
-                              name: snapshot.data.full_name,
-                              doctor_number: snapshot.data.phone_number,
+                              img: "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg",
+                              name: snapshot.data!.fullName,
+                              doctor_number: snapshot.data!.phone,
                             ),
                             const SizedBox(height: 35),
-                            DoctorDetails(text: snapshot.data.description),
+                            DoctorDetails(text: ""),//snapshot.data.description
                             const SizedBox(height: 20),
-                            DoctorLocation(location: snapshot.data.country),
+                            DoctorLocation(location: snapshot.data!.city),
                             DoctorSpeciality(
-                              Speciality: snapshot.data.speciality,
+                              Speciality: snapshot.data?.specialty?.title??"",
                             ),
                             DoctorSchedual(
-                                active_dates: snapshot.data.active_dates,
+                                active_dates: snapshot.data!.active_dates,
                                 doctor_id: doctor_id),
                             const SizedBox(height: 20),
                           ],
@@ -95,11 +96,11 @@ class DoctorPage extends StatelessWidget {
   }
 }
 
-Future getDoctorInfo({required int doctor_id}) async {
-  final String url =
-      "http://10.0.2.2:8000/api/doctor/doctor_info?doctor_id=$doctor_id";
+Future<Doctor> getDoctorInfo({required String doctor_id}) async {
+  final String url = "http://10.0.2.2:8000/api/doctor/doctor/$doctor_id";
   var response = await http.get(Uri.parse(url));
-  var result = jsonDecode(response.body);
+  Doctor result = doctorFromJson(response.body);
+  // print(result.images);
   // result = Doctor(
   //     full_name: result['fullName'],
   //     speciality: result['speciality'],

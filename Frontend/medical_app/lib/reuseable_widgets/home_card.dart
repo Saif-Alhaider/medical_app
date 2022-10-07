@@ -39,8 +39,8 @@ class HomeCard extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  // return goToDoctor? DoctorPage(doctor_id: info![index].id):ClinicMain();
-                  return DoctorPage(doctor_id: 1);
+                  return goToDoctor? DoctorPage(doctor_id: info![index].id):ClinicMain();
+                  // return DoctorPage(doctor_id: );
                 },
               ),
             ),

@@ -1,3 +1,9 @@
+import 'dart:convert';
+
+Doctor doctorFromJson(String str) => Doctor.fromJson(json.decode(str));
+
+
+
 class Doctor {
   Doctor({
     required this.id,
@@ -25,7 +31,7 @@ class Doctor {
   final String? images;
   final bool isActive;
   final bool isFeatured;
-  final List<String> active_dates;
+  final List active_dates;
 
   factory Doctor.fromJson(Map<String, dynamic> json) => Doctor(
         id: json["id"],
@@ -38,7 +44,7 @@ class Doctor {
             ? null
             : Specialty.fromJson(json["specialty"]),
         email: json["email"] == null ? null : json["email"],
-        images: json["images"],
+        images: json["images"] == null ? null :json["images"],
         isActive: json["is_active"],
         isFeatured: json["is_featured"],
         active_dates: json["active_dates"],

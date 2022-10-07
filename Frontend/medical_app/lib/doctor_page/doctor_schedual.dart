@@ -18,7 +18,7 @@ import 'convert_utc_time_to_active_dates.dart';
 
 class DoctorSchedual extends StatelessWidget {
   final List active_dates;
-  final int? doctor_id;
+  final String? doctor_id;
 
   DoctorSchedual({
     Key? key,
@@ -172,7 +172,7 @@ class DoctorSchedual extends StatelessWidget {
   }
 }
 
-Future sendDate({required DateTime date, required int doctor_id}) async {
+Future sendDate({required DateTime date, required String doctor_id}) async {
   final url = "http://10.0.2.2:8000/api/appointment/create_appointment";
   var prefs = await SharedPreferences.getInstance();
   String? token = prefs.getString('token');
