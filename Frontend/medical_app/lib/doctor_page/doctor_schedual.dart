@@ -55,34 +55,35 @@ class DoctorSchedual extends StatelessWidget {
               DateTime.now(),
               initialSelectedDate: null,
               //selectedDate
-              selectionColor: IsDark
-                  ? MainDarkColors.primaryCardColor
-                  : MainLiteColors.primaryCardColor,
-              selectedTextColor: IsDark
-                  ? MainDarkColors.primaryFontColor
-                  : MainLiteColors.primaryFontColor,
+              
+              // selectionColor: IsDark
+              //     ? MainDarkColors.primaryCardColor
+              //     : MainLiteColors.primaryCardColor,
+              // selectedTextColor: IsDark
+              //     ? MainDarkColors.primaryFontColor
+              //     : MainLiteColors.primaryFontColor,
               activeDates: active_dates2.keys.toList(),
-              dateTextStyle: GoogleFonts.vazirmatn(
-                fontSize: 18,
-                color: IsDark
-                    ? MainDarkColors.primaryFontColor
-                    : MainLiteColors.primaryFontColor,
-              ),
-              monthTextStyle: GoogleFonts.vazirmatn(
-                fontSize: 18,
-                color: IsDark
-                    ? MainDarkColors.primaryFontColor
-                    : MainLiteColors.primaryFontColor,
-              ),
-              dayTextStyle: GoogleFonts.vazirmatn(
-                fontSize: 18,
-                color: IsDark
-                    ? MainDarkColors.primaryFontColor
-                    : MainLiteColors.primaryFontColor,
-              ),
-              deactivatedColor: IsDark
-                  ? MainDarkColors.seconderyFontColor
-                  : MainLiteColors.seconderyFontColor,
+              // dateTextStyle: GoogleFonts.vazirmatn(
+              //   fontSize: 18,
+              //   color: IsDark
+              //       ? MainDarkColors.primaryFontColor
+              //       : MainLiteColors.primaryFontColor,
+              // ),
+              // monthTextStyle: GoogleFonts.vazirmatn(
+              //   fontSize: 18,
+              //   color: IsDark
+              //       ? MainDarkColors.primaryFontColor
+              //       : MainLiteColors.primaryFontColor,
+              // ),
+              // dayTextStyle: GoogleFonts.vazirmatn(
+              //   fontSize: 18,
+              //   color: IsDark
+              //       ? MainDarkColors.primaryFontColor
+              //       : MainLiteColors.primaryFontColor,
+              // ),
+              // deactivatedColor: IsDark
+              //     ? MainDarkColors.seconderyFontColor
+              //     : MainLiteColors.seconderyFontColor,
 
               onDateChange: (date) {
                 setState(() {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medical_app/Clinic/clinic_main.dart';
 import 'package:medical_app/Home/constants.dart';
+import 'package:medical_app/Home/doctors_cards.dart';
 
 import 'package:medical_app/Home/home_content/specialities/specialities.dart';
 import 'package:medical_app/doctor_page/doctor_page.dart';
@@ -89,10 +90,7 @@ class _HomeContentState extends State<HomeContent> {
                       if (snapshot.hasError) {
                         return SomethingWentWrong();
                       } else if (snapshot.hasData) {
-                        return HomeCard(
-                          info: snapshot.data,
-                          goToDoctor: true,
-                        );
+                        return DoctorsCards(doctors: snapshot.data);
                       } else {
                         return Text("there is no data");
                       }
