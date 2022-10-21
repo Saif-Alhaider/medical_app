@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:medical_app/Clinic/clinic_main.dart';
 
@@ -57,11 +58,17 @@ class HomeCard extends StatelessWidget {
                   children: [
                     SizedBox(
                         height: 200,
-                        child: Image.network(
-                          info?[index].image == "http://10.0.2.2:8000/null"
-                              ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                              : info![index].image,
+                        child: CachedNetworkImage(
+                          imageUrl: info![index].image,
                           fit: BoxFit.cover,
+                          placeholder: (context, url) {
+                            return Image.network(
+                                "https://appartment.biz/wp-content/themes/appartment/assets/img/placeholder.jpg",fit: BoxFit.cover,);
+                          },
+                          errorWidget: (context, url, error) => Image.network(
+                            "https://appartment.biz/wp-content/themes/appartment/assets/img/placeholder.jpg",
+                            fit: BoxFit.cover,
+                          ),
                         )),
                     SubText(
                       text: info![index].title,

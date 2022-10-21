@@ -25,6 +25,7 @@ MERGED from [:shared_preferences_android] D:\atom file\projects\medical_app\Fron
 MERGED from [:image_picker_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:flutter_plugin_android_lifecycle] D:\atom file\projects\medical_app\Frontend\medical_app\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:image_gallery_saver] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_gallery_saver\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:sqflite] D:\atom file\projects\medical_app\Frontend\medical_app\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-16:12
 MERGED from [:path_provider_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_native_splash] D:\atom file\projects\medical_app\Frontend\medical_app\build\flutter_native_splash\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -89,6 +90,8 @@ MERGED from [:flutter_plugin_android_lifecycle] D:\atom file\projects\medical_ap
 MERGED from [:flutter_plugin_android_lifecycle] D:\atom file\projects\medical_app\Frontend\medical_app\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:image_gallery_saver] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_gallery_saver\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:image_gallery_saver] D:\atom file\projects\medical_app\Frontend\medical_app\build\image_gallery_saver\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] D:\atom file\projects\medical_app\Frontend\medical_app\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] D:\atom file\projects\medical_app\Frontend\medical_app\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:url_launcher_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] D:\atom file\projects\medical_app\Frontend\medical_app\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41

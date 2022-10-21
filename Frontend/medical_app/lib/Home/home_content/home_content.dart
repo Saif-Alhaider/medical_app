@@ -27,7 +27,7 @@ import '../../reuseable_widgets/connection widgets/waitingCarousel.dart';
 import 'package:get/get.dart';
 
 class HomeContent extends StatefulWidget {
-   HomeContent({super.key});
+  HomeContent({super.key});
 
   @override
   State<HomeContent> createState() => _HomeContentState();
@@ -39,13 +39,11 @@ class _HomeContentState extends State<HomeContent> {
   @override
   void initState() {
     super.initState();
-    doctorsData= get_doctors();
+    doctorsData = get_doctors();
   }
 
   @override
   Widget build(BuildContext context) {
-    get_clinics();
-    get_doctors();
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -57,10 +55,12 @@ class _HomeContentState extends State<HomeContent> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                   HeadLineText(
+                  HeadLineText(
                     text: "الاطباء",
                     lineHeight: 1,
-                    color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,
+                    color: IsDark
+                        ? MainDarkColors.primaryFontColor
+                        : MainLiteColors.primaryFontColor,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
@@ -71,7 +71,10 @@ class _HomeContentState extends State<HomeContent> {
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             alignment: Alignment.centerLeft),
                         onPressed: () {
-                          Get.to(MoreDoctorsScreen(more_url: "http://10.0.2.2:8000/api/doctor/doctors/isfeatured?per_page=12&page=",));
+                          Get.to(MoreDoctorsScreen(
+                            more_url:
+                                "http://10.0.2.2:8000/api/doctor/doctors/isfeatured?per_page=12&page=",
+                          ));
                         },
                         child: SubText(text: "المزيد")),
                   )
@@ -84,7 +87,7 @@ class _HomeContentState extends State<HomeContent> {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
                       return WaitingCarousel();
-                      
+
                     case ConnectionState.done:
                     default:
                       if (snapshot.hasError) {
@@ -97,13 +100,18 @@ class _HomeContentState extends State<HomeContent> {
                   }
                 },
               ),
+              SizedBox(
+                height: 20,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:  [
-                   HeadLineText(
+                children: [
+                  HeadLineText(
                     text: "العيادات",
                     lineHeight: 1,
-                    color: IsDark? MainDarkColors.primaryFontColor:MainLiteColors.primaryFontColor,
+                    color: IsDark
+                        ? MainDarkColors.primaryFontColor
+                        : MainLiteColors.primaryFontColor,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
@@ -114,7 +122,7 @@ class _HomeContentState extends State<HomeContent> {
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             alignment: Alignment.centerLeft),
                         onPressed: () {
-                        Get.to(MoreClinicsScreen());
+                          Get.to(MoreClinicsScreen());
                         },
                         child: SubText(text: "المزيد")),
                   )
@@ -150,7 +158,8 @@ class _HomeContentState extends State<HomeContent> {
 }
 
 Future<List<HomeCardInfo>> get_doctors() async {
-  final String url = '${siteUrl}api/doctor/doctors/isfeatured?per_page=12&page=1';
+  final String url =
+      '${siteUrl}api/doctor/doctors/isfeatured?per_page=12&page=1';
   print(url);
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
@@ -167,24 +176,23 @@ Future<List<HomeCardInfo>> get_doctors() async {
             id: e.id),
       )
       .toList();
-      
+
   return recievedDoctors as List<HomeCardInfo>;
 }
 
 Future<List<HomeCardInfo>> get_clinics() async {
-  final String url = '${siteUrl}api/clinics/?page_num=1';
+  final String url = '${siteUrl}api/clinic/all?per_page=12&page=1';
 
   var response = await http.get(Uri.parse(url));
 
-  final List<HomeCardInfo> result = clinicsFromJson(response.body).data.map((e) {
+  final List<HomeCardInfo> result =
+      clinicsFromJson(response.body).data.map((e) {
     return HomeCardInfo(
-      id: e.id.toString(),
-      image: 'http://10.0.2.2:8000/images/${e.images}',
-      title: e.name,
-      subTitle: ""
-    );
-  } ).toList();
-  
+        id: e.id.toString(),
+        image: '${siteUrl}/media/${e.images}',
+        title: e.name,
+        subTitle: "");
+  }).toList();
 
   return result;
 }

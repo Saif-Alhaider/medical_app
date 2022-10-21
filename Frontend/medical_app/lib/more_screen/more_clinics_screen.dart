@@ -103,8 +103,24 @@ class _MoreScreenState extends State<MoreClinicsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                          height: 200,
-                          child: Image.network('${siteUrl}media/'+clinics[index].images,)),
+                        height: 200,
+                        child: CachedNetworkImage(
+                          imageUrl: '${siteUrl}media/' + clinics[index].images,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) {
+                            return Image.network(
+                                "https://appartment.biz/wp-content/themes/appartment/assets/img/placeholder.jpg",fit: BoxFit.cover,);
+                          },
+                          errorWidget: (context, url, error) => Image.network(
+                            "https://appartment.biz/wp-content/themes/appartment/assets/img/placeholder.jpg",
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        // child: Image.network(
+                        //   '${siteUrl}media/' + clinics[index].images,
+                        //   fit: BoxFit.cover,
+                        // ),
+                      ),
                       SubText(
                         text: clinics[index].name,
                         color: Colors.black,
