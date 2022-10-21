@@ -176,10 +176,10 @@ Future<List<HomeCardInfo>> get_clinics() async {
 
   var response = await http.get(Uri.parse(url));
 
-  final List<HomeCardInfo> result = ClinicsFromJson(response.body).clinics.map((e) {
+  final List<HomeCardInfo> result = clinicsFromJson(response.body).data.map((e) {
     return HomeCardInfo(
       id: e.id.toString(),
-      image: 'http://10.0.2.2:8000/images/${e.image}',
+      image: 'http://10.0.2.2:8000/images/${e.images}',
       title: e.name,
       subTitle: ""
     );
