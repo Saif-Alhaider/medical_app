@@ -6,7 +6,7 @@ import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/User_Page/loged_user_page/Appointments/ScheduleTab.dart';
 import 'package:medical_app/User_Page/loged_user_page/doctor_patients_appointment/doctor_patients_appointments_main.dart';
 import 'package:medical_app/User_Page/loged_user_page/profile%20details/single_detail.dart';
-import 'package:medical_app/User_Page/loged_user_page/user%20settings/user_health_info.dart';
+import 'package:medical_app/User_Page/loged_user_page/user_health_info/user_health_info.dart';
 import 'package:medical_app/reuseable_widgets/break_line.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
@@ -15,6 +15,8 @@ import '../../../main.dart';
 import '../../../main_colors.dart';
 import '../../Notifications/notifications.dart';
 import 'package:get/get.dart';
+
+import '../user_info/user_info.dart';
 
 class ProfileDetails extends StatefulWidget {
   final String? role;
@@ -70,7 +72,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
             iconColor: Colors.blue,
             title: "الحساب",
             whereToGo: () {
-              Get.to(UserHealthInfo());
+              Get.to(UserInfo());
             },
           ),
           SinglDetail(
