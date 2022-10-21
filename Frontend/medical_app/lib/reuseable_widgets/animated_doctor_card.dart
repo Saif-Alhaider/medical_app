@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medical_app/doctor_page/doctor_page.dart';
+import 'package:medical_app/main.dart';
 
 import '../models/doctor/doctor.dart';
 import '../models/home_card_info.dart';
@@ -43,7 +44,7 @@ class AnimatedDoctorCard extends StatelessWidget {
         //   )
         // ],
         image: DecorationImage(
-          image: NetworkImage(doctor?.image == "http://10.0.2.2:8000/null"
+          image: NetworkImage(doctor?.image == "${siteUrl}null"
               ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
               : doctor!.image),
           fit: BoxFit.cover,

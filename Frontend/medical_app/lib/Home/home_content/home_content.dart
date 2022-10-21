@@ -150,7 +150,8 @@ class _HomeContentState extends State<HomeContent> {
 }
 
 Future<List<HomeCardInfo>> get_doctors() async {
-  const String url = 'http://10.0.2.2:8000/api/doctor/doctors/isfeatured?per_page=12&page=1';
+  final String url = '${siteUrl}api/doctor/doctors/isfeatured?per_page=12&page=1';
+  print(url);
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
   });
@@ -162,7 +163,7 @@ Future<List<HomeCardInfo>> get_doctors() async {
         (e) => HomeCardInfo(
             title: e.fullName,
             subTitle: e.specialty?.title,
-            image: "http://10.0.2.2:8000/${e.images}",
+            image: "${siteUrl}${e.images}",
             id: e.id),
       )
       .toList();
@@ -171,7 +172,7 @@ Future<List<HomeCardInfo>> get_doctors() async {
 }
 
 Future<List<HomeCardInfo>> get_clinics() async {
-  const String url = 'http://10.0.2.2:8000/api/clinics/?page_num=1';
+  final String url = '${siteUrl}api/clinics/?page_num=1';
 
   var response = await http.get(Uri.parse(url));
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medical_app/Home/constants.dart';
 import 'package:medical_app/Medicines/medicine_screen/medicine_screen.dart';
+import 'package:medical_app/main.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/headline_text.dart';
 import 'package:medical_app/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:medical_app/reuseable_widgets/waiting.dart';
@@ -167,7 +168,7 @@ class _MedicinesListViewState extends State<MedicinesListView> {
 }
 
 Future<List<Medicine>>? get_medicines() async {
-  const String url = 'http://10.0.2.2:8000/api/medicines/?page_num=1';
+  final String url = '${siteUrl}api/medicines/?page_num=1';
   var response = await http.get(
     Uri.parse(url),
     headers: {

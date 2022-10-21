@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'OnBoarding/onboarding_main.dart';
 
 bool IsDark =true;
+String siteUrl = "http://10.0.2.2:8000/";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

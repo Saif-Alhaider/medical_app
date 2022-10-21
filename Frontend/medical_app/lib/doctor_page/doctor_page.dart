@@ -97,7 +97,7 @@ class DoctorPage extends StatelessWidget {
 }
 
 Future<Doctor> getDoctorInfo({required String doctor_id}) async {
-  final String url = "http://10.0.2.2:8000/api/doctor/doctor/$doctor_id";
+  final String url = "${siteUrl}api/doctor/doctor/$doctor_id";
   var response = await http.get(Uri.parse(url));
   Doctor result = doctorFromJson(response.body);
   // print(result.images);

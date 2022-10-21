@@ -197,7 +197,7 @@ class ClinicMain extends StatelessWidget {
 }
 
 Future<List<HomeCardInfo>> get_doctors() async {
-  const String url = 'http://10.0.2.2:8000/api/doctor/doctors?page_num=1';
+  final String url = '${siteUrl}api/doctor/doctors?page_num=1';
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
   });

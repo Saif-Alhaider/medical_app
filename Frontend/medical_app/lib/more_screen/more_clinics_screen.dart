@@ -37,7 +37,7 @@ class _MoreScreenState extends State<MoreClinicsScreen> {
       }
     }
     final String url =
-        "http://10.0.2.2:8000/api/clinics/?page_num=$current_page";
+        "${siteUrl}api/clinics/?page_num=$current_page";
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {

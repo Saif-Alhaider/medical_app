@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart' hide TextDirection;
+import 'package:medical_app/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../reuseable_widgets/texts_types/headline_text.dart';
@@ -52,7 +53,7 @@ class AppointmentCard extends StatelessWidget {
               CircleAvatar(
                 radius: 40,
                 backgroundImage: NetworkImage(
-                  'http://10.0.2.2:8000/images/' + doctorImage,
+                  '${siteUrl}images/' + doctorImage,
                 ),
               ),
               const SizedBox(width: 10),

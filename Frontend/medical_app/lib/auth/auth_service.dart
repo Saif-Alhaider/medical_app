@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:medical_app/main.dart';
 
 class AuthServic {
-  static final String url = 'http://10.0.2.2:8000/api';
+  static final String url = '${siteUrl}api';
   static final client = http.Client();
   static Future register({
     required String firstName,

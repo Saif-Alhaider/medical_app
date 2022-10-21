@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:medical_app/main.dart';
 import 'package:medical_app/models/doctor/doctors.dart';
 
 class SearchBar extends StatelessWidget {
@@ -66,7 +67,7 @@ class SearchBar extends StatelessWidget {
 
 Future<List>? get_fetched_doctors({required doctor_name}) async {
   final String url =
-      "http://10.0.2.2:8000/api/doctor/search?doctor_full_name=$doctor_name";
+      "${siteUrl}api/doctor/search?doctor_full_name=$doctor_name";
 
   var response = await http.get(Uri.parse(url));
   // if (response.statusCode == 200) {

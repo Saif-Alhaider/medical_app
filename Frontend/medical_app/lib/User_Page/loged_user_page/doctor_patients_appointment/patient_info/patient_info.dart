@@ -302,7 +302,7 @@ Future<UserPersonalInfo>? getUserinfo({required int id}) async {
   var prefs = await SharedPreferences.getInstance();
   String? token = prefs.getString('token');
   final String url =
-      "http://10.0.2.2:8000/api/doctor/doctor_patient_info?user_id=$id";
+      "${siteUrl}api/doctor/doctor_patient_info?user_id=$id";
   var response = await http.get(Uri.parse(url), headers: {
     "Content-Type": "application/json",
     'Authorization': 'Bearer $token',

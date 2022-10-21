@@ -97,7 +97,7 @@ class _MoreScreenState extends State<MoreDoctorsScreen> {
                 fullName: doctors[index].fullName,
                 speciality: doctors[index].specialty?.title,
                 image:
-                    doctors[index].images == null?"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png":'http://10.0.2.2:8000/${doctors[index].images}',
+                    doctors[index].images == null?"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png":'${siteUrl}${doctors[index].images}',
               );
             },
           ),

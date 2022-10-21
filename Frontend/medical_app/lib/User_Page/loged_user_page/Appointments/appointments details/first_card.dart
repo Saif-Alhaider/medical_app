@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:medical_app/main.dart';
 
 import '../../../../Home/constants.dart';
 import '../../../../reuseable_widgets/break_line.dart';
@@ -76,7 +77,7 @@ class FirstCard extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           backgroundImage: NetworkImage(
-                              "http://10.0.2.2:8000/images/$doctorImage"),
+                              "${siteUrl}images/$doctorImage"),
                           radius: 35,
                         ),
                         Column(
