@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/Main_View/main_view.dart';
+import 'package:medical_app/view/Main_View/main_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
-import 'OnBoarding/onboarding_main.dart';
+import 'view/OnBoarding/onboarding_main.dart';
 
 bool IsDark =true;
 String siteUrl = "http://10.0.2.2:8000/";
