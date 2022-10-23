@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:medical_app/Controller/validations.dart';
 import 'package:medical_app/view/User_Page/Authentication/Register/registerPassword.dart';
 import 'package:medical_app/view/reuseable_widgets/main_button.dart';
 
@@ -59,15 +60,7 @@ class RegisterEmail extends StatelessWidget {
                           child: RegisterTextField(
                             hintText: 'اسم العائلة',
                             controller: lastName,
-                            validator: (p0) {
-                              if (p0 != null) {
-                                if (p0.isEmpty) {
-                                  return 'اسم العائلة لا يجب ان يكون فارغ';
-                                } else if (p0.length <= 2) {
-                                  return 'الاسم قصير';
-                                }
-                              }
-                            },
+                            validator: (p0) =>nameValidation(p0),
                             // errormsg: lastNameErrorMsg,
                             // validate: lastNameValidation.value,
                           ),
@@ -79,15 +72,7 @@ class RegisterEmail extends StatelessWidget {
                             child: RegisterTextField(
                           hintText: 'الاسم الاول',
                           controller: firstName,
-                          validator: (p0) {
-                            if (p0 != null) {
-                              if (p0.isEmpty) {
-                                return 'الاسم الاول لا يجب ان يكون فارغ';
-                              } else if (p0.length <= 2) {
-                                return 'الاسم قصير';
-                              }
-                            }
-                          },
+                          validator: (p0) =>nameValidation(p0),
                           // validate: firstNameValidation.value,
                           // errormsg: firstNameErrorMsg,
                         )),

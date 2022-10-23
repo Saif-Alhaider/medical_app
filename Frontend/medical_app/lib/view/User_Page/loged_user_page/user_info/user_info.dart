@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:medical_app/Controller/validations.dart';
 import 'package:medical_app/view/reuseable_widgets/registerTextField.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/main.dart';
