@@ -5,7 +5,7 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medical_app/view/Home/constants.dart';
 
-import '../../../reuseable_widgets/texts_types/sub_text.dart';
+import '../../../../reuseable_widgets/texts_types/sub_text.dart';
 
 class InfoCard extends StatelessWidget {
   final TextEditingController controller;

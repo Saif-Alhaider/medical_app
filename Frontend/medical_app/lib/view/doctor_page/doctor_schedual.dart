@@ -11,10 +11,10 @@ import 'package:medical_app/view/reuseable_widgets/main_button.dart';
 import 'package:medical_app/view/reuseable_widgets/texts_types/headline_text.dart';
 
 import '../../main.dart';
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 import '../../models/doctor_appointments/appointments.dart';
 import '../reuseable_widgets/break_line.dart';
-import 'convert_utc_time_to_active_dates.dart';
+import '../../Controller/convert_utc_time_to_active_dates.dart';
 
 class DoctorSchedual extends StatelessWidget {
   final List active_dates;

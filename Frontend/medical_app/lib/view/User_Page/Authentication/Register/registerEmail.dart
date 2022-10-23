@@ -2,13 +2,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:medical_app/view/User_Page/Register/registerPassword.dart';
+import 'package:medical_app/view/User_Page/Authentication/Register/registerPassword.dart';
 import 'package:medical_app/view/reuseable_widgets/main_button.dart';
 
-import '../../../main.dart';
-import '../../../main_colors.dart';
+import '../../../../main.dart';
+import '../../../theme/main_colors.dart';
 import '../Login/login_main.dart';
-import '../textfield/registerTextField.dart';
+import '../../../reuseable_widgets/registerTextField.dart';
 import 'validationDetatils.dart';
 import 'package:get/get.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import '../../main_colors.dart';
+import '../../view/theme/main_colors.dart';
 
 class Catogary {
   String icon;

@@ -3,16 +3,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:medical_app/view/Home/constants.dart';
-import 'package:medical_app/view/User_Page/hold_on_animation.dart';
+import 'package:medical_app/view/reuseable_widgets/hold_on_animation.dart';
 import 'package:medical_app/Controller/auth/auth_service.dart';
-import 'package:medical_app/main_colors.dart';
+import 'package:medical_app/view/theme/main_colors.dart';
 import 'package:medical_app/view/reuseable_widgets/main_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Main_View/main_view.dart';
-import '../../../main.dart';
-import '../../reuseable_widgets/texts_types/headline_text.dart';
-import '../textfield/registerTextField.dart';
+import '../../../Main_View/main_view.dart';
+import '../../../../main.dart';
+import '../../../reuseable_widgets/texts_types/headline_text.dart';
+import '../../../reuseable_widgets/registerTextField.dart';
 
 import 'loginValidationDetails.dart';
 import 'package:get/get.dart';

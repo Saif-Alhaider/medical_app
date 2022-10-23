@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'main.dart';
+import '../../main.dart';
 
 abstract class MainLiteColors {
   static const Color bgColor = Color(0xffFDFDFD);

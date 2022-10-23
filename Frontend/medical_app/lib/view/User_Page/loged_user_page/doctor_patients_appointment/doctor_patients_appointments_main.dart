@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart' hide TextDirection;
 import 'package:medical_app/view/User_Page/loged_user_page/doctor_patients_appointment/patient_info/patient_info.dart';
-import 'package:medical_app/main_colors.dart';
+import 'package:medical_app/view/theme/main_colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/view/reuseable_widgets/waiting.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -7,7 +7,7 @@ import 'package:medical_app/view/reuseable_widgets/texts_types/headline_text.dar
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../main.dart';
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {

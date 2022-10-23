@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/view/Home/constants.dart';
 import 'package:medical_app/main.dart';
-import 'package:medical_app/main_colors.dart';
+import 'package:medical_app/view/theme/main_colors.dart';
 import 'package:medical_app/models/clinic/clinic_model.dart';
 import 'package:medical_app/view/reuseable_widgets/doctor_card.dart';
 import 'package:medical_app/view/reuseable_widgets/waiting.dart';

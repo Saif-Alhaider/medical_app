@@ -12,8 +12,8 @@ import 'package:medical_app/view/reuseable_widgets/texts_types/headline_text.dar
 import 'package:medical_app/view/reuseable_widgets/texts_types/sub_text.dart';
 
 import '../../../../main.dart';
-import '../../../../main_colors.dart';
-import '../../Notifications/notifications.dart';
+import '../../../theme/main_colors.dart';
+import '../Notifications/notifications.dart';
 import 'package:get/get.dart';
 
 import '../user_info/user_info.dart';

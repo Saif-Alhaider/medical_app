@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:medical_app/view/reuseable_widgets/waiting.dart';
 import '../../main.dart';
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 import '../../models/doctor/doctor.dart';
 import '../reuseable_widgets/break_line.dart';
 import 'doctor_details.dart';
@@ -100,15 +100,6 @@ Future<Doctor> getDoctorInfo({required String doctor_id}) async {
   final String url = "${siteUrl}api/doctor/doctor/$doctor_id";
   var response = await http.get(Uri.parse(url));
   Doctor result = doctorFromJson(response.body);
-  // print(result.images);
-  // result = Doctor(
-  //     full_name: result['fullName'],
-  //     speciality: result['speciality'],
-  //     image: result['image'],
-  //     description: result['description'],
-  //     email: result['email'],
-  //     country: result['country'],
-  //     active_dates: result['active_dates'],
-  //     phone_number: result['phone_number']);
+
   return result;
 }

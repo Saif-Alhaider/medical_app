@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/view/reuseable_widgets/texts_types/headline_text.dart';
 
 import '../Main_View/main_view.dart';
-import '../User_Page/hold_on_animation.dart';
+import 'hold_on_animation.dart';
 
 class MainButton extends StatelessWidget {
   final Color buttonColor;

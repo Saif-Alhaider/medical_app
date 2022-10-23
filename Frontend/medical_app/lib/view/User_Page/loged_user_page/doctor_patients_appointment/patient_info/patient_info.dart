@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../main.dart';
-import '../../../../../main_colors.dart';
+import '../../../../theme/main_colors.dart';
 import '../../../../reuseable_widgets/waiting.dart';
 import 'package:get/get.dart';
 

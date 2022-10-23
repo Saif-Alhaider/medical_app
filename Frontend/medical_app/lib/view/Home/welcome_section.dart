@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../main.dart';
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 import '../reuseable_widgets/texts_types/headline_text.dart';
 
 class WelcomeSection extends StatefulWidget {

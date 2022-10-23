@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../main.dart';
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 
 class DoctorDetails extends StatefulWidget {
   final String text;

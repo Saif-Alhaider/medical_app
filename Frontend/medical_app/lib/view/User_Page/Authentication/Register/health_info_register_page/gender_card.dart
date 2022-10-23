@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../reuseable_widgets/texts_types/sub_text.dart';
+import '../../../../reuseable_widgets/texts_types/sub_text.dart';
 
 class GenderCard extends StatelessWidget {
   final SvgPicture svgPictur;

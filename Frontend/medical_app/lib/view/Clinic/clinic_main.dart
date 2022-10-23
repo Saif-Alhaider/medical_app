@@ -11,7 +11,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../doctor_page/doctor_page.dart';
 import '../../main.dart';
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 import '../../models/doctors_images.dart';
 import '../reuseable_widgets/home_card.dart';
 import 'package:http/http.dart' as http;

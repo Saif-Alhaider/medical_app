@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medical_app/main_colors.dart';
+import 'package:medical_app/view/theme/main_colors.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 class BottomSalamonNavigationBar extends StatelessWidget {
   final Rx<int> currentIndex;

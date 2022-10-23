@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/view/OnBoarding/start_button.dart';
 
 import '../../main.dart';
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 import '../../models/onboarding_models/onboarding_details.dart';
 import '../reuseable_widgets/texts_types/headline_text.dart';
 import '../reuseable_widgets/texts_types/sub_text.dart';

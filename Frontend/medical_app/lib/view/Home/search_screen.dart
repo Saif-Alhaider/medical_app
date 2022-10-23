@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:medical_app/main.dart';
 
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 
 class SearchScreen extends StatelessWidget {
   final Rx<bool> isSubmitted;

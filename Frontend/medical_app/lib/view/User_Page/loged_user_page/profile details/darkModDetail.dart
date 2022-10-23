@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../main.dart';
-import '../../../../main_colors.dart';
+import '../../../theme/main_colors.dart';
 import '../../../reuseable_widgets/texts_types/sub_text.dart';
 
 class DarkModDetail extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:medical_app/view/Home/constants.dart';
 import 'package:medical_app/view/User_Page/loged_user_page/profile%20details/darkModDetail.dart';
 import 'package:medical_app/main.dart';
-import 'package:medical_app/main_colors.dart';
+import 'package:medical_app/view/theme/main_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:medical_app/view/User_Page/loged_user_page/profile%20details/profile_details.dart';
@@ -12,7 +12,7 @@ import 'package:medical_app/view/reuseable_widgets/texts_types/headline_text.dar
 
 import '../../Main_View/main_view.dart';
 import '../../reuseable_widgets/texts_types/sub_text.dart';
-import '../hold_on_animation.dart';
+import '../../reuseable_widgets/hold_on_animation.dart';
 
 class UserPage extends StatefulWidget {
   final String? full_name;

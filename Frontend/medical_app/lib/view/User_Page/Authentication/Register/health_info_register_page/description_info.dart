@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../Home/constants.dart';
+import '../../../../Home/constants.dart';
 
 class DescriptionInfo extends StatelessWidget {
   final TextEditingController controller;

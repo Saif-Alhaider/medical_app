@@ -6,8 +6,8 @@ import 'package:flutter/rendering.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:medical_app/view/Home/constants.dart';
-import 'package:medical_app/view/User_Page/textfield/registerTextField.dart';
-import 'package:medical_app/main_colors.dart';
+import 'package:medical_app/view/reuseable_widgets/registerTextField.dart';
+import 'package:medical_app/view/theme/main_colors.dart';
 import 'package:medical_app/view/prescription/save_gallery.dart';
 import 'package:medical_app/view/reuseable_widgets/break_line.dart';
 import 'package:medical_app/view/reuseable_widgets/dashedLine.dart';
@@ -16,7 +16,7 @@ import 'package:medical_app/view/reuseable_widgets/texts_types/headline_text.dar
 import 'package:medical_app/view/reuseable_widgets/texts_types/sub_text.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-import '../User_Page/Register/health_info_register_page/description_info.dart';
+import '../User_Page/Authentication/Register/health_info_register_page/description_info.dart';
 import '../../main.dart';
 import '../../models/medicine/medicine_details.dart';
 import 'doctor_clinic_info.dart';

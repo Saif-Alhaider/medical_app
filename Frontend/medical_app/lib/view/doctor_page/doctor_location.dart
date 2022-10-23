@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/view/reuseable_widgets/texts_types/sub_text.dart';
 
 import '../../main.dart';
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 
 class DoctorLocation extends StatelessWidget {
   final String location;

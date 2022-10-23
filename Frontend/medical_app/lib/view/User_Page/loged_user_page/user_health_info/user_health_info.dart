@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:medical_app/view/User_Page/textfield/registerTextField.dart';
+import 'package:medical_app/view/reuseable_widgets/registerTextField.dart';
 import 'package:medical_app/view/reuseable_widgets/main_button.dart';
 import 'package:medical_app/view/reuseable_widgets/texts_types/headline_text.dart';
 
 import '../../../../main.dart';
-import '../../../../main_colors.dart';
-import '../../Register/validationDetatils.dart';
+import '../../../theme/main_colors.dart';
+import '../../Authentication/Register/validationDetatils.dart';
 
 class UserHealthInfo extends StatelessWidget {
   static final TextEditingController firstNameController =

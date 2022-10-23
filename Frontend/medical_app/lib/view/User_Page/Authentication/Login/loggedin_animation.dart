@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../Main_View/main_view.dart';
-import '../../../main.dart';
-import '../../../main_colors.dart';
+import '../../../Main_View/main_view.dart';
+import '../../../../main.dart';
+import '../../../theme/main_colors.dart';
 
 class LoggedinAnimation extends StatefulWidget {
   const LoggedinAnimation({Key? key}) : super(key: key);

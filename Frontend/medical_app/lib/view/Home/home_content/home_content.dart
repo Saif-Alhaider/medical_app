@@ -20,7 +20,7 @@ import 'package:http/http.dart' as http;
 import 'package:medical_app/view/reuseable_widgets/waiting.dart';
 
 import '../../../main.dart';
-import '../../../main_colors.dart';
+import '../../theme/main_colors.dart';
 import '../../../models/home_card_info.dart';
 import '../../more_screen/more_clinics_screen.dart';
 import '../../reuseable_widgets/connection widgets/waitingCarousel.dart';

@@ -8,7 +8,7 @@ import 'package:medical_app/view/reuseable_widgets/doctor_card.dart';
 import 'package:medical_app/view/reuseable_widgets/waiting.dart';
 
 import '../../main.dart';
-import '../../main_colors.dart';
+import '../theme/main_colors.dart';
 import '../../models/doctor/doctor.dart';
 import '../../models/doctor/doctors.dart';
 

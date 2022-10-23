@@ -12,7 +12,7 @@ import 'package:medical_app/view/reuseable_widgets/texts_types/headline_text.dar
 import 'package:medical_app/view/reuseable_widgets/texts_types/sub_text.dart';
 
 import '../../../../../main.dart';
-import '../../../../../main_colors.dart';
+import '../../../../theme/main_colors.dart';
 
 class AppointmentDetailsMain extends StatelessWidget {
   final String doctorName;

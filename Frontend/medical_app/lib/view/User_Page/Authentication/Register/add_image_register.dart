@@ -3,10 +3,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:medical_app/view/Home/constants.dart';
 import 'package:medical_app/view/Main_View/main_view.dart';
-import 'package:medical_app/main_colors.dart';
+import 'package:medical_app/view/theme/main_colors.dart';
 import 'package:medical_app/view/reuseable_widgets/next_skip_buttons.dart';
 import 'package:medical_app/view/reuseable_widgets/texts_types/sub_text.dart';
-import '../../../main.dart';
+import '../../../../main.dart';
 import 'package:get/get.dart';
 
 class AddUserImage extends StatelessWidget {

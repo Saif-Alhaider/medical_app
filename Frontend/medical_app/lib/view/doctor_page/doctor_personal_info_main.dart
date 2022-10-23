@@ -5,7 +5,7 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 
 // ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
-import 'package:medical_app/main_colors.dart';
+import 'package:medical_app/view/theme/main_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';

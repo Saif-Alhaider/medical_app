@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:medical_app/view/Home/constants.dart';
-import 'package:medical_app/view/User_Page/Register/health_info_register_page/health_info_main.dart';
+import 'package:medical_app/view/User_Page/Authentication/Register/health_info_register_page/health_info_main.dart';
 import 'package:medical_app/Controller/auth/auth_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Main_View/main_view.dart';
-import '../../../main.dart';
-import '../../../main_colors.dart';
-import '../../reuseable_widgets/back_Icon.dart';
-import '../../reuseable_widgets/main_button.dart';
-import '../../reuseable_widgets/texts_types/headline_text.dart';
-import '../hold_on_animation.dart';
-import '../textfield/registerTextField.dart';
+import '../../../Main_View/main_view.dart';
+import '../../../../main.dart';
+import '../../../theme/main_colors.dart';
+import '../../../reuseable_widgets/back_Icon.dart';
+import '../../../reuseable_widgets/main_button.dart';
+import '../../../reuseable_widgets/texts_types/headline_text.dart';
+import '../../../reuseable_widgets/hold_on_animation.dart';
+import '../../../reuseable_widgets/registerTextField.dart';
 import 'validationDetatils.dart';
 import 'package:get/get.dart';
 

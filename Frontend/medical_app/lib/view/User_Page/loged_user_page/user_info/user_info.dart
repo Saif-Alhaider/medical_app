@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:medical_app/view/User_Page/textfield/registerTextField.dart';
+import 'package:medical_app/view/reuseable_widgets/registerTextField.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../models/Patient.dart';
 import '../../../reuseable_widgets/waiting.dart';
-import '../../Register/validationDetatils.dart';
+import '../../Authentication/Register/validationDetatils.dart';
 
 class UserInfo extends StatelessWidget {
   const UserInfo({super.key});
