@@ -9,6 +9,7 @@ import '../../../../main.dart';
 import '../../../theme/main_colors.dart';
 import '../Login/login_main.dart';
 import '../../../reuseable_widgets/registerTextField.dart';
+import '../doctor_authentication/doctor_register.dart';
 import 'validationDetatils.dart';
 import 'package:get/get.dart';
 
@@ -126,6 +127,34 @@ class RegisterEmail extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => Login(),
+                                      ),
+                                    );
+                                  }),
+                          ]),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                          text: 'هل انت طبيب ؟',
+                          style: GoogleFonts.vazirmatn(
+                            color: IsDark
+                                ? MainDarkColors.primaryFontColor
+                                : MainLiteColors.primaryFontColor,
+                          ),
+                          children: [
+                            const WidgetSpan(
+                                alignment: PlaceholderAlignment.baseline,
+                                baseline: TextBaseline.alphabetic,
+                                child: SizedBox(width: 10)),
+                            TextSpan(
+                                text: "اضغط هنا",
+                                style:
+                                    GoogleFonts.vazirmatn(color: Colors.blue),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DoctorRegister(),
                                       ),
                                     );
                                   }),
