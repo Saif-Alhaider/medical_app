@@ -14,3 +14,13 @@ String? nameValidation(String? value) {
     }
   }
 }
+
+String? numberValidation(String? value){
+  if (value != null) {
+    if (value.isEmpty) {
+      return 'الرجاء ادخال رقم الهاتف';
+    } else if (value.length < 11) {
+      return 'رقم الهاتف قصير';
+    }
+  }
+}
